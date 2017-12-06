@@ -4,8 +4,6 @@
 * MIT License
 */
 
-'use strict';
-
 class Parlx {
   constructor(elements, settings = {}) {
     if (elements.length > 1) {
