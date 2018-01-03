@@ -1,6 +1,6 @@
 /*!
 * parlx.js v1.0
-* Copyright 2017 Jakub Biesiada
+* Copyright 2017-2018 Jakub Biesiada
 * MIT License
 */
 
