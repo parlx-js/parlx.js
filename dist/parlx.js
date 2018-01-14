@@ -1,12 +1,12 @@
 /*!
-* parlx.js v1.0
+* parlx.js v1.0.1
 * Copyright 2017-2018 Jakub Biesiada
 * MIT License
 */
 
 class Parlx {
   constructor(elements, settings = {}) {
-    if (elements.length > 1) {
+    if (elements.length > 0) {
       this.init(elements, settings);
       return;
     } else {
@@ -39,7 +39,7 @@ class Parlx {
   }
 
   parallaxEffect() {
-    if ("ontouchstart" in document.documentElement && this.settings.mobile === false) {
+    if ("ontouchstart" in document.documentElement && !this.settings.mobile) {
       this.settings.speed = 0;
     }
 

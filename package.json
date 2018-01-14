@@ -1,6 +1,6 @@
 {
   "name": "parlx.js",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "JavaScript & jQuery parallax effect plugin",
   "main": "dist/parlx.js",
   "scripts": {
@@ -11,6 +11,9 @@
     "url": "git+https://github.com/JB1905/parlx.js.git"
   },
   "keywords": [
+    "JavaScript",
+    "ES6",
+    "jQuery",
     "parallax"
   ],
   "author": "Jakub Biesiada",

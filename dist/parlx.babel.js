@@ -5,7 +5,7 @@ var _createClass = function () { function defineProperties(target, props) { for 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 /*!
-* parlx.js v1.0
+* parlx.js v1.0.1
 * Copyright 2017-2018 Jakub Biesiada
 * MIT License
 */
@@ -16,7 +16,7 @@ var Parlx = function () {
 
     _classCallCheck(this, Parlx);
 
-    if (elements.length > 1) {
+    if (elements.length > 0) {
       this.init(elements, settings);
       return;
     } else {
@@ -61,7 +61,7 @@ var Parlx = function () {
   }, {
     key: 'parallaxEffect',
     value: function parallaxEffect() {
-      if ("ontouchstart" in document.documentElement && this.settings.mobile === false) {
+      if ("ontouchstart" in document.documentElement && !this.settings.mobile) {
         this.settings.speed = 0;
       }
 
