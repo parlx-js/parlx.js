@@ -1,5 +1,5 @@
 /*!
-* parlx.js v1.1 beta 1
+* parlx.js v1.1 beta 3
 * Copyright 2017-2018 Jakub Biesiada
 * MIT License
 */
@@ -185,4 +185,18 @@ if (window.jQuery) {
       new Parlx(this[element], options);
     }
   }
+}
+
+// AMD
+if (typeof define === "function" && define.amd) {
+  define("Parlx", [], function() {
+    return Parlx;
+  });
+
+// Common JS
+} else if (typeof exports !== 'undefined' && !exports.nodeType) {
+  if (typeof module !== 'undefined' && !module.nodeType && module.exports) {
+    exports = module.exports = Parlx;
+  }
+  exports.default = Parlx;
 }
