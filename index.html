@@ -3,165 +3,155 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta name="viewport" content="width=device-width initial-scale=1.0"/>
-    <meta name="HandheldFriendly" content="true"/>
-    <meta name="apple-touch-fullscreen" content="yes"/>
-    <title>parlx.js | JavaScript & jQuery parallax plugin</title>
+    <meta name="description" content="JavaScript & jQuery parallax library">
+    <meta name="keywords" content="parallax,parlx,JavaScript,jQuery,plugin,es6">
+    <title>parlx.js | JavaScript & jQuery parallax library</title>
     <link rel="stylesheet" type="text/css" href="./demo/css/style.css">
-    <!--<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>-->
   </head>
 
   <body>
-    <div class="container">
-      <section class="parlx">
-        <div class="parallax header" data-height="250px" style="background: url(./demo/images/view.jpg)">
-          <h1 class="title">parlx.js</h1>
-          <div class="shadow"></div>
-        </div>
-      </section>
-
-      <section class="desc">
-        <div>
-        <p>With <b>parlx.js</b> You can create parallax effect.</p>
-        <p>You can use parlx.js with Vanilla JavaScript e.g:</p>
-        <pre class="language-javascript"><code>var elems = document.querySelectorAll('.parallax');
-var parlx = new Parlx(elems);</code></pre>
-        <p>or jQuery:</p>
-        <pre class="language-javascript"><code>$('.parallax').Parlx();</code></pre>
-        </div>
-      </section>
-
-      <section class="front">
-        <h3>Custom speed</h3>
-        <p>To set custom speed to single element use following code in div tag:</p>
-        <pre class="language-html"><code>data-speed="0.1"</code></pre>
-        <p>To set custom speed to all elements place in JavaScript (or jQuery) options:</p>
-        <pre class="language-javascript"><code>speed: 0.1</code></pre>
-      </section>
-
-      <section class="split-view three">
-        <div class="parallax split" style="background: url(./demo/images/san-francisco.jpg)">
-          <div style="z-index: 10">
-            <p class="title"><code>data-speed="0.3"</code></p>
-          </div>
-          <div class="shadow"></div>
-        </div>
-
-        <div class="parallax split" data-speed="0" style="background: url(./demo/images/fall.jpg)">
-          <div style="z-index: 10">
-            <p class="title"><code>data-speed="0"</code></p>
-          </div>
-          <div class="shadow"></div>
-        </div>
-
-        <div class="parallax split" data-speed="-0.3" style="background: url(./demo/images/turkey.jpg)">
-          <div style="z-index: 10">
-            <p class="title"><code>data-speed="-0.3"</code></p>
-          </div>
-          <div class="shadow"></div>
-        </div>
-      </section>
-
-      <section class="front">
-        <h3>Custom height</h3>
-        <p>To set custom height to single element use following code in div tag:</p>
-        <pre class="language-html"><code>data-height="700px"</code></pre>
-        <p>To set custom height to all elements place in JavaScript (or jQuery) options:</p>
-        <pre class="language-javascript"><code>height: '700px'</code></pre>
-      </section>
-
-      <div class="parallax" data-direction="diagonal" style="background: url(./demo/images/earth.jpg)">
-        <div style="z-index: 10">
-          <p class="title"><code>data-direction="diagonal"</code></p>
+    <section class="parlx">
+      <div class="parallax header" data-height="100vh" data-speed="-0.6">
+        <img src="./demo/images/view.jpg" alt="view">
+        <div class="title">
+          <h1>parlx.js</h1>
+          <h2>Parallax effect library for use with:<br>vanillaJS, CommonJS, jQuery and ES6</h2>
+          <a href="https://github.com/JB1905/parlx.js">See on GitHub</a>
         </div>
         <div class="shadow"></div>
       </div>
+    </section>
 
-      <section class="front">
-        <h3>Disable parallax effect on mobile</h3>
-        <p>To disable parallax effect on mobile on single element use following code in div tag:</p>
-        <pre class="language-html"><code>data-mobile="false"</code></pre>
-        <p>To disable parallax effect on all elements place in JavaScript (or jQuery) options:</p>
-        <pre class="language-javascript"><code>mobile: false</code></pre>
-      </section>
+    <section class="desc">
+      <div>
+        <h3>Usage</h3>
+        <p>At the beginning connect the library with Your project</p>
+        <p>&bull; using script tag in HTML:</p>
+        <pre class="language-html"><code>&#60;script src="/directory/to/library/folder/parlx.js"&#62;&#60;/script&#62;</code></pre>
+        <p>&bull; or via command line and CommonJS/ES6 import:</p>
+        <pre class="language-javascript"><code>npm install parlx.js // npm<br>
+yarn add parlx.js // yarn</code></pre>
+        <pre class="language-javascript"><code>const Parlx = require('parlx.js'); // CommonJS<br>
+import Parlx form 'parlx.js'; // ES6</code></pre>
+        <br>
 
-      <section class="parlx">
-        <div class="parallax" data-mobile="false" data-speed="0.1" style="background: url(./demo/images/india.jpg)" data-direction="horizontal">
-          <div style="z-index: 10">
-            <p class="title"><code>data-mobile="false"</code></p>
-            <p class="title"><code>data-direction="horizontal"</code></p>
-          </div>
-          <div class="shadow"></div>
-        </div>
-      </section>
+        <p>Next use library with</p>
+        <p>&bull; Vanilla JavaScript e.g:</p>
+        <pre class="language-javascript"><code>const elems = document.querySelectorAll('.parallax');
+const parlx = new Parlx(elems, {
+// options...
+});</code></pre>
+        <p>&bull; or jQuery:</p>
 
-      <section class="front">
-        <h3>Set parallax effect to background image or div</h3>
-        <p>To disable parallax effect on mobile on single element use following code in div tag:</p>
-        <pre class="language-html"><code>data-type="back"</code></pre>
-        <p>To disable parallax effect on all elements place in JavaScript (or jQuery) options:</p>
-        <pre class="language-javascript"><code>type: 'back'</code></pre>
-      </section>
+        <i>Connect jQuery in HTML</i>
+        <pre class="language-html"><code>&#60;script src="https://code.jquery.com/jquery-3.3.1.min.js"&#62;&#60;/script&#62;</code></pre>
 
-      <section class="split-view two">
-        <div class="parallax split" data-speed="-0.3" style="background: url(./demo/images/architecture.jpg)">
-          <div style="z-index: 10">
-            <p class="title"><code>data-speed="-0.3"</code></p>
-          </div>
-          <div class="shadow"></div>
-        </div>
+        <br>
+        <i>or include via command line and CommonJS</i>
+        <pre class="language-javascript"><code>npm install jquery // npm<br>
+yarn add jquery // yarn<br>
+bower install jquery // bower</code></pre>
 
-        <div class="parallax split" data-speed="0.3" style="background: url(./demo/images/einkorn.jpg)">
-          <div style="z-index: 10">
-            <p class="title"><code>data-speed="0.3"</code></p>
-          </div>
-          <div class="shadow"></div>
-        </div>
-      </section>
+        <pre class="language-javascript"><code>const jQuery = require('jquery');</code></pre>
+        <br>
+        <i>and call plugin on element</i>
+        <pre class="language-javascript"><code>$('.parallax').parlx({
+// options...
+});</code></pre>
+        <br>
+        <p>&bull; Plugin supports autoinit</p>
+        <p>To use it, add <code>data-parlx</code> to html element e.g:</p>
+        <pre class="language-html"><code>&#60;div data-parlx&#62;&#60;/div&#62;</code></pre>
+      </div>
+    </section>
 
-      <section class="front">
-        <h3>Set parallax effect direction (horizontal, vertical or diagonal)</h3>
-        <p>To disable parallax effect on mobile on single element use following code in div tag:</p>
-        <pre class="language-html"><code>data-direction="vertical"</code></pre>
-        <p>To disable parallax effect on all elements place in JavaScript (or jQuery) options:</p>
-        <pre class="language-javascript"><code>direction: 'vertical'</code></pre>
-      </section>
+    <section class="front">
+      <h3>Custom speed</h3>
+      <p>To set custom speed to single element use following code in div tag:</p>
+      <pre class="language-html"><code>data-speed="0.1"</code></pre>
+      <p>To set custom speed to all elements place in JavaScript (or jQuery) options:</p>
+      <pre class="language-javascript"><code>speed: 0.1</code></pre>
+    </section>
 
-      <section class="split-view two">
-        <div class="parallax split" data-direction="vertical" data-type="front" data-speed="0.2" style="background: linear-gradient(135deg, rgba(203,96,179,1) 0%, rgba(168,0,119,1) 99%, rgba(219,54,164,1) 100%)">
-          <div>
-            <p class="title"><code>data-type="front"</code></p>
-            <p class="title"><code>data-direction="vertical"</code></p>
-            <p class="title"><code>data-speed="0.2"</code></p>
-          </div>
-        </div>
+    <section class="split-view three">
+      <div class="parallax split">
+        <img src="./demo/images/san-francisco.jpg" alt="san-francisco">
+        <p class="title"><code>data-speed="0.3"</code></p>
+        <div class="shadow"></div>
+      </div>
 
-        <div class="parallax split" data-direction="vertical" data-type="front" data-speed="0.3" style="background: linear-gradient(to bottom, rgba(169,3,41,1) 0%, rgba(235,132,21,1) 100%)">
-          <div>
-            <p class="title"><code>data-type="front"</code></p>
-            <p class="title"><code>data-direction="vertical"</code></p>
-            <p class="title"><code>data-speed="0.2"</code></p>
-          </div>
-        </div>
-      </section>
+      <div class="parallax split" data-speed="0">
+        <img src="./demo/images/fall.jpg" alt="fall">
+        <p class="title"><code>data-speed="0"</code></p>
+        <div class="shadow"></div>
+      </div>
 
-      <section class="split-view two">
-        <div class="parallax split" data-direction="horizontal" data-type="front" data-speed="0.2" style="background: linear-gradient(to right, rgba(29,222,93,1) 0%, rgba(31,59,8,1) 100%)">
-          <div>
-            <p class="title"><code>data-type="front"</code></p>
-            <p class="title"><code>data-direction="horizontal"</code></p>
-            <p class="title"><code>data-speed="0.2"</code></p>
-          </div>
-        </div>
+      <div class="parallax split" data-speed="-0.3">
+        <img src="./demo/images/turkey.jpg" alt="turkey">
+        <p class="title"><code>data-speed="-0.3"</code></p>
+        <div class="shadow"></div>
+      </div>
+    </section>
 
-        <div class="parallax split" data-direction="diagonal" data-type="front" data-speed="-0.3" style="background: linear-gradient(135deg, rgba(241,111,92,1) 0%, rgba(52,124,247,1) 0%, rgba(246,41,12,1) 99%, rgba(231,56,39,1) 100%)">
-          <div>
-            <p class="title"><code>data-type="front"</code></p>
-            <p class="title"><code>data-direction="diagonal"</code></p>
-            <p class="title"><code>data-speed="-0.3"</code></p>
-          </div>
-        </div>
-      </section>
-    </div>
+    <section class="front">
+      <h3>Custom height</h3>
+      <p>To set custom height to single element use following code in div tag:</p>
+      <pre class="language-html"><code>data-height="700px"</code></pre>
+      <p>To set custom height to all elements place in JavaScript (or jQuery) options:</p>
+      <pre class="language-javascript"><code>height: '700px'</code></pre>
+    </section>
+
+    <section class="front">
+      <h3>Disable parallax effect on mobile</h3>
+      <p>To disable parallax effect on mobile on single element use following code in div tag:</p>
+      <pre class="language-html"><code>data-mobile="false"</code></pre>
+      <p>To disable parallax effect on all elements place in JavaScript (or jQuery) options:</p>
+      <pre class="language-javascript"><code>mobile: false</code></pre>
+    </section>
+
+    <section class="parlx">
+      <div class="parallax" data-mobile="false">
+        <img src="./demo/images/architecture.jpg" alt="architecture">
+        <p class="title"><code>data-mobile="false"</code></p>
+        <div class="shadow"></div>
+      </div>
+    </section>
+
+    <section class="front">
+      <h3>Set parallax effect direction (horizontal, vertical or diagonal)</h3>
+      <p>To disable parallax effect on mobile on single element use following code in div tag:</p>
+      <pre class="language-html"><code>data-direction="vertical"</code></pre>
+      <p>To disable parallax effect on all elements place in JavaScript (or jQuery) options:</p>
+      <pre class="language-javascript"><code>direction: 'vertical'</code></pre>
+    </section>
+
+    <section class="split-view three">
+      <div class="parallax split">
+        <img src="./demo/images/einkorn.jpg" alt="einkorn">
+        <p class="title"><code>data-direction="vertical"</code></p>
+        <div class="shadow"></div>
+      </div>
+
+      <div class="parallax split" data-direction="horizontal">
+        <img src="./demo/images/india.jpg" alt="india">
+        <p class="title"><code>data-direction="horizontal"</code></p>
+        <div class="shadow"></div>
+      </div>
+
+      <div class="parallax split" data-direction="diagonal">
+        <img src="./demo/images/earth.jpg" alt="earth">
+        <p class="title"><code>data-direction="diagonal"</code></p>
+        <div class="shadow"></div>
+      </div>
+    </section>
+
+    <section class="front">
+      <h3>Set parallax effect to background image or div</h3>
+      <p>To set type of parallax effect use following code in div tag:</p>
+      <pre class="language-html"><code>data-type="background"</code></pre>
+      <p>To set type of parallax effect on all elements place in JavaScript (or jQuery) options:</p>
+      <pre class="language-javascript"><code>type: 'background'</code></pre>
+    </section>
 
     <script src="./src/parlx.js"></script>
     <script src="./demo/js/prism.js"></script>

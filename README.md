@@ -2,41 +2,73 @@
 
 JavaScript & jQuery parallax effect plugin
 
-## How to use?
+## Usage
+At the beginning connect the library with Your project:
 
-Place the following code in the .js file and customize the prameters:
-
-**USE JAVASCRIPT:**
-
+**&bull; using script tag in HTML:**
 ```
-var elems = document.querySelectorAll('.parallax');
-var parlx = new Parlx(elems, {
-  item: '.background'
+<script src="/directory/to/library/folder/parlx.js"></script>
+```
+
+**&bull; or via command line and CommonJS/ES6 import:**
+```
+npm install parlx.js // npm
+yarn add parlx.js // yarn
+```
+```
+const Parlx = require('parlx.js'); // CommonJS
+import Parlx form 'parlx.js'; // ES6
+```
+
+<br>
+Next use library with:
+
+**&bull; Vanilla JavaScript e.g:**
+```
+const elems = document.querySelectorAll('.parallax');
+const parlx = new Parlx(elems, {
+  // options...
 });
 ```
 
-**OR JQUERY:**
+**&bull; or jQuery e.g:**
+*Connect jQuery in HTML*
+```
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+```
+
+*or include via command line and CommonJS*
+```
+npm install jquery // npm
+yarn add jquery // yarn
+bower install jquery // bower
+```
 
 ```
-$('.parallax').Parlx({
-  item: '.background'
+const jQuery = require('jquery');
+```
+
+*and call plugin on element*
+```
+$('.parallax').parlx({
+  // options...
 });
+```
+
+**&bull; Plugin supports autoinit**
+To use it, add `data-parlx` to html element e.g:
+```
+<div data-parlx></div>
 ```
 
 ## Options
-Name|Type|Default|Description
---|---|---|---
-speed|number (float)|0.3|Speed of parallax effect (min: 0.1 (slower), max: 0.5(faster))
-height|string|'400px'|Height of parallax effect container (available units: px, vh, em, rem, cm)
-mobile|boolean|true|Enable (true) or disable (false) parallax effect on mobile devices
-
-## Questions & Answers
-Does the plugin work on mobile devices?   
-**YES**
-
-Does the plugin require jQuery?   
-**NO**
+Name | Type | Default | Description | Available options
+-|-|-|-|-
+direction | string | `vertical` | parallax element move direction | `vertical`, `horizontal`, `diagonal`
+type | string | `background` | type of parallax | `foreground` (div move), `background` (inner image move)
+speed | number | `0.3` | parallax speed | values >= -0.5 and 0.5 >=
+height | string | `400px` | Height of parallax effect container | e.g: `500px`, `70vh`
+mobile | boolean | `true` | Enable or disable parallax effect on mobile devices | Enable `true`, disable `false`
 
 ## License
-
 This project is licensed under the MIT License

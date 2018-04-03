@@ -1,6 +1,2 @@
-// LOAD PLUGIN (JAVASCRIPT) ...
-var elems = document.querySelectorAll('.parallax');
-var parlx = new Parlx(elems);
-
-// ... (JQUERY)
-//$('.parallax').Parlx();
+const elems = document.querySelectorAll('.parallax');
+const parlx = new Parlx(elems);
