@@ -9,6 +9,7 @@
 * **renamed jQuery plugin from Parlx() to parlx()**
 * code cleaned up
 * **renamed type option values (`back` to `background` and `front` to `foreground`)**
+* added parlxMove event
 
 ## 1.1.0 beta 3
 * npm added
