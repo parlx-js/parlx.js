@@ -2,6 +2,9 @@
 
 JavaScript & jQuery parallax effect plugin
 
+## Demo
+**[See plugin in action](https://jb1905.github.io/parlx.js/)**
+
 ## Usage
 At the beginning connect the library with Your project:
 
