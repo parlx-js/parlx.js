@@ -151,11 +151,20 @@ class Parlx {
 }
 
 // autoinit
-const AUTO_INIT = new Parlx(document.querySelectorAll('[data-parlx]'));
+if (typeof document !== 'undefined') {
+  new Parlx(document.querySelectorAll('[data-parlx]'));
+}
 
 // jQuery
-if (window.jQuery) {
-  let $ = window.jQuery;
+let scope;
+
+if (typeof window !== 'undefined')
+ scope = window;
+else if (typeof global !== 'undefined')
+ scope = global;
+
+if (scope && scope.jQuery) {
+  let $ = scope.jQuery;
 
   $.fn.parlx = function(options) {
     new Parlx(this, options);

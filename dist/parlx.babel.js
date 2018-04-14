@@ -5,7 +5,7 @@ var _createClass = function () { function defineProperties(target, props) { for 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 /*!
-* parlx.js v1.1 beta 4
+* parlx.js v1.1.0 beta 4
 * Copyright 2017-2018 Jakub Biesiada
 * MIT License
 */
@@ -130,6 +130,15 @@ var Parlx = function () {
           'min-height': this.element.offsetHeight * (1 + Math.abs(this.settings.speed)) + 'px'
         });
       }
+
+      var values = {
+        move: this.movement
+      };
+
+      // parallax movement event
+      this.element.dispatchEvent(new CustomEvent('parlxMove', {
+        'detail': values
+      }));
     }
   }, {
     key: 'settings',
@@ -171,11 +180,17 @@ var Parlx = function () {
 // autoinit
 
 
-var autoInit = new Parlx(document.querySelectorAll('[data-parlx]'));
+if (typeof document !== 'undefined') {
+  new Parlx(document.querySelectorAll('[data-parlx]'));
+}
 
 // jQuery
-if (window.jQuery) {
-  var $ = window.jQuery;
+var scope = void 0;
+
+if (typeof window !== 'undefined') scope = window;else if (typeof global !== 'undefined') scope = global;
+
+if (scope && scope.jQuery) {
+  var $ = scope.jQuery;
 
   $.fn.parlx = function (options) {
     new Parlx(this, options);

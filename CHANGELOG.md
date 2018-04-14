@@ -10,6 +10,8 @@
 * code cleaned up
 * **renamed type option values (`back` to `background` and `front` to `foreground`)**
 * added parlxMove event
+* fixed bug with autoinit in Node.js
+* fixed bug with jQuery and Node.js compatibility
 
 ## 1.1.0 beta 3
 * npm added
