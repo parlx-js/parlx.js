@@ -1,5 +1,5 @@
 /*!
-* parlx.js v1.1 beta 4
+* parlx.js v1.1.0 beta 4
 * Copyright 2017-2018 Jakub Biesiada
 * MIT License
 */
@@ -107,6 +107,15 @@ class Parlx {
         'min-height': `${this.element.offsetHeight * (1 + Math.abs(this.settings.speed))}px`
       });
     }
+
+    let values = {
+      move: this.movement
+    };
+
+    // parallax movement event
+    this.element.dispatchEvent(new CustomEvent('parlxMove', {
+      'detail': values
+    }));
   }
 
   settings(settings) {
@@ -142,11 +151,20 @@ class Parlx {
 }
 
 // autoinit
-let autoInit = new Parlx(document.querySelectorAll('[data-parlx]'));
+if (typeof document !== 'undefined') {
+  new Parlx(document.querySelectorAll('[data-parlx]'));
+}
 
 // jQuery
-if (window.jQuery) {
-  let $ = window.jQuery;
+let scope;
+
+if (typeof window !== 'undefined')
+ scope = window;
+else if (typeof global !== 'undefined')
+ scope = global;
+
+if (scope && scope.jQuery) {
+  let $ = scope.jQuery;
 
   $.fn.parlx = function(options) {
     new Parlx(this, options);
