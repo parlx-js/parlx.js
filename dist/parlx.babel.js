@@ -5,7 +5,7 @@ var _createClass = function () { function defineProperties(target, props) { for 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 /*!
-* parlx.js v1.1.0 beta 4
+* parlx.js v1.1.0 rc 1
 * Copyright 2017-2018 Jakub Biesiada
 * MIT License
 */
@@ -147,7 +147,7 @@ var Parlx = function () {
       var defaults = {
         direction: 'vertical', // parallax element move direction
         type: 'background', // type of parallax: foreground (div move), background (inner image move)
-        speed: 0.3, // parallax speed (min: -0.5, max: 0.5)
+        speed: 0.3, // parallax speed (min: -1, max: 1)
         height: '400px', // parallax element height
         mobile: true // enable: true, or disable: false, parallax on mobile devices (touch screen)
       };

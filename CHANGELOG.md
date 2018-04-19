@@ -1,5 +1,8 @@
 # Changelog
 
+## 1.1.0 rc 1
+* updated comments
+
 ## 1.1.0 beta 4
 * **redesigned demo page (new header view, dark theme)**
 * **re-added support for image tag as a background**
