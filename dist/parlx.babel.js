@@ -110,7 +110,7 @@ var Parlx = function () {
       // set transforms
       this.transforms();
 
-      // types of parallax direction
+      // types of parallax
       if (this.settings.type === 'foreground') {
 
         // children element style

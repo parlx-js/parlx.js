@@ -81,6 +81,9 @@ p {
 .split:last-child {
   margin-right: 0px; }
 
+.header {
+  height: 100vh !important; }
+
 .parallax {
   position: relative;
   overflow: hidden;
