@@ -74,7 +74,7 @@ height | string | `400px` | Height of parallax effect container | e.g: `500px`, 
 mobile | boolean | `true` | Enable or disable parallax effect on mobile devices | Enable `true`, disable `false`
 
 ## Event
-`parlxMove` event to get the current position of the parallax element
+`parlxMove` event will output current position of the parallax element
 
 ## License
 This project is licensed under the MIT License
