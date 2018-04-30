@@ -5,7 +5,7 @@ var _createClass = function () { function defineProperties(target, props) { for 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 /*!
-* parlx.js v1.1.0 rc 1
+* parlx.js v1.1.0
 * Copyright 2017-2018 Jakub Biesiada
 * MIT License
 */
