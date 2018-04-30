@@ -1,6 +1,6 @@
 # Changelog
 
-## 1.1.0 rc 1
+## 1.1.0 rc 1 / 1.1.0
 * updated comments
 
 ## 1.1.0 beta 4
