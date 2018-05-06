@@ -1,6 +1,6 @@
 /*!
 * parlx.js v1.1.0
-* Copyright 2017-2018 Jakub Biesiada
+* Copyright 2017-present Jakub Biesiada
 * MIT License
 */
 
@@ -73,7 +73,7 @@ class Parlx {
     this.element.style.height = this.settings.height;
 
     // get parallax scroll position
-    let scrolled = this.element.getBoundingClientRect().y;
+    const scrolled = this.element.getBoundingClientRect().y;
 
     // set speed range
     if (Math.abs(this.settings.speed) > 1) this.settings.speed = 0.3;
@@ -108,7 +108,7 @@ class Parlx {
       });
     }
 
-    let values = {
+    const values = {
       move: this.movement
     };
 
@@ -120,7 +120,7 @@ class Parlx {
 
   settings(settings) {
     // defaults
-    let defaults = {
+    const defaults = {
       direction: 'vertical', // parallax element move direction
       type: 'background', // type of parallax: foreground (div move), background (inner image move)
       speed: 0.3, // parallax speed (min: -1, max: 1)
@@ -128,14 +128,14 @@ class Parlx {
       mobile: true // enable: true, or disable: false, parallax on mobile devices (touch screen)
     };
 
-    let custom = {};
+    const custom = {};
 
     // apply settings and get values from data-*
     for (let setting in defaults) {
       if (setting in settings) {
         custom[setting] = settings[setting];
       } else if (this.element.getAttribute(`data-${setting}`)) {
-        let attribute = this.element.getAttribute(`data-${setting}`);
+        const attribute = this.element.getAttribute(`data-${setting}`);
         try {
           custom[setting] = JSON.parse(attribute);
         } catch (e) {
@@ -164,7 +164,7 @@ else if (typeof global !== 'undefined')
  scope = global;
 
 if (scope && scope.jQuery) {
-  let $ = scope.jQuery;
+  const $ = scope.jQuery;
 
   $.fn.parlx = function(options) {
     new Parlx(this, options);
