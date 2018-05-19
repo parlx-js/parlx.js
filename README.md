@@ -72,11 +72,11 @@ To use it, add `data-parlx` to html element e.g:
 ### Options
 Name | Type | Default | Description | Available options
 -|-|-|-|-
-direction | string | `vertical` | parallax element move direction | `vertical`, `horizontal`, `diagonal`
-type | string | `background` | type of parallax | `foreground` (div move), `background` (inner image move)
-speed | number | `0.3` | parallax speed | values >= `-1` and <= `1`
-height | string | `400px` | Height of parallax effect container | e.g: `500px`, `70vh`, `auto`
-mobile | boolean | `true` | Enable or disable parallax effect on mobile devices | Enable `true`, disable `false`
+**direction** | string | `vertical` | parallax element move direction | `vertical`, `horizontal`, `diagonal`
+**type** | string | `background` | type of parallax | `foreground` (div move), `background` (inner image move)
+**speed** | number | `0.3` | parallax speed | values >= `-1` and <= `1`
+**height** | string | `400px` | Height of parallax effect container | e.g: `500px`, `70vh`, `auto`
+**mobile** | boolean | `true` | Enable or disable parallax effect on mobile devices | Enable `true`, disable `false`
 
 ### Event
 `parlxMove` event will output current position of the parallax element
