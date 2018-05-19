@@ -20,7 +20,7 @@ yarn add parlx.js // yarn
 ```
 ```
 const Parlx = require('parlx.js'); // CommonJS
-import Parlx form 'parlx.js'; // ES6
+import Parlx from 'parlx.js'; // ES6
 ```
 
 <br>
