@@ -1,7 +1,7 @@
 # [parlx.js](https://github.com/jb1905/parlx.js)
 
-[![NPM version](http://img.shields.io/npm/v/universal-tilt.js.svg?style=flat-square)](https://www.npmjs.com/package/parlx.js)
-[![NPM downloads](http://img.shields.io/npm/dm/universal-tilt.js.svg?style=flat-square)](https://www.npmjs.com/package/parlx.js)
+[![NPM version](http://img.shields.io/npm/v/parlx.js.svg?style=flat-square)](https://www.npmjs.com/package/parlx.js)
+[![NPM downloads](http://img.shields.io/npm/dm/parlx.js.svg?style=flat-square)](https://www.npmjs.com/package/parlx.js)
 
 ### Demo
 **[See plugin in action](https://jb1905.github.io/parlx.js/)**
