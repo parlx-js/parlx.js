@@ -3,10 +3,10 @@
 [![NPM version](http://img.shields.io/npm/v/parlx.js.svg?style=flat-square)](https://www.npmjs.com/package/parlx.js)
 [![NPM downloads](http://img.shields.io/npm/dm/parlx.js.svg?style=flat-square)](https://www.npmjs.com/package/parlx.js)
 
-### Demo
+## Demo
 **[See plugin in action](https://jb1905.github.io/parlx.js/)**
 
-### How to Install
+## How to Install
 At the beginning connect the library with Your project:
 
 **&bull; using script tag in HTML:**
@@ -20,7 +20,7 @@ $ npm install parlx.js // npm
 $ yarn add parlx.js // yarn
 ```
 
-### Getting Started
+## Getting Started
 **If you added library via package manager use CommonJS/ES6 import:**
 ```js
 const Parlx = require('parlx.js'); // CommonJS
@@ -69,7 +69,7 @@ To use it, add `data-parlx` to html element e.g:
 <div data-parlx></div>
 ```
 
-### Options
+## Options
 Name | Type | Default | Description | Available options
 -|-|-|-|-
 **direction** | string | `vertical` | parallax element move direction | `vertical`, `horizontal`, `diagonal`
@@ -78,8 +78,8 @@ Name | Type | Default | Description | Available options
 **height** | string | `400px` | Height of parallax effect container | e.g: `500px`, `70vh`, `auto`
 **mobile** | boolean | `true` | Enable or disable parallax effect on mobile devices | Enable `true`, disable `false`
 
-### Event
+## Event
 `parlxMove` event will output current position of the parallax element
 
-### License
+## License
 This project is licensed under the MIT License © 2018-present Jakub Biesiada
