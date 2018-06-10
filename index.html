@@ -10,9 +10,9 @@
   </head>
 
   <body>
-    <section class="parlx">
+    <div class="parlx">
       <div class="parallax header" data-height="auto" data-speed="-0.6">
-        <img src="./demo/images/view.jpg" alt="view">
+        <img src="./demo/images/valley.jpg" alt="view">
         <div class="title">
           <h1>parlx.js</h1>
           <h2>Parallax effect library for use with:<br>vanillaJS, CommonJS, jQuery and ES6</h2>
@@ -20,74 +20,73 @@
         </div>
         <div class="shadow"></div>
       </div>
-    </section>
+    </div>
 
-    <section class="desc">
+    <section>
       <div>
-        <h3>Usage</h3>
-        <p>At the beginning connect the library with Your project</p>
-        <p>&bull; using script tag in HTML:</p>
-        <pre class="language-html"><code>&#60;script src="/directory/to/library/folder/parlx.js"&#62;&#60;/script&#62;</code></pre>
-        <p>&bull; or via command line and CommonJS/ES6 import:</p>
-        <pre class="language-javascript"><code>npm install parlx.js // npm<br>
-yarn add parlx.js // yarn</code></pre>
-        <pre class="language-javascript"><code>const Parlx = require('parlx.js'); // CommonJS<br>
-import Parlx from 'parlx.js'; // ES6</code></pre>
-        <br>
+        <div class="content">
+          <h3>How to Install</h3>
+          <p class="light">At the beginning connect the library with Your project:</p>
+          <p class="heavy">• using script tag in HTML:</p>
+          <pre class="language-html"><code>&#60;script src="/directory/to/library/folder/parlx.js"&#62;&#60;/script&#62;</code></pre>
 
-        <p>Next use library with</p>
-        <p>&bull; Vanilla JavaScript e.g:</p>
-        <pre class="language-javascript"><code>const elems = document.querySelectorAll('.parallax');
+          <p class="heavy">• or via command line:</p>
+          <pre class="language-javascript"><code>$ npm install parlx.js
+$ yarn add parlx.js</code></pre>
+        </div>
+
+        <div class="content">
+          <h3>Getting Started</h3>
+          <pre class="language-javascript"><code>const Parlx = require('parlx.js'); // CommonJS
+import Parlx from 'parlx.js'; // ES6</code></pre>
+
+          <p class="light">Next use library with</p>
+          <p class="heavy">• Vanilla JavaScript e.g:</p>
+          <pre class="language-javascript"><code>const elems = document.querySelectorAll('.parallax');
 const parlx = new Parlx(elems, {
   // options...
 });</code></pre>
-        <p>&bull; or jQuery:</p>
 
-        <i>Connect jQuery in HTML</i>
-        <pre class="language-html"><code>&#60;script src="https://code.jquery.com/jquery-3.3.1.min.js"&#62;&#60;/script&#62;</code></pre>
+          <p class="heavy">• or jQuery e.g:</p>
+          <i class="light">Connect jQuery in HTML</i>
+          <pre class="language-html"><code>&#60;script src="https://code.jquery.com/jquery-3.3.1.min.js"&#62;&#60;/script&#62;</code></pre>
 
-        <br>
-        <i>or include via command line and CommonJS</i>
-        <pre class="language-javascript"><code>npm install jquery // npm<br>
-yarn add jquery // yarn<br>
-bower install jquery // bower</code></pre>
+          <i class="light">or include via command line and CommonJS</i>
+          <pre class="language-javascript"><code>$ npm install jquery
+$ yarn add jquery
+$ bower install jquery</code></pre>
 
-        <pre class="language-javascript"><code>const jQuery = require('jquery');</code></pre>
-        <br>
-        <i>and call plugin on element</i>
-        <pre class="language-javascript"><code>$('.parallax').parlx({
+          <pre class="language-javascript"><code>const jQuery = require('jquery');</code></pre>
+          <i class="light">and call plugin on element</i>
+          <pre class="language-javascript"><code>$('.parallax').parlx({
   // options...
 });</code></pre>
-        <br>
-        <p>&bull; Plugin supports autoinit</p>
-        <p>To use it, add <code>data-parlx</code> to html element e.g:</p>
-        <pre class="language-html"><code>&#60;div data-parlx&#62;&#60;/div&#62;</code></pre>
+
+          <p class="heavy">• Plugin supports autoinit</p>
+
+          <p class="light">To use it, add <code>data-tilt</code> to html element e.g:</p>
+          <pre class="language-html"><code>&#60;div data-parlx&#62;&#60;/div&#62;</code></pre>
+        </div>
       </div>
     </section>
 
     <section class="front">
       <h3>Custom speed</h3>
       <p>To set custom speed to single element use following code in div tag:</p>
-      <pre class="language-html"><code>data-speed="0.1"</code></pre>
+      <pre class="language-html"><code>&#60;div data-speed="0.1"></code></pre>
       <p>To set custom speed to all elements place in JavaScript (or jQuery) options:</p>
       <pre class="language-javascript"><code>speed: 0.1</code></pre>
     </section>
 
-    <section class="split-view three">
+    <section class="split-view two">
       <div class="parallax split">
         <img src="./demo/images/san-francisco.jpg" alt="san-francisco">
         <p class="title"><code>data-speed="0.3"</code></p>
         <div class="shadow"></div>
       </div>
 
-      <div class="parallax split" data-speed="0">
-        <img src="./demo/images/fall.jpg" alt="fall">
-        <p class="title"><code>data-speed="0"</code></p>
-        <div class="shadow"></div>
-      </div>
-
       <div class="parallax split" data-speed="-0.3">
-        <img src="./demo/images/turkey.jpg" alt="turkey">
+        <img src="./demo/images/fall.jpg" alt="turkey">
         <p class="title"><code>data-speed="-0.3"</code></p>
         <div class="shadow"></div>
       </div>
@@ -96,7 +95,7 @@ bower install jquery // bower</code></pre>
     <section class="front">
       <h3>Custom height</h3>
       <p>To set custom height to single element use following code in div tag:</p>
-      <pre class="language-html"><code>data-height="700px"</code></pre>
+      <pre class="language-html"><code>&#60;div data-height="700px"></code></pre>
       <p>To set custom height to all elements place in JavaScript (or jQuery) options:</p>
       <pre class="language-javascript"><code>height: '700px'</code></pre>
     </section>
@@ -104,13 +103,13 @@ bower install jquery // bower</code></pre>
     <section class="front">
       <h3>Disable parallax effect on mobile</h3>
       <p>To disable parallax effect on mobile on single element use following code in div tag:</p>
-      <pre class="language-html"><code>data-mobile="false"</code></pre>
+      <pre class="language-html"><code>&#60;div data-mobile="false"></code></pre>
       <p>To disable parallax effect on all elements place in JavaScript (or jQuery) options:</p>
       <pre class="language-javascript"><code>mobile: false</code></pre>
     </section>
 
-    <section class="parlx">
-      <div class="parallax" data-mobile="false">
+    <section class="split-view one">
+      <div class="parallax split" data-mobile="false">
         <img src="./demo/images/architecture.jpg" alt="architecture">
         <p class="title"><code>data-mobile="false"</code></p>
         <div class="shadow"></div>
@@ -125,7 +124,7 @@ bower install jquery // bower</code></pre>
       <pre class="language-javascript"><code>direction: 'vertical'</code></pre>
     </section>
 
-    <section class="split-view three">
+    <section class="split-view two">
       <div class="parallax split">
         <img src="./demo/images/einkorn.jpg" alt="einkorn">
         <p class="title"><code>data-direction="vertical"</code></p>
@@ -137,7 +136,9 @@ bower install jquery // bower</code></pre>
         <p class="title"><code>data-direction="horizontal"</code></p>
         <div class="shadow"></div>
       </div>
+    </section>
 
+    <section class="split-view one">
       <div class="parallax split" data-direction="diagonal">
         <img src="./demo/images/earth.jpg" alt="earth">
         <p class="title"><code>data-direction="diagonal"</code></p>
@@ -148,7 +149,7 @@ bower install jquery // bower</code></pre>
     <section class="front">
       <h3>Set parallax effect to background image or div</h3>
       <p>To set type of parallax effect use following code in div tag:</p>
-      <pre class="language-html"><code>data-type="background"</code></pre>
+      <pre class="language-html"><code>&#60;div data-type="background"></code></pre>
       <p>To set type of parallax effect on all elements place in JavaScript (or jQuery) options:</p>
       <pre class="language-javascript"><code>type: 'background'</code></pre>
     </section>
