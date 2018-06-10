@@ -16,8 +16,8 @@ At the beginning connect the library with Your project:
 
 **&bull; or via command line:**
 ```sh
-$ npm install parlx.js // npm
-$ yarn add parlx.js // yarn
+$ npm install parlx.js
+$ yarn add parlx.js
 ```
 
 ## Getting Started

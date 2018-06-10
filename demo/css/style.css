@@ -1,52 +1,66 @@
 html, body {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-  padding: 0;
-  margin: 0; }
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"; }
 
 body {
   background-color: #131a20;
   color: #fff; }
 
 *,
-*:before,
-*:after {
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
   -webkit-box-sizing: border-box;
   box-sizing: border-box; }
 
 h1 {
   font-weight: 900;
-  margin: 0px;
+  margin-bottom: 20px;
   text-align: center;
   font-size: 150px; }
 
 h2 {
-  margin-bottom: 50px;
-  font-weight: 200;
+  margin-bottom: 30px;
+  font-weight: 300;
   font-size: 40px; }
 
 h3 {
-  margin: 0px;
-  font-size: 36px;
+  font-weight: 700;
+  font-size: 25px; }
+
+code {
+  font-weight: 700;
+  font-size: 15px; }
+
+.parallax code {
+  font-size: 18px; }
+
+.light {
+  font-weight: 200; }
+
+.heavy {
   font-weight: 500; }
 
 .title {
+  position: relative;
   padding: 0 20px; }
 
 .title a {
+  display: inline-block;
   font-weight: 600;
   text-decoration: none;
-  border-radius: 6px;
+  border-radius: 4px;
   font-size: 26px;
   background-color: #fff;
   color: #f16f5c;
-  padding: 15px 25px; }
+  padding: 12px 22px; }
 
 .parallax h3 {
-  margin: 0px;
   position: absolute; }
 
 p {
-  font-size: 22px; }
+  margin: 12px 0;
+  font-size: 18px; }
 
 .parallax > img {
   position: absolute; }
@@ -54,21 +68,33 @@ p {
 .title {
   z-index: 1000; }
 
+pre {
+  margin-top: 15px !important;
+  margin-bottom: 24px !important; }
+
+.content {
+  margin-bottom: 34px; }
+
+.split-view .parallax {
+  border-radius: 4px; }
+
+.content,
 .desc, .front {
-  margin: 0 auto;
-  width: calc(100% - 60px);
   max-width: 1200px;
-  padding: 30px 0px; }
+  width: calc(100% - 60px);
+  position: relative;
+  margin: 20px auto; }
 
 .split-view {
-  margin: 0 auto;
+  margin: 20px auto;
+  width: calc(100% - 60px);
   max-width: 1200px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex; }
 
-.three .split {
-  width: calc(100% / 3 - 10px);
+.one .split {
+  width: 100%;
   margin: 0 10px; }
 
 .two .split {
@@ -100,30 +126,36 @@ p {
 
 .header .shadow {
   background: linear-gradient(135deg, #f16f5c 0%, #347cf7 0%, #f6290c 99%, #e73827 100%);
-  opacity: 0.85; }
+  opacity: 0.8; }
 
 .shadow {
-  background-color: #131a20;
+  background-color: #21272d;
   height: 100%;
   width: 100%;
   position: absolute;
-  opacity: 0.4; }
+  opacity: 0.3; }
 
 @media screen and (max-width: 980px) {
   .split-view {
     display: block; }
-  .split, .two .split, .three .split {
-    margin: 20px 0;
+  .split, .two .split {
+    margin: 20px auto;
     width: 100%; } }
 
 @media screen and (max-width: 740px) {
+  .content,
+  .split-view,
+  .desc, .front {
+    width: calc(100% - 40px); }
+  .title a {
+    font-size: 20px; }
   h1 {
     font-size: 20vw; }
   h2 {
-    font-size: 24px; } }
+    font-size: 20px; } }
 
-/* PrismJS 1.13.0
-http://prismjs.com/download.html#themes=prism-okaidia&languages=markup+css+clike+javascript */
+/* PrismJS 1.14.0
+http://prismjs.com/download.html#themes=prism-okaidia&languages=markup+css+clike+javascript&plugins=command-line */
 /**
  * okaidia theme for JavaScript, CSS and HTML
  * Loosely based on Monokai textmate theme by http://www.monokai.nl/
@@ -154,7 +186,7 @@ pre[class*="language-"] {
   padding: 1em;
   margin: .5em 0;
   overflow: auto;
-  border-radius: 2px; }
+  border-radius: 4px; }
 
 :not(pre) > code[class*="language-"],
 pre[class*="language-"] {
@@ -226,3 +258,31 @@ pre[class*="language-"] {
 
 .token.entity {
   cursor: help; }
+
+.command-line-prompt {
+  border-right: 1px solid #999;
+  display: block;
+  float: left;
+  font-size: 100%;
+  letter-spacing: -1px;
+  margin-right: 1em;
+  pointer-events: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none; }
+
+.command-line-prompt > span:before {
+  color: #999;
+  content: ' ';
+  display: block;
+  padding-right: 0.8em; }
+
+.command-line-prompt > span[data-user]:before {
+  content: "[" attr(data-user) "@" attr(data-host) "] $"; }
+
+.command-line-prompt > span[data-user="root"]:before {
+  content: "[" attr(data-user) "@" attr(data-host) "] #"; }
+
+.command-line-prompt > span[data-prompt]:before {
+  content: attr(data-prompt); }
