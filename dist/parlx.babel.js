@@ -6,7 +6,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
 /*!
 * parlx.js v1.1.0
-* Copyright 2017-present Jakub Biesiada
+* Copyright © 2017-present Jakub Biesiada. All rights reserved.
 * MIT License
 */
 
