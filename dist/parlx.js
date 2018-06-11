@@ -1,5 +1,5 @@
 /*!
-* parlx.js v1.1.0
+* parlx.js v1.2.0 beta 1
 * Copyright © 2017-present Jakub Biesiada. All rights reserved.
 * MIT License
 */
@@ -82,29 +82,29 @@ class Parlx {
     this.movement = (this.settings.speed * scrolled) / 2;
 
     // disable parallax on mobile if option mobile is false
-    if ('ontouchstart' in document.documentElement && !this.settings.mobile) this.settings.speed = 0;
+    if ('ontouchstart' in document.documentElement && !this.settings.mobile)
+      this.settings.speed = 0;
 
     // set transforms
     this.transforms();
 
     // types of parallax
     if (this.settings.type === 'foreground') {
-
       // children element style
       Object.assign(this.element.style, {
         '-webkit-transform': this.transform,
         'transform': this.transform
       });
     } else if (this.settings.type === 'background') {
+      const imageElement = this.element.querySelector('img, .image-container');
 
       // set image position
-      Object.assign(this.element.querySelector('img').style, {
+      Object.assign(imageElement.style, {
         '-webkit-transform': this.transform,
         'transform': this.transform,
-        'width': 'auto',
-        'height': 'auto',
-        'min-width': `${this.element.offsetWidth * (1 + Math.abs(this.settings.speed))}px`,
-        'min-height': `${this.element.offsetHeight * (1 + Math.abs(this.settings.speed))}px`
+        'object-fit': 'cover',
+        'min-width': `${this.element.offsetWidth * (1 + Math.abs(this.settings.speed) * 2)}px`,
+        'height': `${this.element.offsetHeight * (1 + Math.abs(this.settings.speed) * 2)}px`
       });
     }
 
@@ -113,9 +113,11 @@ class Parlx {
     };
 
     // parallax movement event
-    this.element.dispatchEvent(new CustomEvent('parlxMove', {
-      'detail': values
-    }));
+    this.element.dispatchEvent(
+      new CustomEvent('parlxMove', {
+        'detail': values
+      }),
+    );
   }
 
   settings(settings) {
@@ -158,10 +160,8 @@ if (typeof document !== 'undefined') {
 // jQuery
 let scope;
 
-if (typeof window !== 'undefined')
- scope = window;
-else if (typeof global !== 'undefined')
- scope = global;
+if (typeof window !== 'undefined') scope = window;
+else if (typeof global !== 'undefined') scope = global;
 
 if (scope && scope.jQuery) {
   const $ = scope.jQuery;

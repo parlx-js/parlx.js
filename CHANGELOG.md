@@ -1,5 +1,12 @@
 # parlx.js Changelog
 
+## 1.2.0 beta 1 (2018-06-12)
+#### New Feature
+- readded support for background-image
+
+#### Bug Fix
+- partly fixed bug with image scaling
+
 ## 1.1.0 rc 1 / 1.1.0 (2018-04-30)
 #### Documentation
 - updated comments

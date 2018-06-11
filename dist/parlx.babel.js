@@ -5,7 +5,7 @@ var _createClass = function () { function defineProperties(target, props) { for 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 /*!
-* parlx.js v1.1.0
+* parlx.js v1.2.0 beta 1
 * Copyright © 2017-present Jakub Biesiada. All rights reserved.
 * MIT License
 */
@@ -112,22 +112,21 @@ var Parlx = function () {
 
       // types of parallax
       if (this.settings.type === 'foreground') {
-
         // children element style
         Object.assign(this.element.style, {
           '-webkit-transform': this.transform,
           'transform': this.transform
         });
       } else if (this.settings.type === 'background') {
+        var imageElement = this.element.querySelector('img, .image-container');
 
         // set image position
-        Object.assign(this.element.querySelector('img').style, {
+        Object.assign(imageElement.style, {
           '-webkit-transform': this.transform,
           'transform': this.transform,
-          'width': 'auto',
-          'height': 'auto',
-          'min-width': this.element.offsetWidth * (1 + Math.abs(this.settings.speed)) + 'px',
-          'min-height': this.element.offsetHeight * (1 + Math.abs(this.settings.speed)) + 'px'
+          'object-fit': 'cover',
+          'min-width': this.element.offsetWidth * (1 + Math.abs(this.settings.speed) * 2) + 'px',
+          'height': this.element.offsetHeight * (1 + Math.abs(this.settings.speed) * 2) + 'px'
         });
       }
 
