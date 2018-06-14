@@ -26,7 +26,6 @@
 - fixed bug with autoinit in Node.js
 - fixed bug with jQuery and Node.js compatibility
 
-
 ## 1.1.0 beta 3 (2018-03-30)
 #### New Feature
 - npm added
