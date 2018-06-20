@@ -22,6 +22,7 @@ $ yarn add parlx.js
 
 ## Soon!
 **React.js component with library implementation**
+
 [Beta here](https://www.npmjs.com/package/react-parlx)
 
 ## Getting Started
