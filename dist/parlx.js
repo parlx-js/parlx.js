@@ -1,5 +1,5 @@
 /*!
-* parlx.js v1.2.0 beta 1
+* parlx.js v1.2.0 beta 2
 * Copyright © 2017-present Jakub Biesiada. All rights reserved.
 * MIT License
 */
@@ -79,7 +79,7 @@ class Parlx {
     if (Math.abs(this.settings.speed) > 1) this.settings.speed = 0.3;
 
     // element movement
-    this.movement = (this.settings.speed * scrolled) / 2;
+    this.movement = this.settings.speed * scrolled / 2;
 
     // disable parallax on mobile if option mobile is false
     if ('ontouchstart' in document.documentElement && !this.settings.mobile)
@@ -96,10 +96,8 @@ class Parlx {
         'transform': this.transform
       });
     } else if (this.settings.type === 'background') {
-      const imageElement = this.element.querySelector('img, .image-container');
-
       // set image position
-      Object.assign(imageElement.style, {
+      Object.assign(this.element.querySelector('[parlx-children]').style, {
         '-webkit-transform': this.transform,
         'transform': this.transform,
         'object-fit': 'cover',
@@ -140,7 +138,7 @@ class Parlx {
         const attribute = this.element.getAttribute(`data-${setting}`);
         try {
           custom[setting] = JSON.parse(attribute);
-        } catch (e) {
+        } catch (err) {
           custom[setting] = attribute;
         }
       } else {
@@ -154,7 +152,7 @@ class Parlx {
 
 // autoinit
 if (typeof document !== 'undefined') {
-  new Parlx(document.querySelectorAll('[data-parlx]'));
+  new Parlx(document.querySelectorAll('[parlx]'));
 }
 
 // jQuery

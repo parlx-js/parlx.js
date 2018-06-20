@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width initial-scale=1.0"/>
     <meta name="description" content="JavaScript & jQuery parallax library">
     <meta name="keywords" content="parallax,parlx,JavaScript,jQuery,plugin,es6">
-    <title>parlx.js | JavaScript & jQuery parallax library</title>
+    <title>parlx.js | JavaScript & jQuery parallax effect library</title>
     <link rel="stylesheet" type="text/css" href="./demo/css/style.css">
   </head>
 
@@ -33,6 +33,11 @@
           <p class="heavy">• or via command line:</p>
           <pre class="language-javascript"><code>$ npm install parlx.js
 $ yarn add parlx.js</code></pre>
+        </div>
+
+        <div class="content">
+          <h3>Soon!</h3>
+          <p class="heavy">React.js component with library implementation</p>
         </div>
 
         <div class="content">
@@ -147,11 +152,11 @@ $ bower install jquery</code></pre>
     </section>
 
     <section class="front">
-      <h3>Set parallax effect to background image or div</h3>
+      <h3>Parallax effect type (foreground - move full div, background - move div content)</h3>
       <p>To set type of parallax effect use following code in div tag:</p>
-      <pre class="language-html"><code>&#60;div data-type="background"></code></pre>
+      <pre class="language-html"><code>&#60;div data-type="foreground"></code></pre>
       <p>To set type of parallax effect on all elements place in JavaScript (or jQuery) options:</p>
-      <pre class="language-javascript"><code>type: 'background'</code></pre>
+      <pre class="language-javascript"><code>type: 'foreground'</code></pre>
     </section>
 
     <section class="split-view one">
@@ -160,6 +165,12 @@ $ bower install jquery</code></pre>
         <h3 class="title">Not only images!</h3>
         <div class="shadow"></div>
       </div>
+    </section>
+
+    <section class="front">
+      <h3>🎉 Videos, divs and other HTML5 tags are supported since v1.2.0 🎉</h3>
+      <p>To assign parallax children add <code>parlx-children</code> to element inside of parallax container e.g:</p>
+      <pre class="language-html"><code>&#60;video parlx-children src="sample.mp4"></code></pre>
     </section>
 
     <script src="./src/parlx.js"></script>

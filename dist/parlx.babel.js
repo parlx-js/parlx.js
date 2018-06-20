@@ -5,7 +5,7 @@ var _createClass = function () { function defineProperties(target, props) { for 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 /*!
-* parlx.js v1.2.0 beta 1
+* parlx.js v1.2.0 beta 2
 * Copyright © 2017-present Jakub Biesiada. All rights reserved.
 * MIT License
 */
@@ -118,10 +118,8 @@ var Parlx = function () {
           'transform': this.transform
         });
       } else if (this.settings.type === 'background') {
-        var imageElement = this.element.querySelector('img, .image-container');
-
         // set image position
-        Object.assign(imageElement.style, {
+        Object.assign(this.element.querySelector('[parlx-children]').style, {
           '-webkit-transform': this.transform,
           'transform': this.transform,
           'object-fit': 'cover',
@@ -161,7 +159,7 @@ var Parlx = function () {
           var attribute = this.element.getAttribute('data-' + setting);
           try {
             custom[setting] = JSON.parse(attribute);
-          } catch (e) {
+          } catch (err) {
             custom[setting] = attribute;
           }
         } else {
@@ -180,7 +178,7 @@ var Parlx = function () {
 
 
 if (typeof document !== 'undefined') {
-  new Parlx(document.querySelectorAll('[data-parlx]'));
+  new Parlx(document.querySelectorAll('[parlx]'));
 }
 
 // jQuery
