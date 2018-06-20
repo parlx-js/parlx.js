@@ -12,7 +12,7 @@
   <body>
     <div class="parlx">
       <div class="parallax header" data-height="auto" data-speed="-0.6">
-        <img src="./demo/images/valley.jpg" alt="view">
+        <img parlx-children src="./demo/images/valley.jpg" alt="view">
         <div class="title">
           <h1>parlx.js</h1>
           <h2>Parallax effect library for use with:<br>vanillaJS, CommonJS, jQuery and ES6</h2>
@@ -80,13 +80,13 @@ $ bower install jquery</code></pre>
 
     <section class="split-view two">
       <div class="parallax split">
-        <div class="image-container" style="background: url(./demo/images/san-francisco.jpg) no-repeat scroll center center / cover"></div>
+        <div parlx-children style="background: url(./demo/images/san-francisco.jpg) no-repeat scroll center center / cover"></div>
         <p class="title"><code>data-speed="0.3"</code></p>
         <div class="shadow"></div>
       </div>
 
       <div class="parallax split" data-speed="-0.3">
-        <img src="./demo/images/fall.jpg" alt="turkey">
+        <img parlx-children src="./demo/images/fall.jpg" alt="turkey">
         <p class="title"><code>data-speed="-0.3"</code></p>
         <div class="shadow"></div>
       </div>
@@ -110,14 +110,14 @@ $ bower install jquery</code></pre>
 
     <section class="split-view one">
       <div class="parallax split" data-mobile="false">
-        <img src="./demo/images/architecture.jpg" alt="architecture">
+        <img parlx-children src="./demo/images/architecture.jpg" alt="architecture">
         <p class="title"><code>data-mobile="false"</code></p>
         <div class="shadow"></div>
       </div>
     </section>
 
     <section class="front">
-      <h3>Set parallax effect direction (horizontal, vertical or diagonal)</h3>
+      <h3>Parallax effect direction (horizontal, vertical or diagonal)</h3>
       <p>To disable parallax effect on mobile on single element use following code in div tag:</p>
       <pre class="language-html"><code>data-direction="vertical"</code></pre>
       <p>To disable parallax effect on all elements place in JavaScript (or jQuery) options:</p>
@@ -126,13 +126,13 @@ $ bower install jquery</code></pre>
 
     <section class="split-view two">
       <div class="parallax split">
-        <img src="./demo/images/einkorn.jpg" alt="einkorn">
+        <img parlx-children src="./demo/images/einkorn.jpg" alt="einkorn">
         <p class="title"><code>data-direction="vertical"</code></p>
         <div class="shadow"></div>
       </div>
 
       <div class="parallax split" data-direction="horizontal">
-        <img src="./demo/images/india.jpg" alt="india">
+        <img parlx-children src="./demo/images/india.jpg" alt="india">
         <p class="title"><code>data-direction="horizontal"</code></p>
         <div class="shadow"></div>
       </div>
@@ -140,7 +140,7 @@ $ bower install jquery</code></pre>
 
     <section class="split-view one">
       <div class="parallax split" data-direction="diagonal">
-        <img src="./demo/images/earth.jpg" alt="earth">
+        <img parlx-children src="./demo/images/earth.jpg" alt="earth">
         <p class="title"><code>data-direction="diagonal"</code></p>
         <div class="shadow"></div>
       </div>
@@ -154,7 +154,15 @@ $ bower install jquery</code></pre>
       <pre class="language-javascript"><code>type: 'background'</code></pre>
     </section>
 
-    <script src="./dist/parlx.babel.min.js"></script>
+    <section class="split-view one">
+      <div class="parallax split">
+        <video parlx-children src="./demo/video/night.mp4" autoplay loop muted></video>
+        <h3 class="title">Not only images!</h3>
+        <div class="shadow"></div>
+      </div>
+    </section>
+
+    <script src="./src/parlx.js"></script>
     <script src="./demo/js/prism.js"></script>
     <script src="./demo/js/script.js"></script>
   </body>
