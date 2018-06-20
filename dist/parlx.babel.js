@@ -119,7 +119,7 @@ var Parlx = function () {
         });
       } else if (this.settings.type === 'background') {
         // set image position
-        Object.assign(this.element.querySelector('[parlx-children]').style, {
+        Object.assign(this.element.querySelector('.parlx-children').style, {
           '-webkit-transform': this.transform,
           'transform': this.transform,
           'object-fit': 'cover',

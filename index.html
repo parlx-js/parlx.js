@@ -12,7 +12,7 @@
   <body>
     <div class="parlx">
       <div class="parallax header" data-height="auto" data-speed="-0.6">
-        <img parlx-children src="./demo/images/valley.jpg" alt="view">
+        <img class="parlx-children" src="./demo/images/valley.jpg" alt="view">
         <div class="title">
           <h1>parlx.js</h1>
           <h2>Parallax effect library for use with:<br>vanillaJS, CommonJS, jQuery and ES6</h2>
@@ -85,13 +85,13 @@ $ bower install jquery</code></pre>
 
     <section class="split-view two">
       <div class="parallax split">
-        <div parlx-children style="background: url(./demo/images/san-francisco.jpg) no-repeat scroll center center / cover"></div>
+        <div class="parlx-children" style="background: url(./demo/images/san-francisco.jpg) no-repeat scroll center center / cover"></div>
         <p class="title"><code>data-speed="0.3"</code></p>
         <div class="shadow"></div>
       </div>
 
       <div class="parallax split" data-speed="-0.3">
-        <img parlx-children src="./demo/images/fall.jpg" alt="turkey">
+        <img class="parlx-children" src="./demo/images/fall.jpg" alt="turkey">
         <p class="title"><code>data-speed="-0.3"</code></p>
         <div class="shadow"></div>
       </div>
@@ -115,7 +115,7 @@ $ bower install jquery</code></pre>
 
     <section class="split-view one">
       <div class="parallax split" data-mobile="false">
-        <img parlx-children src="./demo/images/architecture.jpg" alt="architecture">
+        <img class="parlx-children" src="./demo/images/architecture.jpg" alt="architecture">
         <p class="title"><code>data-mobile="false"</code></p>
         <div class="shadow"></div>
       </div>
@@ -131,13 +131,13 @@ $ bower install jquery</code></pre>
 
     <section class="split-view two">
       <div class="parallax split">
-        <img parlx-children src="./demo/images/einkorn.jpg" alt="einkorn">
+        <img class="parlx-children" src="./demo/images/einkorn.jpg" alt="einkorn">
         <p class="title"><code>data-direction="vertical"</code></p>
         <div class="shadow"></div>
       </div>
 
       <div class="parallax split" data-direction="horizontal">
-        <img parlx-children src="./demo/images/india.jpg" alt="india">
+        <img class="parlx-children" src="./demo/images/india.jpg" alt="india">
         <p class="title"><code>data-direction="horizontal"</code></p>
         <div class="shadow"></div>
       </div>
@@ -145,7 +145,7 @@ $ bower install jquery</code></pre>
 
     <section class="split-view one">
       <div class="parallax split" data-direction="diagonal">
-        <img parlx-children src="./demo/images/earth.jpg" alt="earth">
+        <img class="parlx-children" src="./demo/images/earth.jpg" alt="earth">
         <p class="title"><code>data-direction="diagonal"</code></p>
         <div class="shadow"></div>
       </div>
@@ -161,7 +161,7 @@ $ bower install jquery</code></pre>
 
     <section class="split-view one">
       <div class="parallax split">
-        <video parlx-children src="./demo/video/night.mp4" autoplay loop muted></video>
+        <video class="parlx-children" src="./demo/video/night.mp4" autoplay loop muted></video>
         <h3 class="title">Not only images!</h3>
         <div class="shadow"></div>
       </div>
@@ -169,8 +169,8 @@ $ bower install jquery</code></pre>
 
     <section class="front">
       <h3>🎉 Videos, divs and other HTML5 tags are supported since v1.2.0 🎉</h3>
-      <p>To assign parallax children add <code>parlx-children</code> to element inside of parallax container e.g:</p>
-      <pre class="language-html"><code>&#60;video parlx-children src="sample.mp4"></code></pre>
+      <p>To assign parallax children add <code>class="parlx-children"</code> to element inside of parallax container e.g:</p>
+      <pre class="language-html"><code>&#60;video class="parlx-children" src="sample.mp4"></code></pre>
     </section>
 
     <script src="./src/parlx.js"></script>
