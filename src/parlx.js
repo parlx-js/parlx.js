@@ -11,11 +11,11 @@ class Parlx {
       this.init(elements, settings);
       return;
 
-    // return when no parallax elements
+      // return when no parallax elements
     } else if (elements.length === 0) {
       return;
 
-    // set parallax element
+      // set parallax element
     } else {
       this.element = elements;
     }
@@ -79,7 +79,7 @@ class Parlx {
     if (Math.abs(this.settings.speed) > 1) this.settings.speed = 0.3;
 
     // element movement
-    this.movement = this.settings.speed * scrolled / 2;
+    this.movement = (this.settings.speed * scrolled) / 2;
 
     // disable parallax on mobile if option mobile is false
     if ('ontouchstart' in document.documentElement && !this.settings.mobile)
@@ -93,16 +93,18 @@ class Parlx {
       // children element style
       Object.assign(this.element.style, {
         '-webkit-transform': this.transform,
-        'transform': this.transform
+        transform: this.transform
       });
     } else if (this.settings.type === 'background') {
       // set image position
       Object.assign(this.element.querySelector('.parlx-children').style, {
         '-webkit-transform': this.transform,
-        'transform': this.transform,
+        transform: this.transform,
         'object-fit': 'cover',
-        'min-width': `${this.element.offsetWidth * (1 + Math.abs(this.settings.speed) * 2)}px`,
-        'height': `${this.element.offsetHeight * (1 + Math.abs(this.settings.speed) * 2)}px`
+        'min-width': `${this.element.offsetWidth *
+          (1 + Math.abs(this.settings.speed) * 2)}px`,
+        height: `${this.element.offsetHeight *
+          (1 + Math.abs(this.settings.speed) * 2)}px`
       });
     }
 
@@ -113,8 +115,8 @@ class Parlx {
     // parallax movement event
     this.element.dispatchEvent(
       new CustomEvent('parlxMove', {
-        'detail': values
-      }),
+        detail: values
+      })
     );
   }
 
@@ -166,7 +168,7 @@ if (scope && scope.jQuery) {
 
   $.fn.parlx = function(options) {
     new Parlx(this, options);
-  }
+  };
 }
 
 // AMD
@@ -175,7 +177,7 @@ if (typeof define === 'function' && define.amd) {
     return Parlx;
   });
 
-// CommonJS
+  // CommonJS
 } else if (typeof exports !== 'undefined' && !exports.nodeType) {
   if (typeof module !== 'undefined' && !module.nodeType && module.exports) {
     exports = module.exports = Parlx;

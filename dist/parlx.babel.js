@@ -115,16 +115,16 @@ var Parlx = function () {
         // children element style
         Object.assign(this.element.style, {
           '-webkit-transform': this.transform,
-          'transform': this.transform
+          transform: this.transform
         });
       } else if (this.settings.type === 'background') {
         // set image position
         Object.assign(this.element.querySelector('.parlx-children').style, {
           '-webkit-transform': this.transform,
-          'transform': this.transform,
+          transform: this.transform,
           'object-fit': 'cover',
           'min-width': this.element.offsetWidth * (1 + Math.abs(this.settings.speed) * 2) + 'px',
-          'height': this.element.offsetHeight * (1 + Math.abs(this.settings.speed) * 2) + 'px'
+          height: this.element.offsetHeight * (1 + Math.abs(this.settings.speed) * 2) + 'px'
         });
       }
 
@@ -134,7 +134,7 @@ var Parlx = function () {
 
       // parallax movement event
       this.element.dispatchEvent(new CustomEvent('parlxMove', {
-        'detail': values
+        detail: values
       }));
     }
   }, {
