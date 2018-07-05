@@ -1,12 +1,8 @@
 # parlx.js Changelog
 
-## 1.2.0 beta 2 (Soon)
+## 1.2.0 beta 2 (2018-07-05)
 #### New Feature
 - added support for all HTML5 tags as parallax div children
-
-#### Breaking changes
-- renamed `data-parlx` to `parlx`
-- the elements inside the parallax container must have the `parlx-children` class
 
 ## 1.2.0 beta 1 (2018-06-12)
 #### New Feature

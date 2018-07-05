@@ -119,7 +119,7 @@ var Parlx = function () {
         });
       } else if (this.settings.type === 'background') {
         // set image position
-        Object.assign(this.element.querySelector('.parlx-children').style, {
+        Object.assign(this.element.querySelector('.parlx-children, img').style, {
           '-webkit-transform': this.transform,
           transform: this.transform,
           'object-fit': 'cover',
@@ -178,7 +178,7 @@ var Parlx = function () {
 
 
 if (typeof document !== 'undefined') {
-  new Parlx(document.querySelectorAll('[parlx]'));
+  new Parlx(document.querySelectorAll('[data-parlx]'));
 }
 
 // jQuery

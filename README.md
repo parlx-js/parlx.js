@@ -69,9 +69,9 @@ $('.parallax').parlx({
 
 **&bull; Plugin supports autoinit**
 
-To use it, add `parlx` to html element e.g:
+To use it, add `data-parlx` to html element e.g:
 ```html
-<div parlx></div>
+<div data-parlx></div>
 ```
 
 ## Options
