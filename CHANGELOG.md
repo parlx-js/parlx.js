@@ -1,6 +1,6 @@
 # parlx.js Changelog
 
-## 1.2.0 beta 2 (2018-07-05)
+## 1.2.0 beta 2 / 1.2.0 (2018-07-05)
 #### New Feature
 - added support for all HTML5 tags as parallax div children
 
