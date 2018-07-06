@@ -1,5 +1,5 @@
 /*!
-* parlx.js v1.2.0 beta 2
+* parlx.js v1.2.0
 * Copyright © 2017-present Jakub Biesiada. All rights reserved.
 * MIT License
 */
