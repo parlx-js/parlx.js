@@ -6,6 +6,10 @@
 ## Demo
 **[See plugin in action](https://jb1905.github.io/parlx.js/)**
 
+## React.js plugin
+If You use React.js, install component, with the implementation of the parlx.js library!
+**[More here](https://github.com/JB1905/react-parlx/)**
+
 ## How to Install
 At the beginning connect the library with Your project:
 
@@ -19,6 +23,11 @@ At the beginning connect the library with Your project:
 $ npm install parlx.js
 $ yarn add parlx.js
 ```
+
+## Soon!
+**React.js component with library implementation**
+
+[Beta here](https://www.npmjs.com/package/react-parlx)
 
 ## Getting Started
 **If you added library via package manager use CommonJS/ES6 import:**
@@ -73,7 +82,7 @@ To use it, add `data-parlx` to html element e.g:
 Name | Type | Default | Description | Available options
 -|-|-|-|-
 **direction** | string | `vertical` | parallax element move direction | `vertical`, `horizontal`, `diagonal`
-**type** | string | `background` | type of parallax | `foreground` (div move), `background` (inner image move)
+**type** | string | `background` | type of parallax | `foreground` (div move), `background` (content move)
 **speed** | number | `0.3` | parallax speed | values >= `-1` and <= `1`
 **height** | string | `400px` | Height of parallax effect container | e.g: `500px`, `70vh`, `auto`
 **mobile** | boolean | `true` | Enable or disable parallax effect on mobile devices | Enable `true`, disable `false`

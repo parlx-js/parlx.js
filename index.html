@@ -5,14 +5,14 @@
     <meta name="viewport" content="width=device-width initial-scale=1.0"/>
     <meta name="description" content="JavaScript & jQuery parallax library">
     <meta name="keywords" content="parallax,parlx,JavaScript,jQuery,plugin,es6">
-    <title>parlx.js | JavaScript & jQuery parallax library</title>
+    <title>parlx.js | JavaScript & jQuery parallax effect library</title>
     <link rel="stylesheet" type="text/css" href="./demo/css/style.css">
   </head>
 
   <body>
     <div class="parlx">
       <div class="parallax header" data-height="auto" data-speed="-0.6">
-        <img src="./demo/images/valley.jpg" alt="view">
+        <img class="parlx-children" src="./demo/images/valley.jpg" alt="view">
         <div class="title">
           <h1>parlx.js</h1>
           <h2>Parallax effect library for use with:<br>vanillaJS, CommonJS, jQuery and ES6</h2>
@@ -33,6 +33,11 @@
           <p class="heavy">• or via command line:</p>
           <pre class="language-javascript"><code>$ npm install parlx.js
 $ yarn add parlx.js</code></pre>
+        </div>
+
+        <div class="content">
+          <h3>Soon!</h3>
+          <p class="heavy">React.js component with library implementation</p>
         </div>
 
         <div class="content">
@@ -64,8 +69,8 @@ $ bower install jquery</code></pre>
 
           <p class="heavy">• Plugin supports autoinit</p>
 
-          <p class="light">To use it, add <code>data-tilt</code> to html element e.g:</p>
-          <pre class="language-html"><code>&#60;div data-parlx&#62;&#60;/div&#62;</code></pre>
+          <p class="light">To use it, add <code>parlx</code> to html element e.g:</p>
+          <pre class="language-html"><code>&#60;div parlx&#62;&#60;/div&#62;</code></pre>
         </div>
       </div>
     </section>
@@ -73,20 +78,20 @@ $ bower install jquery</code></pre>
     <section class="front">
       <h3>Custom speed</h3>
       <p>To set custom speed to single element use following code in div tag:</p>
-      <pre class="language-html"><code>&#60;div data-speed="0.1"></code></pre>
+      <pre class="language-html"><code>&#60;div data-speed="0.1"&#62;</code></pre>
       <p>To set custom speed to all elements place in JavaScript (or jQuery) options:</p>
       <pre class="language-javascript"><code>speed: 0.1</code></pre>
     </section>
 
     <section class="split-view two">
       <div class="parallax split">
-        <img src="./demo/images/san-francisco.jpg" alt="san-francisco">
+        <div class="parlx-children" style="background: url(./demo/images/san-francisco.jpg) no-repeat scroll center center / cover"></div>
         <p class="title"><code>data-speed="0.3"</code></p>
         <div class="shadow"></div>
       </div>
 
       <div class="parallax split" data-speed="-0.3">
-        <img src="./demo/images/fall.jpg" alt="turkey">
+        <img class="parlx-children" src="./demo/images/fall.jpg" alt="turkey">
         <p class="title"><code>data-speed="-0.3"</code></p>
         <div class="shadow"></div>
       </div>
@@ -110,14 +115,14 @@ $ bower install jquery</code></pre>
 
     <section class="split-view one">
       <div class="parallax split" data-mobile="false">
-        <img src="./demo/images/architecture.jpg" alt="architecture">
+        <img class="parlx-children" src="./demo/images/architecture.jpg" alt="architecture">
         <p class="title"><code>data-mobile="false"</code></p>
         <div class="shadow"></div>
       </div>
     </section>
 
     <section class="front">
-      <h3>Set parallax effect direction (horizontal, vertical or diagonal)</h3>
+      <h3>Parallax effect direction (horizontal, vertical or diagonal)</h3>
       <p>To disable parallax effect on mobile on single element use following code in div tag:</p>
       <pre class="language-html"><code>data-direction="vertical"</code></pre>
       <p>To disable parallax effect on all elements place in JavaScript (or jQuery) options:</p>
@@ -126,13 +131,13 @@ $ bower install jquery</code></pre>
 
     <section class="split-view two">
       <div class="parallax split">
-        <img src="./demo/images/einkorn.jpg" alt="einkorn">
+        <img class="parlx-children" src="./demo/images/einkorn.jpg" alt="einkorn">
         <p class="title"><code>data-direction="vertical"</code></p>
         <div class="shadow"></div>
       </div>
 
       <div class="parallax split" data-direction="horizontal">
-        <img src="./demo/images/india.jpg" alt="india">
+        <img class="parlx-children" src="./demo/images/india.jpg" alt="india">
         <p class="title"><code>data-direction="horizontal"</code></p>
         <div class="shadow"></div>
       </div>
@@ -140,21 +145,35 @@ $ bower install jquery</code></pre>
 
     <section class="split-view one">
       <div class="parallax split" data-direction="diagonal">
-        <img src="./demo/images/earth.jpg" alt="earth">
+        <img class="parlx-children" src="./demo/images/earth.jpg" alt="earth">
         <p class="title"><code>data-direction="diagonal"</code></p>
         <div class="shadow"></div>
       </div>
     </section>
 
     <section class="front">
-      <h3>Set parallax effect to background image or div</h3>
+      <h3>Parallax effect type (foreground - move full div, background - move div content)</h3>
       <p>To set type of parallax effect use following code in div tag:</p>
-      <pre class="language-html"><code>&#60;div data-type="background"></code></pre>
+      <pre class="language-html"><code>&#60;div data-type="foreground"></code></pre>
       <p>To set type of parallax effect on all elements place in JavaScript (or jQuery) options:</p>
-      <pre class="language-javascript"><code>type: 'background'</code></pre>
+      <pre class="language-javascript"><code>type: 'foreground'</code></pre>
     </section>
 
-    <script src="./dist/parlx.babel.min.js"></script>
+    <section class="split-view one">
+      <div class="parallax split">
+        <video class="parlx-children" src="./demo/video/night.mp4" autoplay loop muted></video>
+        <h3 class="title">Not only images!</h3>
+        <div class="shadow"></div>
+      </div>
+    </section>
+
+    <section class="front">
+      <h3>🎉 Videos, divs and other HTML5 tags are supported since v1.2.0 🎉</h3>
+      <p>To assign parallax children add <code>class="parlx-children"</code> to element inside of parallax container e.g:</p>
+      <pre class="language-html"><code>&#60;video class="parlx-children" src="sample.mp4"></code></pre>
+    </section>
+
+    <script src="./src/parlx.js"></script>
     <script src="./demo/js/prism.js"></script>
     <script src="./demo/js/script.js"></script>
   </body>

@@ -1,5 +1,5 @@
 /*!
-* parlx.js v1.1.0
+* parlx.js v1.2.0
 * Copyright © 2017-present Jakub Biesiada. All rights reserved.
 * MIT License
 */
@@ -11,11 +11,11 @@ class Parlx {
       this.init(elements, settings);
       return;
 
-    // return when no parallax elements
+      // return when no parallax elements
     } else if (elements.length === 0) {
       return;
 
-    // set parallax element
+      // set parallax element
     } else {
       this.element = elements;
     }
@@ -82,29 +82,29 @@ class Parlx {
     this.movement = (this.settings.speed * scrolled) / 2;
 
     // disable parallax on mobile if option mobile is false
-    if ('ontouchstart' in document.documentElement && !this.settings.mobile) this.settings.speed = 0;
+    if ('ontouchstart' in document.documentElement && !this.settings.mobile)
+      this.settings.speed = 0;
 
     // set transforms
     this.transforms();
 
     // types of parallax
     if (this.settings.type === 'foreground') {
-
       // children element style
       Object.assign(this.element.style, {
         '-webkit-transform': this.transform,
-        'transform': this.transform
+        transform: this.transform
       });
     } else if (this.settings.type === 'background') {
-
       // set image position
-      Object.assign(this.element.querySelector('img').style, {
+      Object.assign(this.element.querySelector('.parlx-children, img').style, {
         '-webkit-transform': this.transform,
-        'transform': this.transform,
-        'width': 'auto',
-        'height': 'auto',
-        'min-width': `${this.element.offsetWidth * (1 + Math.abs(this.settings.speed))}px`,
-        'min-height': `${this.element.offsetHeight * (1 + Math.abs(this.settings.speed))}px`
+        transform: this.transform,
+        'object-fit': 'cover',
+        'min-width': `${this.element.offsetWidth *
+          (1 + Math.abs(this.settings.speed) * 2)}px`,
+        height: `${this.element.offsetHeight *
+          (1 + Math.abs(this.settings.speed) * 2)}px`
       });
     }
 
@@ -113,9 +113,11 @@ class Parlx {
     };
 
     // parallax movement event
-    this.element.dispatchEvent(new CustomEvent('parlxMove', {
-      'detail': values
-    }));
+    this.element.dispatchEvent(
+      new CustomEvent('parlxMove', {
+        detail: values
+      })
+    );
   }
 
   settings(settings) {
@@ -138,7 +140,7 @@ class Parlx {
         const attribute = this.element.getAttribute(`data-${setting}`);
         try {
           custom[setting] = JSON.parse(attribute);
-        } catch (e) {
+        } catch (err) {
           custom[setting] = attribute;
         }
       } else {
@@ -158,17 +160,15 @@ if (typeof document !== 'undefined') {
 // jQuery
 let scope;
 
-if (typeof window !== 'undefined')
- scope = window;
-else if (typeof global !== 'undefined')
- scope = global;
+if (typeof window !== 'undefined') scope = window;
+else if (typeof global !== 'undefined') scope = global;
 
 if (scope && scope.jQuery) {
   const $ = scope.jQuery;
 
   $.fn.parlx = function(options) {
     new Parlx(this, options);
-  }
+  };
 }
 
 // AMD
@@ -177,7 +177,7 @@ if (typeof define === 'function' && define.amd) {
     return Parlx;
   });
 
-// CommonJS
+  // CommonJS
 } else if (typeof exports !== 'undefined' && !exports.nodeType) {
   if (typeof module !== 'undefined' && !module.nodeType && module.exports) {
     exports = module.exports = Parlx;

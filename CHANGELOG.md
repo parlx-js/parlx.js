@@ -1,5 +1,16 @@
 # parlx.js Changelog
 
+## 1.2.0 beta 2 / 1.2.0 (2018-07-05)
+#### New Feature
+- added support for all HTML5 tags as parallax div children
+
+## 1.2.0 beta 1 (2018-06-12)
+#### New Feature
+- readded support for background-image
+
+#### Bug Fix
+- partly fixed bug with image scaling
+
 ## 1.1.0 rc 1 / 1.1.0 (2018-04-30)
 #### Documentation
 - updated comments
@@ -18,7 +29,6 @@
 - fixed parallax background size bug
 - fixed bug with autoinit in Node.js
 - fixed bug with jQuery and Node.js compatibility
-
 
 ## 1.1.0 beta 3 (2018-03-30)
 #### New Feature
