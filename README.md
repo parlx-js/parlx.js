@@ -6,6 +6,10 @@
 ## Demo
 **[See plugin in action](https://jb1905.github.io/parlx.js/)**
 
+## React.js plugin
+If You use React.js, install component, with the implementation of the parlx.js library!
+**[More here](https://github.com/JB1905/react-parlx/)**
+
 ## How to Install
 At the beginning connect the library with Your project:
 
