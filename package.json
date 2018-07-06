@@ -1,17 +1,20 @@
 {
   "name": "parlx.js",
-  "version": "1.2.0-beta.2",
+  "version": "1.2.0",
   "description": "JavaScript & jQuery parallax effect library",
   "main": "dist/parlx.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/JB1905/parlx.js.git"
+    "url": "https://github.com/JB1905/parlx.js.git"
   },
   "keywords": [
     "JavaScript",
     "ES6",
     "jQuery",
-    "parallax"
+    "tilt",
+    "parallax",
+    "move",
+    "scroll"
   ],
   "author": "Jakub Biesiada",
   "license": "MIT",
