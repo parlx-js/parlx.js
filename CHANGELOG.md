@@ -1,5 +1,19 @@
 # parlx.js Changelog
 
+## 1.3.0 beta 1 (Soon)
+#### New Feature
+- new callbacks: `onInit`, `onScroll`, `onResize`
+
+#### Breaking changes
+- the elements inside the parallax container must have the `parlx-children` class
+
+#### Repository changes
+- switch from Gulp to Webpack
+- update Babel to v7
+- add unit tests
+- only 2 dist version
+- change main file from parlx.js to parlx.min.js
+
 ## 1.2.0 beta 2 / 1.2.0 (2018-07-05)
 #### New Feature
 - added support for all HTML5 tags as parallax div children

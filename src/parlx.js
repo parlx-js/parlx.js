@@ -1,10 +1,4 @@
-/*!
-* parlx.js v1.2.0
-* Copyright © 2017-present Jakub Biesiada. All rights reserved.
-* MIT License
-*/
-
-class Parlx {
+export default class Parlx {
   constructor(elements, settings = {}) {
     // call init function when parallax elements length > 0
     if (elements.length > 0) {
@@ -32,9 +26,11 @@ class Parlx {
 
   init(elements, settings) {
     // split parallax elements
-    for (let i = 0; i < elements.length; i++) {
-      this.parlx = new Parlx(elements[i], settings);
+    for (const element of elements) {
+      this.parlx = new Parlx(element, settings);
     }
+
+    if (typeof this.settings.onInit === 'function') this.settings.onInit();
   }
 
   addEventListeners() {
@@ -47,10 +43,14 @@ class Parlx {
 
   onWindowScroll() {
     this.parallaxEffect();
+
+    if (typeof this.settings.onScroll === 'function') this.settings.onScroll();
   }
 
   onWindowResize() {
     this.parallaxEffect();
+
+    if (typeof this.settings.onResize === 'function') this.settings.onResize();
   }
 
   transforms() {
@@ -97,7 +97,7 @@ class Parlx {
       });
     } else if (this.settings.type === 'background') {
       // set image position
-      Object.assign(this.element.querySelector('.parlx-children, img').style, {
+      Object.assign(this.element.querySelector('.parlx-children').style, {
         '-webkit-transform': this.transform,
         transform: this.transform,
         'object-fit': 'cover',
@@ -127,13 +127,17 @@ class Parlx {
       type: 'background', // type of parallax: foreground (div move), background (inner image move)
       speed: 0.3, // parallax speed (min: -1, max: 1)
       height: '400px', // parallax element height
-      mobile: true // enable: true, or disable: false, parallax on mobile devices (touch screen)
+      mobile: true, // enable: true, or disable: false, parallax on mobile devices (touch screen)
+
+      onInit: null,
+      onScroll: null,
+      onResize: null
     };
 
     const custom = {};
 
     // apply settings and get values from data-*
-    for (let setting in defaults) {
+    for (const setting in defaults) {
       if (setting in settings) {
         custom[setting] = settings[setting];
       } else if (this.element.getAttribute(`data-${setting}`)) {
@@ -153,9 +157,8 @@ class Parlx {
 }
 
 // autoinit
-if (typeof document !== 'undefined') {
+if (typeof document !== 'undefined')
   new Parlx(document.querySelectorAll('[data-parlx]'));
-}
 
 // jQuery
 let scope;
@@ -169,18 +172,4 @@ if (scope && scope.jQuery) {
   $.fn.parlx = function(options) {
     new Parlx(this, options);
   };
-}
-
-// AMD
-if (typeof define === 'function' && define.amd) {
-  define('Parlx', [], function() {
-    return Parlx;
-  });
-
-  // CommonJS
-} else if (typeof exports !== 'undefined' && !exports.nodeType) {
-  if (typeof module !== 'undefined' && !module.nodeType && module.exports) {
-    exports = module.exports = Parlx;
-  }
-  exports.default = Parlx;
 }
