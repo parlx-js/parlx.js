@@ -29,8 +29,6 @@ export default class Parlx {
     for (const element of elements) {
       this.parlx = new Parlx(element, settings);
     }
-
-    if (typeof this.settings.onInit === 'function') this.settings.onInit();
   }
 
   addEventListeners() {
@@ -43,14 +41,10 @@ export default class Parlx {
 
   onWindowScroll() {
     this.parallaxEffect();
-
-    if (typeof this.settings.onScroll === 'function') this.settings.onScroll();
   }
 
   onWindowResize() {
     this.parallaxEffect();
-
-    if (typeof this.settings.onResize === 'function') this.settings.onResize();
   }
 
   transforms() {
@@ -97,7 +91,7 @@ export default class Parlx {
       });
     } else if (this.settings.type === 'background') {
       // set image position
-      Object.assign(this.element.querySelector('.parlx-children').style, {
+      Object.assign(this.element.querySelector('.parlx-children, img').style, {
         '-webkit-transform': this.transform,
         transform: this.transform,
         'object-fit': 'cover',
@@ -127,11 +121,7 @@ export default class Parlx {
       type: 'background', // type of parallax: foreground (div move), background (inner image move)
       speed: 0.3, // parallax speed (min: -1, max: 1)
       height: '400px', // parallax element height
-      mobile: true, // enable: true, or disable: false, parallax on mobile devices (touch screen)
-
-      onInit: null,
-      onScroll: null,
-      onResize: null
+      mobile: true // enable: true, or disable: false, parallax on mobile devices (touch screen)
     };
 
     const custom = {};
