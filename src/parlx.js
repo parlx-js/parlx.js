@@ -1,10 +1,4 @@
-/*!
-* parlx.js v1.2.0
-* Copyright © 2017-present Jakub Biesiada. All rights reserved.
-* MIT License
-*/
-
-class Parlx {
+export default class Parlx {
   constructor(elements, settings = {}) {
     // call init function when parallax elements length > 0
     if (elements.length > 0) {
@@ -32,8 +26,8 @@ class Parlx {
 
   init(elements, settings) {
     // split parallax elements
-    for (let i = 0; i < elements.length; i++) {
-      this.parlx = new Parlx(elements[i], settings);
+    for (const element of elements) {
+      this.parlx = new Parlx(element, settings);
     }
   }
 
@@ -133,7 +127,7 @@ class Parlx {
     const custom = {};
 
     // apply settings and get values from data-*
-    for (let setting in defaults) {
+    for (const setting in defaults) {
       if (setting in settings) {
         custom[setting] = settings[setting];
       } else if (this.element.getAttribute(`data-${setting}`)) {
@@ -153,9 +147,8 @@ class Parlx {
 }
 
 // autoinit
-if (typeof document !== 'undefined') {
+if (typeof document !== 'undefined')
   new Parlx(document.querySelectorAll('[data-parlx]'));
-}
 
 // jQuery
 let scope;
@@ -169,18 +162,4 @@ if (scope && scope.jQuery) {
   $.fn.parlx = function(options) {
     new Parlx(this, options);
   };
-}
-
-// AMD
-if (typeof define === 'function' && define.amd) {
-  define('Parlx', [], function() {
-    return Parlx;
-  });
-
-  // CommonJS
-} else if (typeof exports !== 'undefined' && !exports.nodeType) {
-  if (typeof module !== 'undefined' && !module.nodeType && module.exports) {
-    exports = module.exports = Parlx;
-  }
-  exports.default = Parlx;
 }

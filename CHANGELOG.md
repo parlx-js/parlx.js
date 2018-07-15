@@ -1,5 +1,29 @@
 # parlx.js Changelog
 
+## Next
+#### New Feature
+- destroy method
+- new callbacks: `onInit`, `onScroll`, `onResize`, `onDestroy`
+
+#### Breaking changes
+- improve plugin init process
+- mobile option improve (OS and platform)
+- the elements inside the parallax container must have the `parlx-children` class
+
+#### Bug Fix
+- fully fix bug with image scaling
+
+#### Internal
+- code clean up
+
+## 1.3.0 (2018-07-16)
+#### Repository changes
+- switched from Gulp to Webpack
+- updated Babel to v7
+- only 2 dist version
+- changed main file from parlx.js to parlx.min.js
+- moved demo to gh-pages branch
+
 ## 1.2.0 beta 2 / 1.2.0 (2018-07-05)
 #### New Feature
 - added support for all HTML5 tags as parallax div children
