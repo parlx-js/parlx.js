@@ -86,6 +86,8 @@ Name | Type | Default | Description | Available options
 **speed** | number | `0.3` | parallax speed | values >= `-1` and <= `1`
 **height** | string | `400px` | height of parallax effect container | e.g: `500px`, `70vh`, `auto`
 **mobile** | boolean | `true` | enable or disable parallax effect on mobile devices | enable `true`, disable `false`
+**onScroll** | function | `null` | Call function on  window scroll | `el => { // code }`
+**onResize** | function | `null` | Call function on  window resize | `el => { // code }`
 
 ## Event
 `parlxMove` event will output current position of the parallax element

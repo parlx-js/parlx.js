@@ -3,7 +3,7 @@
 ## Next
 #### New Feature
 - destroy method
-- new callbacks: `onInit`, `onScroll`, `onResize`, `onDestroy`
+- new callbacks: `onInit`, `onDestroy`
 
 #### Breaking changes
 - improve plugin init process
@@ -15,6 +15,16 @@
 
 #### Internal
 - code clean up
+
+## Unreleased
+#### New Feature
+- new callbacks: `onScroll`, `onResize`
+
+#### Dependencies
+- updated Babel to `^7.0.0` stable
+- updated babel-plugin-add-module-exports to `^0.3.3`
+- updated Webpack to `^4.17.1`
+- updated babel-loader to `^8.0.0` stable
 
 ## 1.3.0 (2018-07-16)
 #### Repository changes
