@@ -1,98 +1,85 @@
 export default class Parlx {
   constructor(elements, settings = {}) {
-    // call init function when parallax elements length > 0
     if (elements.length > 0) {
       this.init(elements, settings);
       return;
-
-      // return when no parallax elements
     } else if (elements.length === 0) {
       return;
-
-      // set parallax element
     } else {
       this.element = elements;
     }
 
-    // set settings
     this.settings = this.settings(settings);
 
-    // call main parallax function
     this.parallaxEffect();
-
-    // call events function
     this.addEventListeners();
   }
 
   init(elements, settings) {
-    // split parallax elements
     for (const element of elements) {
       this.parlx = new Parlx(element, settings);
     }
   }
 
   addEventListeners() {
-    // scroll event
     window.addEventListener('scroll', () => this.onWindowScroll());
-
-    // resize event
     window.addEventListener('resize', () => this.onWindowResize());
   }
 
   onWindowScroll() {
     this.parallaxEffect();
+
+    if (typeof this.settings.onScroll === 'function') {
+      this.settings.onScroll(this.element);
+    }
   }
 
   onWindowResize() {
     this.parallaxEffect();
+
+    if (typeof this.settings.onResize === 'function') {
+      this.settings.onResize(this.element);
+    }
   }
 
   transforms() {
+    let moveX, moveY;
+
     if (this.settings.direction === 'horizontal') {
-      this.moveX = this.movement;
-      this.moveY = '0';
+      moveX = this.movement;
+      moveY = '0';
     } else if (this.settings.direction === 'vertical') {
-      this.moveX = '0';
-      this.moveY = this.movement;
+      moveX = '0';
+      moveY = this.movement;
     } else if (this.settings.direction === 'diagonal') {
-      this.moveX = this.movement;
-      this.moveY = this.movement;
+      moveX = this.movement;
+      moveY = this.movement;
     }
 
-    this.transform = `translate(${this.moveX}px, ${this.moveY}px)`;
+    this.transform = `translate(${moveX}px, ${moveY}px)`;
   }
 
   parallaxEffect() {
-    // set parallax element height
     this.element.style.height = this.settings.height;
 
-    // get parallax scroll position
     const scrolled = this.element.getBoundingClientRect().y;
 
-    // set speed range
     if (Math.abs(this.settings.speed) > 1) this.settings.speed = 0.3;
 
-    // element movement
     this.movement = (this.settings.speed * scrolled) / 2;
 
-    // disable parallax on mobile if option mobile is false
-    if ('ontouchstart' in document.documentElement && !this.settings.mobile)
+    if ('ontouchstart' in document.documentElement && !this.settings.mobile) {
       this.settings.speed = 0;
+    }
 
-    // set transforms
     this.transforms();
 
-    // types of parallax
     if (this.settings.type === 'foreground') {
-      // children element style
       Object.assign(this.element.style, {
-        '-webkit-transform': this.transform,
         transform: this.transform
       });
     } else if (this.settings.type === 'background') {
-      // set image position
       Object.assign(this.element.querySelector('.parlx-children, img').style, {
-        '-webkit-transform': this.transform,
         transform: this.transform,
         'object-fit': 'cover',
         'min-width': `${this.element.offsetWidth *
@@ -106,7 +93,6 @@ export default class Parlx {
       move: this.movement
     };
 
-    // parallax movement event
     this.element.dispatchEvent(
       new CustomEvent('parlxMove', {
         detail: values
@@ -115,18 +101,19 @@ export default class Parlx {
   }
 
   settings(settings) {
-    // defaults
     const defaults = {
       direction: 'vertical', // parallax element move direction
       type: 'background', // type of parallax: foreground (div move), background (inner image move)
       speed: 0.3, // parallax speed (min: -1, max: 1)
       height: '400px', // parallax element height
-      mobile: true // enable: true, or disable: false, parallax on mobile devices (touch screen)
+      mobile: true, // enable: true, or disable: false, parallax on mobile devices (touch screen)
+
+      onScroll: null, // call function on window scroll
+      onResize: null // call function on window resize
     };
 
     const custom = {};
 
-    // apply settings and get values from data-*
     for (const setting in defaults) {
       if (setting in settings) {
         custom[setting] = settings[setting];
@@ -146,11 +133,10 @@ export default class Parlx {
   }
 }
 
-// autoinit
-if (typeof document !== 'undefined')
+if (typeof document !== 'undefined') {
   new Parlx(document.querySelectorAll('[data-parlx]'));
+}
 
-// jQuery
 let scope;
 
 if (typeof window !== 'undefined') scope = window;
