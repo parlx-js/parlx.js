@@ -24,8 +24,8 @@ $ npm install parlx.js
 $ yarn add parlx.js
 ```
 
-## React.js plugin
-**If You use React.js, install component, with the implementation of the parlx.js library!**
+## React plugin
+**If You use React, install component, with the implementation of the parlx.js library!**
 
 [More here](https://www.npmjs.com/package/react-parlx)
 

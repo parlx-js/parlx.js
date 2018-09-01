@@ -26,6 +26,9 @@
 - updated Webpack to `^4.17.1`
 - updated babel-loader to `^8.0.0` stable
 
+#### Repository Changes
+- removed map for production version
+
 ## 1.3.0 (2018-07-16)
 #### Repository changes
 - switched from Gulp to Webpack
