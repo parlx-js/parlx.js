@@ -16,7 +16,7 @@
 #### Internal
 - code clean up
 
-## Unreleased
+## 1.3.1 beta 1 (2018-09-02)
 #### New Feature
 - new callbacks: `onScroll`, `onResize`
 
