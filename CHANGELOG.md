@@ -1,6 +1,6 @@
 # parlx.js Changelog
 
-## Next
+## Next v2
 #### New Feature
 - destroy method
 - new callbacks: `onInit`, `onDestroy`
@@ -10,11 +10,14 @@
 - mobile option improve (OS and platform)
 - the elements inside the parallax container must have the `parlx-children` class
 
+## Next v1
 #### Bug Fix
 - fully fix bug with image scaling
+- improve scrolling behavior smooth
 
-#### Internal
-- code clean up
+## 1.3.1 beta 2 (2018-09-04)
+#### Documentation
+- updated README.md
 
 ## 1.3.1 beta 1 (2018-09-02)
 #### New Feature
