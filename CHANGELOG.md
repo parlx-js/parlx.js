@@ -1,20 +1,36 @@
 # parlx.js Changelog
 
-## Next
+## Next v2
 #### New Feature
 - destroy method
-- new callbacks: `onInit`, `onScroll`, `onResize`, `onDestroy`
+- new callbacks: `onInit`, `onDestroy`
 
 #### Breaking changes
 - improve plugin init process
 - mobile option improve (OS and platform)
 - the elements inside the parallax container must have the `parlx-children` class
 
+## Next v1
 #### Bug Fix
 - fully fix bug with image scaling
+- improve scrolling behavior smooth
 
-#### Internal
-- code clean up
+## 1.3.1 (2018-09-04)
+#### Documentation
+- updated README.md
+
+## 1.3.1 beta 1 (2018-09-02)
+#### New Feature
+- new callbacks: `onScroll`, `onResize`
+
+#### Dependencies
+- updated Babel to `^7.0.0` stable
+- updated babel-plugin-add-module-exports to `^0.3.3`
+- updated Webpack to `^4.17.1`
+- updated babel-loader to `^8.0.0` stable
+
+#### Repository Changes
+- removed map for production version
 
 ## 1.3.0 (2018-07-16)
 #### Repository changes
