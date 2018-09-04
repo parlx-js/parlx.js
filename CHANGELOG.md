@@ -15,7 +15,7 @@
 - fully fix bug with image scaling
 - improve scrolling behavior smooth
 
-## 1.3.1 beta 2 (2018-09-04)
+## 1.3.1 (2018-09-04)
 #### Documentation
 - updated README.md
 
