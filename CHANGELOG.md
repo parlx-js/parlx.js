@@ -5,7 +5,7 @@
 - destroy method
 - new callbacks: `onInit`, `onDestroy`
 
-#### Breaking changes
+#### Breaking Changes
 - improve plugin init process
 - mobile option improve (OS and platform)
 - the elements inside the parallax container must have the `parlx-children` class
@@ -33,7 +33,7 @@
 - removed map for production version
 
 ## 1.3.0 (2018-07-16)
-#### Repository changes
+#### Repository Changes
 - switched from Gulp to Webpack
 - updated Babel to v7
 - only 2 dist version
