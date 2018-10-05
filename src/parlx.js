@@ -106,10 +106,10 @@ export default class Parlx {
       type: 'background', // type of parallax: foreground (div move), background (inner image move)
       speed: 0.3, // parallax speed (min: -1, max: 1)
       height: '400px', // parallax element height
-      mobile: true, // enable: true, or disable: false, parallax on mobile devices (touch screen)
+      mobile: true, // enable/disable parallax on mobile devices (touch screen)
 
-      onScroll: null, // call function on window scroll
-      onResize: null // call function on window resize
+      onScroll: null, // callback on window scroll
+      onResize: null // callback on window resize
     };
 
     const custom = {};
