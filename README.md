@@ -74,13 +74,13 @@ To use it, add `data-parlx` to html element e.g:
 ## Options
 Name | Type | Default | Description | Available options
 -|-|-|-|-
-**direction** | string | `vertical` | parallax element move direction | `vertical`, `horizontal`, `diagonal`
-**type** | string | `background` | type of parallax | `foreground` (div move), `background` (content move)
-**speed** | number | `0.3` | parallax speed | values >= `-1` and <= `1`
-**height** | string | `400px` | height of parallax effect container | e.g: `500px`, `70vh`, `auto`
-**mobile** | boolean | `true` | enable or disable parallax effect on mobile devices | enable `true`, disable `false`
-**onScroll** | function | `null` | Call function on  window scroll | `el => { // code }`
-**onResize** | function | `null` | Call function on  window resize | `el => { // code }`
+**direction** | string | `vertical` | Parallax element move direction | `vertical`, `horizontal`, `diagonal`
+**type** | string | `background` | Type of parallax | `foreground` (div move), `background` (content move)
+**speed** | number | `0.3` | Parallax speed | values >= `-1` and <= `1`
+**height** | string | `400px` | Height of parallax effect container | e.g: `500px`, `70vh`, `auto`
+**mobile** | boolean | `true` | Enable or disable parallax effect on mobile devices | `true` (enable), `false` (disable)
+**onScroll** | function | `null` | Callback on  window scroll | `el => { // code }`
+**onResize** | function | `null` | Callback on  window resize | `el => { // code }`
 
 ## Event
 `parlxMove` event will output current position of the parallax element
