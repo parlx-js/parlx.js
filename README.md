@@ -78,7 +78,7 @@ Name | Type | Default | Description | Available options
 **type** | string | `background` | Type of parallax | `foreground` (div move), `background` (content move)
 **speed** | number | `0.3` | Parallax speed | values >= `-1` and <= `1`
 **height** | string | `400px` | Height of parallax effect container | e.g: `500px`, `70vh`, `auto`
-**exclude** | RegExp | `null` | Disable parallax effect on selected user agents | e.g: `/(Mozilla|iPad)/`
+**exclude** | RegExp | `null` | Disable parallax effect on selected user agents | e.g: <code>/(Mozilla&#124;iPad)/</code>
 **onScroll** | function | `null` | Callback on  window scroll | `el => { // code }`
 **onResize** | function | `null` | Callback on  window resize | `el => { // code }`
 
