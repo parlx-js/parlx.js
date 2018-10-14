@@ -7,13 +7,15 @@
 
 #### Breaking Changes
 - improve plugin init process
-- mobile option improve (OS and platform)
-- the elements inside the parallax container must have the `parlx-children` class
 
-## Next v1
 #### Bug Fix
 - fully fix bug with image scaling
 - improve scrolling behavior smooth
+
+## 1.4.0 beta 1 (2018-10-14)
+#### Breaking Changes
+- replaced `mobile` option with `exclude` (disable parallax effect on selected user agents)
+- `parlx-children` class is required for elements inside the parallax container
 
 ## 1.3.1 (2018-09-04)
 #### Documentation
