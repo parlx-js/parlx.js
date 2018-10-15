@@ -106,7 +106,7 @@ export default class Parlx {
       type: 'background', // type of parallax: foreground (div move), background (inner image move)
       speed: 0.3, // parallax speed (min: -1, max: 1)
       height: '400px', // parallax element height
-      exclude: null, // enable/disable parallax on selected user agents
+      exclude: null, // enable/disable parallax effect on selected user agents
 
       onScroll: null, // callback on window scroll
       onResize: null // callback on window resize
