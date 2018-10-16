@@ -12,6 +12,11 @@
 - fully fix bug with image scaling
 - improve scrolling behavior smooth
 
+## 1.4.0 beta 2 (2018-10-16)
+#### Documentation
+- updated comments
+- updated README.md
+
 ## 1.4.0 beta 1 (2018-10-14)
 #### Breaking Changes
 - replaced `mobile` option with `exclude` (disable parallax effect on selected user agents)
