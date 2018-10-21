@@ -68,7 +68,7 @@ export default class Parlx {
 
     this.movement = (this.settings.speed * scrolled) / 2;
 
-    if ('ontouchstart' in document.documentElement && !this.settings.mobile) {
+    if (navigator.userAgent.match(this.settings.exclude)) {
       this.settings.speed = 0;
     }
 
@@ -79,7 +79,7 @@ export default class Parlx {
         transform: this.transform
       });
     } else if (this.settings.type === 'background') {
-      Object.assign(this.element.querySelector('.parlx-children, img').style, {
+      Object.assign(this.element.querySelector('.parlx-children').style, {
         transform: this.transform,
         'object-fit': 'cover',
         'min-width': `${this.element.offsetWidth *
@@ -106,7 +106,7 @@ export default class Parlx {
       type: 'background', // type of parallax: foreground (div move), background (inner image move)
       speed: 0.3, // parallax speed (min: -1, max: 1)
       height: '400px', // parallax element height
-      mobile: true, // enable/disable parallax on mobile devices (touch screen)
+      exclude: null, // enable/disable parallax effect on selected user agents
 
       onScroll: null, // callback on window scroll
       onResize: null // callback on window resize
