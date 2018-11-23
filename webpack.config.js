@@ -2,7 +2,7 @@ const webpack = require('webpack');
 const path = require('path');
 const env = require('yargs').argv.env;
 
-let libraryName = 'parlx';
+const libraryName = 'parlx';
 
 let outputFile, mode, devtool;
 
