@@ -1,46 +1,57 @@
 export default class Parlx {
-  constructor(elements, settings = {}) {
-    if (elements.length > 0) {
-      this.init(elements, settings);
-      return;
-    } else if (elements.length === 0) {
-      return;
-    } else {
-      this.element = elements;
-    }
+  constructor(element, settings = {}) {
+    this.element = element;
+    this.settings = this.extendSettings(settings);
 
-    this.settings = this.settings(settings);
+    if (typeof this.settings.onInit === 'function') {
+      this.settings.onInit(this.element);
+    }
 
     this.parallaxEffect();
     this.addEventListeners();
   }
 
-  init(elements, settings) {
-    for (const element of elements) {
-      this.parlx = new Parlx(element, settings);
-    }
-  }
-
   addEventListeners() {
-    window.addEventListener('scroll', () => this.onWindowScroll());
-    window.addEventListener('resize', () => this.onWindowResize());
+    window.addEventListener('scroll', this.onWindowScroll);
+    window.addEventListener('resize', this.onWindowResize);
   }
 
-  onWindowScroll() {
-    this.parallaxEffect();
+  removeEventListeners() {
+    window.removeEventListener('scroll', this.onWindowScroll);
+    window.removeEventListener('resize', this.onWindowResize);
+  }
 
-    if (typeof this.settings.onScroll === 'function') {
-      this.settings.onScroll(this.element);
+  destroy() {
+    if (typeof this.settings.onDestroy === 'function') {
+      this.settings.onDestroy(this.element);
     }
+
+    this.removeEventListeners();
+    this.element.parlx = null;
+    delete this.element.parlx;
+
+    this.element = null;
   }
 
-  onWindowResize() {
-    this.parallaxEffect();
+  onWindowScroll = () => {
+    if (this.element) {
+      this.parallaxEffect();
 
-    if (typeof this.settings.onResize === 'function') {
-      this.settings.onResize(this.element);
+      if (typeof this.settings.onScroll === 'function') {
+        this.settings.onScroll(this.element);
+      }
     }
-  }
+  };
+
+  onWindowResize = () => {
+    if (this.element) {
+      this.parallaxEffect();
+
+      if (typeof this.settings.onResize === 'function') {
+        this.settings.onResize(this.element);
+      }
+    }
+  };
 
   transforms() {
     let moveX, moveY;
@@ -100,41 +111,49 @@ export default class Parlx {
     );
   }
 
-  settings(settings) {
-    const defaults = {
+  extendSettings(settings) {
+    const defaultSettings = {
       direction: 'vertical', // parallax element move direction
       type: 'background', // type of parallax: foreground (div move), background (inner image move)
       speed: 0.3, // parallax speed (min: -1, max: 1)
       height: '400px', // parallax element height
       exclude: null, // enable/disable parallax effect on selected user agents
 
+      onInit: null, // callback on plugin init
       onScroll: null, // callback on window scroll
-      onResize: null // callback on window resize
+      onResize: null, // callback on window resize
+      onDestroy: null // callback on plugin destroy
     };
 
-    const custom = {};
+    const newSettings = {};
 
-    for (const setting in defaults) {
-      if (setting in settings) {
-        custom[setting] = settings[setting];
-      } else if (this.element.getAttribute(`data-${setting}`)) {
-        const attribute = this.element.getAttribute(`data-${setting}`);
+    Object.keys(defaultSettings).forEach(property => {
+      if (property in settings) {
+        newSettings[property] = settings[property];
+      } else if (this.element.getAttribute(`data-${property}`)) {
+        const attribute = this.element.getAttribute(`data-${property}`);
         try {
-          custom[setting] = JSON.parse(attribute);
+          newSettings[property] = JSON.parse(attribute);
         } catch (err) {
-          custom[setting] = attribute;
+          newSettings[property] = attribute;
         }
       } else {
-        custom[setting] = defaults[setting];
+        newSettings[property] = defaultSettings[property];
       }
-    }
+    });
 
-    return custom;
+    return newSettings;
   }
-}
 
-if (typeof document !== 'undefined') {
-  new Parlx(document.querySelectorAll('[data-parlx]'));
+  static init(elements, settings) {
+    if (elements instanceof Node) elements = [elements];
+    if (elements instanceof NodeList) elements = [].slice.call(elements);
+    if (!(elements instanceof Array)) return;
+
+    elements.forEach(element => {
+      if (!('parlx' in element)) element.parlx = new Parlx(element, settings);
+    });
+  }
 }
 
 let scope;
@@ -142,10 +161,14 @@ let scope;
 if (typeof window !== 'undefined') scope = window;
 else if (typeof global !== 'undefined') scope = global;
 
+if (typeof document !== 'undefined') {
+  scope.Parlx = Parlx;
+
+  Parlx.init(document.querySelectorAll('[data-parlx]'));
+}
+
 if (scope && scope.jQuery) {
   const $ = scope.jQuery;
 
-  $.fn.parlx = function(options) {
-    new Parlx(this, options);
-  };
+  $.fn.parlx = (elements, options) => Parlx.init(elements, options);
 }

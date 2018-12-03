@@ -1,16 +1,25 @@
 # parlx.js Changelog
 
-## Next v2
+## 2.0.0 beta 1 (Soon)
 #### New Feature
-- destroy method
-- new callbacks: `onInit`, `onDestroy`
+- added destroy method
+- added new callbacks: `onInit`, `onDestroy`
 
 #### Breaking Changes
-- improve plugin init process
+- improved plugin init process
+
+#### Internal
+- renamed method `settings()` to `extendSettings()` to avoid conflict with variable `settings`
 
 #### Bug Fix
 - fully fix bug with image scaling
 - improve scrolling behavior smooth
+
+#### Repository Changes
+- added Travis CI config
+- added Prettier config
+- added ESLint config
+- added tests
 
 ## 1.4.1 (2018-11-11)
 #### Bug Fix
@@ -57,7 +66,7 @@
 
 ## 1.2.0 beta 1 (2018-06-12)
 #### New Feature
-- readded support for background-image
+- re-added support for background-image
 
 #### Bug Fix
 - partly fixed bug with image scaling
