@@ -34,7 +34,14 @@ Next use library with:
 **&bull; Vanilla JavaScript e.g:**
 ```js
 const elems = document.querySelectorAll('.parallax');
+
+// v1
 const parlx = new Parlx(elems, {
+  // options...
+});
+
+// v2
+const parlx = Parlx.init(elems, {
   // options...
 });
 ```
@@ -69,6 +76,12 @@ $('.parallax').parlx({
 To use it, add `data-parlx` to html element e.g:
 ```html
 <div data-parlx></div>
+```
+
+## Methods
+**&bull; Destroy method**
+```js
+elems.parlx.destroy();
 ```
 
 ## Options
