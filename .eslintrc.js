@@ -15,10 +15,7 @@ module.exports = {
       { initialized: 'never', uninitialized: 'consecutive' }
     ],
     'class-methods-use-this': ['error', { exceptMethods: ['extendSettings'] }],
-    'no-param-reassign': [
-      'error',
-      { props: true, ignorePropertyModificationsFor: ['elements', 'element'] }
-    ],
+    'no-param-reassign': 'off',
     'new-cap': ['error', { newIsCap: false, capIsNew: false }],
     'max-len': ['error', { ignoreComments: true, ignoreStrings: true }],
     'prettier/prettier': 'error'
