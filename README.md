@@ -7,11 +7,11 @@
 **[See plugin in action](https://jb1905.github.io/parlx.js/)**
 
 ## React plugin
-If You use React, install component, with the implementation of the parlx.js library!
+If you use React, install component, with the implementation of the parlx.js library!
 **[More here](https://github.com/JB1905/react-parlx/)**
 
 ## How to Install
-At the beginning install the library in Your project via npm or Yarn:
+At the beginning install the library in your project via npm or Yarn:
 ```sh
 $ npm install parlx.js
 $ yarn add parlx.js
