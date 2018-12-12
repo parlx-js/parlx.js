@@ -127,7 +127,7 @@ export default class Parlx {
 
     const newSettings = {};
 
-    Object.keys(defaultSettings).forEach(property => {
+    for (const property in defaultSettings) {
       if (property in settings) {
         newSettings[property] = settings[property];
       } else if (this.element.getAttribute(`data-${property}`)) {
@@ -140,7 +140,7 @@ export default class Parlx {
       } else {
         newSettings[property] = defaultSettings[property];
       }
-    });
+    }
 
     return newSettings;
   }
@@ -150,9 +150,9 @@ export default class Parlx {
     if (elements instanceof NodeList) elements = [].slice.call(elements);
     if (!(elements instanceof Array)) return;
 
-    elements.forEach(element => {
+    for (const element of elements) {
       if (!('parlx' in element)) element.parlx = new Parlx(element, settings);
-    });
+    }
   }
 }
 
