@@ -3,46 +3,62 @@
 [![NPM version](http://img.shields.io/npm/v/parlx.js.svg?style=flat-square)](https://www.npmjs.com/package/parlx.js)
 [![NPM downloads](http://img.shields.io/npm/dm/parlx.js.svg?style=flat-square)](https://www.npmjs.com/package/parlx.js)
 
-## Demo
-**[See plugin in action](https://jb1905.github.io/parlx.js/)**
+## About
 
-## React plugin
-If you use React, install component, with the implementation of the parlx.js library!
+### Demo
+**[See plugin in action](https://jb1905.github.io/universal-tilt.js/)**
+
+### React plugin
+If you use React, install component with the implementation of the parlx.js library!
 **[More here](https://github.com/JB1905/react-parlx/)**
 
 ## How to Install
-At the beginning install the library in your project via npm or Yarn:
-```sh
+At the beginning install the library in your project via npm:
+```bash
 $ npm install parlx.js
+```
+
+Or Yarn:
+```bash
 $ yarn add parlx.js
 ```
 
 ## Getting Started
-**Connect using script tag in HTML:**
+**Connect libary with project using script tag in HTML:**
 ```html
-<script src="/directory/to/library/folder/parlx.js"></script>
+<script src="/path/to/parlx.js"></script>
 ```
 
-**Or CommonJS/ES6 import:**
+**ES6 import:**
 ```js
-const Parlx = require('parlx.js'); // CommonJS
-import Parlx from 'parlx.js'; // ES6
+import Parlx from 'parlx.js';
+```
+
+**Or CommonJS:**
+```js
+const Parlx = require('parlx.js');
 ```
 
 Next use library with:
 
 **&bull; Vanilla JavaScript e.g:**
 ```js
-const elems = document.querySelectorAll('.parallax');
+const els = document.querySelectorAll('.parallax');
 
 // v1
-const parlx = new Parlx(elems, {
+const parlx = new Parlx(els, {
   // options...
 });
 
 // v2
-const parlx = Parlx.init(elems, {
-  // options...
+const parlx = Parlx.init({
+  elements: els,
+  settings: {
+    // options...
+  },
+  methods: {
+    // methods...
+  }
 });
 ```
 
@@ -53,7 +69,7 @@ const parlx = Parlx.init(elems, {
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 ```
 
-*or include via command line and CommonJS*
+*Or include via command line and CommonJS*
 ```sh
 $ npm install jquery
 $ yarn add jquery
@@ -64,10 +80,15 @@ $ bower install jquery
 const jQuery = require('jquery');
 ```
 
-*and call plugin on element*
+*And call plugin on element*
 ```js
 $('.parallax').parlx({
-  // options...
+  settings: {
+    // options...
+  },
+  methods: {
+    // methods...
+  }
 });
 ```
 
@@ -81,21 +102,26 @@ To use it, add `data-parlx` to html element e.g:
 ## Methods
 **&bull; Destroy method**
 ```js
-elems.parlx.destroy();
+els.parlx.destroy();
 ```
 
 ## Options
+### Settings
 Name | Type | Default | Description | Available options
 -|-|-|-|-
 **direction** | string | `vertical` | Parallax element move direction | `vertical`, `horizontal`, `diagonal`
-**type** | string | `background` | Type of parallax | `foreground` (div move), `background` (content move)
-**speed** | number | `0.3` | Parallax speed | values >= `-1` and <= `1`
-**height** | string | `400px` | Height of parallax effect container | e.g: `500px`, `70vh`, `auto`
 **exclude** | RegExp | `null` | Disable parallax effect on selected user agents | e.g: <code>/(Mozilla&#124;iPad)/</code>
-**onInit** | function | `null` | Callback on plugin init | `el => { // code }`
-**onScroll** | function | `null` | Callback on window scroll | `el => { // code }`
-**onResize** | function | `null` | Callback on window resize | `el => { // code }`
-**onDestroy** | function | `null` | Callback on plugin destroy | `el => { // code }`
+**height** | string | `400px` | Height of parallax element container | e.g: `500px`, `70vh`, `auto`
+**speed** | number | `0.3` | Parallax speed | values >= `-1` and <= `1`
+**type** | string | `background` | Type of parallax | `foreground` (div move), `background` (content move)
+
+### Methods
+Name | Description | Available options
+-|-|-
+**onInit** | Callback on plugin init | `el => { // code }`
+**onDestroy** | Callback on plugin destroy | `el => { // code }`
+**onResize** | Callback on window resize | `el => { // code }`
+**onScroll** | Callback on window scroll | `el => { // code }`
 
 ## Event
 `parlxMove` event will output current position of the parallax element

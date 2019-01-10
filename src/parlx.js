@@ -1,10 +1,12 @@
 export default class Parlx {
-  constructor(element, settings = {}) {
+  constructor(element, methods = {}, settings = {}) {
     this.element = element;
+    this.methods = methods;
+
     this.settings = this.extendSettings(settings);
 
-    if (typeof this.settings.onInit === 'function') {
-      this.settings.onInit(this.element);
+    if (typeof this.methods.onInit === 'function') {
+      this.methods.onInit(this.element);
     }
 
     this.parallaxEffect();
@@ -22,8 +24,8 @@ export default class Parlx {
   }
 
   destroy() {
-    if (typeof this.settings.onDestroy === 'function') {
-      this.settings.onDestroy(this.element);
+    if (typeof this.methods.onDestroy === 'function') {
+      this.methods.onDestroy(this.element);
     }
 
     this.removeEventListeners();
@@ -37,8 +39,8 @@ export default class Parlx {
     if (this.element) {
       this.parallaxEffect();
 
-      if (typeof this.settings.onScroll === 'function') {
-        this.settings.onScroll(this.element);
+      if (typeof this.methods.onScroll === 'function') {
+        this.methods.onScroll(this.element);
       }
     }
   };
@@ -47,8 +49,8 @@ export default class Parlx {
     if (this.element) {
       this.parallaxEffect();
 
-      if (typeof this.settings.onResize === 'function') {
-        this.settings.onResize(this.element);
+      if (typeof this.methods.onResize === 'function') {
+        this.methods.onResize(this.element);
       }
     }
   };
@@ -114,15 +116,10 @@ export default class Parlx {
   extendSettings(settings) {
     const defaultSettings = {
       direction: 'vertical', // parallax element move direction
-      type: 'background', // type of parallax: foreground (div move), background (inner image move)
-      speed: 0.3, // parallax speed (min: -1, max: 1)
-      height: '400px', // parallax element height
       exclude: null, // enable/disable parallax effect on selected user agents
-
-      onInit: null, // callback on plugin init
-      onScroll: null, // callback on window scroll
-      onResize: null, // callback on window resize
-      onDestroy: null // callback on plugin destroy
+      height: '400px', // parallax element height
+      speed: 0.3, // parallax speed (min: -1, max: 1)
+      type: 'background' // type of parallax: foreground (div move), background (inner image move)
     };
 
     const newSettings = {};
@@ -145,13 +142,17 @@ export default class Parlx {
     return newSettings;
   }
 
-  static init(elements, settings) {
+  static init(data = {}) {
+    let { elements, methods, settings } = data;
+
     if (elements instanceof Node) elements = [elements];
-    if (elements instanceof NodeList) elements = [].slice.call(elements);
-    if (!(elements instanceof Array)) return;
+    else if (elements instanceof NodeList) elements = [].slice.call(elements);
+    else if (!(elements instanceof Array)) return;
 
     for (const element of elements) {
-      if (!('parlx' in element)) element.parlx = new Parlx(element, settings);
+      if (!('parlx' in element)) {
+        element.parlx = new Parlx(element, methods, settings);
+      }
     }
   }
 }
@@ -164,11 +165,13 @@ else if (typeof global !== 'undefined') scope = global;
 if (typeof document !== 'undefined') {
   scope.Parlx = Parlx;
 
-  Parlx.init(document.querySelectorAll('[data-parlx]'));
+  Parlx.init({ elements: document.querySelectorAll('[data-parlx]') });
 }
 
 if (scope && scope.jQuery) {
   const $ = scope.jQuery;
 
-  $.fn.parlx = (elements, options) => Parlx.init(elements, options);
+  $.fn.parlx = (elements, { settings, methods }) => {
+    Parlx.init({ elements, settings, methods });
+  };
 }

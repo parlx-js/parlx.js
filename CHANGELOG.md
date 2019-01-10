@@ -4,9 +4,19 @@
 #### Bug Fix
 - fully fix bug with image scaling
 - improve scrolling behavior smooth
+- fix error when library isn't included via npm
 
 #### Repository Changes
 - add tests
+
+## 2.0.0 beta 2 (Soon)
+#### Breaking Changes
+- splitted `options` prop into `settings` and `methods`
+
+#### Repository Changes
+- updated npm scripts
+- cleaned up Webpack config
+- removed unused dependencies
 
 ## 2.0.0 beta 1 (2018-12-10)
 #### New Feature
