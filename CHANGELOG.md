@@ -1,10 +1,21 @@
 # parlx.js Changelog
 
+## 2.0.0 beta 3 (Soon)
+#### Bug Fix
+- auto init is active only if element with `data-parlx` exists
+
+#### Improvement
+- create `.parlx-children` if not exists
+
+#### Change
+- reenabled auto init
+- reenabled jQuery support
+
 ## 2.0.0 beta 2 (2019-01-17)
 #### Breaking Changes
 - splitted `options` prop into `settings` and `methods`
 
-#### Temporary Changes (Will be reverted in the next betas)
+#### Temporary Changes (reverted in 2.0.0 beta 3)
 - disabled auto init
 - disabled jQuery support
 
@@ -94,12 +105,12 @@
 - renamed type option values (`back` to `background` and `front` to `foreground`)
 
 #### New Feature
-- added autoinit
+- added auto init
 - added parlxMove event
 
 #### Bug Fix
 - fixed parallax background size bug
-- fixed bug with autoinit in Node.js
+- fixed bug with auto init in Node.js
 - fixed bug with jQuery and Node.js compatibility
 
 ## 1.1.0 beta 3 (2018-03-30)
