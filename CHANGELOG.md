@@ -13,6 +13,10 @@
 - cleaned up Webpack config
 - removed unused dependencies
 
+#### Bug Fix
+- fixed `window is not defined`
+- fixed `global` error (CDN)
+
 ## 2.0.0 beta 1 (2018-12-10)
 #### New Feature
 - added destroy method
