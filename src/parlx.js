@@ -147,8 +147,7 @@ export default class Parlx {
     let { elements, methods, settings } = data;
 
     if (elements instanceof Node) elements = [elements];
-    else if (elements instanceof NodeList) elements = [].slice.call(elements);
-    else if (!(elements instanceof Array)) return;
+    if (elements instanceof NodeList) elements = [].slice.call(elements);
 
     for (const element of elements) {
       if (!('parlx' in element)) {
@@ -158,21 +157,18 @@ export default class Parlx {
   }
 }
 
-let scope;
-
-if (typeof window !== 'undefined') scope = window;
-else if (typeof global !== 'undefined') scope = global;
-
 if (typeof document !== 'undefined') {
-  scope.Parlx = Parlx;
+  window.Parlx = Parlx;
 
-  Parlx.init({ elements: document.querySelectorAll('[data-parlx]') });
+  const elements = document.querySelectorAll('[data-parlx]');
+
+  elements.length && Parlx.init({ elements });
 }
 
-if (scope && scope.jQuery) {
-  const $ = scope.jQuery;
+if (window.jQuery) {
+  const $ = window.jQuery;
 
-  $.fn.parlx = (elements, { settings, methods }) => {
-    Parlx.init({ elements, settings, methods });
+  $.fn.parlx = function({ settings = {}, methods = {} }) {
+    Parlx.init({ elements: this, settings, methods });
   };
 }

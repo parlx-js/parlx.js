@@ -1,5 +1,10 @@
 # parlx.js Changelog
 
+## 2.0.0 beta 3 (Soon)
+#### Change
+- reenabled auto init
+- reenabled jQuery support
+
 ## 2.0.0 beta 2 (2019-01-17)
 #### Breaking Changes
 - splitted `options` prop into `settings` and `methods`
