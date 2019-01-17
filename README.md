@@ -23,6 +23,11 @@ Or Yarn:
 $ yarn add parlx.js
 ```
 
+**You can also connect script via one of CDNs:**
+bundle.run: `https://bundle.run/parlx.js`
+jsDelivr: `https://cdn.jsdelivr.net/npm/parlx.js/`
+unpkg: `https://unpkg.com/parlx.js/`
+
 ## Getting Started
 **Connect libary with project using script tag in HTML:**
 ```html
