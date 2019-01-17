@@ -168,7 +168,11 @@ if (typeof document !== 'undefined') {
 if (window.jQuery) {
   const $ = window.jQuery;
 
-  $.fn.parlx = function({ settings = {}, methods = {} }) {
-    Parlx.init({ elements: this, settings, methods });
+  $.fn.parlx = function(data = {}) {
+    Parlx.init({
+      elements: this,
+      settings: data.settings || {},
+      methods: data.methods || {}
+    });
   };
 }
