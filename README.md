@@ -6,7 +6,7 @@
 ## About
 
 ### Demo
-**[See plugin in action](https://jb1905.github.io/universal-tilt.js/)**
+**[See plugin in action](https://jb1905.github.io/parlx.js/)**
 
 ### React plugin
 If you use React, install component with the implementation of the parlx.js library!
@@ -43,16 +43,16 @@ Next use library with:
 
 **&bull; Vanilla JavaScript e.g:**
 ```js
-const els = document.querySelectorAll('.parallax');
+const elems = document.querySelectorAll('.parallax');
 
 // v1
-const parlx = new Parlx(els, {
+const parlx = new Parlx(elems, {
   // options...
 });
 
 // v2
 const parlx = Parlx.init({
-  elements: els,
+  elements: elems,
   settings: {
     // options...
   },
@@ -64,6 +64,7 @@ const parlx = Parlx.init({
 
 **&bull; or jQuery e.g:**
 
+##### Not available in v2 beta. Function will be enabled in next betas.
 *Connect jQuery in HTML*
 ```html
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
@@ -102,7 +103,7 @@ To use it, add `data-parlx` to html element e.g:
 ## Methods
 **&bull; Destroy method**
 ```js
-els.parlx.destroy();
+elems.parlx.destroy();
 ```
 
 ## Options

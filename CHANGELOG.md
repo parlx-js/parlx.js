@@ -1,17 +1,12 @@
 # parlx.js Changelog
 
-## Next
-#### Bug Fix
-- fully fix bug with image scaling
-- improve scrolling behavior smooth
-- fix error when library isn't included via npm
-
-#### Repository Changes
-- add tests
-
-## 2.0.0 beta 2 (Soon)
+## 2.0.0 beta 2 (2019-01-17)
 #### Breaking Changes
 - splitted `options` prop into `settings` and `methods`
+
+#### Temporary Changes (Will be reverted in the next betas)
+- disabled auto init
+- disabled jQuery support
 
 #### Repository Changes
 - updated npm scripts

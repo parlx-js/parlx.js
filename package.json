@@ -1,6 +1,6 @@
 {
   "name": "parlx.js",
-  "version": "2.0.0-beta.1",
+  "version": "2.0.0-beta.2",
   "description": "Parallax scroll effect library",
   "author": "Jakub Biesiada",
   "license": "MIT",
@@ -43,7 +43,7 @@
     "babel-plugin-add-module-exports": "^1.0.0",
     "chai": "^4.2.0",
     "eslint": "^5.12.0",
-    "eslint-config-prettier": "^3.3.0",
+    "eslint-config-prettier": "^3.5.0",
     "eslint-plugin-prettier": "^3.0.1",
     "gh-pages": "^2.0.1",
     "jquery": "^3.3.1",

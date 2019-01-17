@@ -129,9 +129,10 @@ export default class Parlx {
         newSettings[property] = settings[property];
       } else if (this.element.getAttribute(`data-${property}`)) {
         const attribute = this.element.getAttribute(`data-${property}`);
+
         try {
           newSettings[property] = JSON.parse(attribute);
-        } catch (err) {
+        } catch {
           newSettings[property] = attribute;
         }
       } else {
