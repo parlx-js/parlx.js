@@ -64,7 +64,6 @@ const parlx = Parlx.init({
 
 **&bull; or jQuery e.g:**
 
-##### Not available in v2 beta. Function will be enabled in next betas.
 *Connect jQuery in HTML*
 ```html
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
