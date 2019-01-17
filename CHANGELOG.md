@@ -1,6 +1,12 @@
 # parlx.js Changelog
 
 ## 2.0.0 beta 3 (Soon)
+#### Bug Fix
+- auto init is active only if element with `data-parlx` exists
+
+#### Improvement
+- create `.parlx-children` if not exists
+
 #### Change
 - reenabled auto init
 - reenabled jQuery support
