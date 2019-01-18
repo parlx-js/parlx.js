@@ -1,16 +1,10 @@
 # parlx.js Changelog
 
-## Next v2
-#### New Feature
-- destroy method
-- new callbacks: `onInit`, `onDestroy`
-
-#### Breaking Changes
-- improve plugin init process
-
+## 1.4.2 (2019-01-19)
 #### Bug Fix
-- fully fix bug with image scaling
-- improve scrolling behavior smooth
+- auto init is active only if element with `data-parlx` exists
+- fixed `window is not defined`
+- fixed `global` error (CDN)
 
 ## 1.4.1 (2018-11-11)
 #### Bug Fix

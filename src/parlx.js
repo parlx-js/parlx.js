@@ -134,16 +134,13 @@ export default class Parlx {
 }
 
 if (typeof document !== 'undefined') {
-  new Parlx(document.querySelectorAll('[data-parlx]'));
+  const elements = document.querySelectorAll('[data-parlx]');
+
+  elements.length && new Parlx(elements);
 }
 
-let scope;
-
-if (typeof window !== 'undefined') scope = window;
-else if (typeof global !== 'undefined') scope = global;
-
-if (scope && scope.jQuery) {
-  const $ = scope.jQuery;
+if (window.jQuery) {
+  const $ = window.jQuery;
 
   $.fn.parlx = function(options) {
     new Parlx(this, options);
