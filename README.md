@@ -23,9 +23,9 @@ Or Yarn:
 $ yarn add parlx.js
 ```
 
-**You can also connect script via one of CDNs:**
-bundle.run: `https://bundle.run/parlx.js`
-jsDelivr: `https://cdn.jsdelivr.net/npm/parlx.js/`
+**You can also connect script via one of CDNs:**<br>
+bundle.run: `https://bundle.run/parlx.js`<br>
+jsDelivr: `https://cdn.jsdelivr.net/npm/parlx.js/`<br>
 unpkg: `https://unpkg.com/parlx.js/`
 
 ## Getting Started
