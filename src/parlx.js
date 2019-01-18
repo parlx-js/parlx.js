@@ -79,6 +79,13 @@ export default class Parlx {
         transform: this.transform
       });
     } else if (this.settings.type === 'background') {
+      if (!this.element.querySelector('.parlx-children')) {
+        const child = document.createElement('div');
+        child.classList.add('parlx-children');
+
+        this.element.appendChild(child);
+      }
+
       Object.assign(this.element.querySelector('.parlx-children').style, {
         transform: this.transform,
         'object-fit': 'cover',
