@@ -1,6 +1,5 @@
-import { assert } from 'chai';
 import $ from 'jquery';
 
-import Parlx from '../lib/parlx';
+import Parlx from '../src/parlx';
 
 global.window = {};
