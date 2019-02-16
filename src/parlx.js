@@ -1,12 +1,12 @@
 export default class Parlx {
-  constructor(element, methods = {}, settings = {}) {
+  constructor(element, settings = {}, callbacks = {}) {
     this.element = element;
-    this.methods = methods;
+    this.callbacks = callbacks;
 
     this.settings = this.extendSettings(settings);
 
-    if (typeof this.methods.onInit === 'function') {
-      this.methods.onInit(this.element);
+    if (typeof this.callbacks.onInit === 'function') {
+      this.callbacks.onInit(this.element);
     }
 
     this.parallaxEffect();
@@ -24,8 +24,8 @@ export default class Parlx {
   }
 
   destroy() {
-    if (typeof this.methods.onDestroy === 'function') {
-      this.methods.onDestroy(this.element);
+    if (typeof this.callbacks.onDestroy === 'function') {
+      this.callbacks.onDestroy(this.element);
     }
 
     this.removeEventListeners();
@@ -39,8 +39,8 @@ export default class Parlx {
     if (this.element) {
       this.parallaxEffect();
 
-      if (typeof this.methods.onScroll === 'function') {
-        this.methods.onScroll(this.element);
+      if (typeof this.callbacks.onScroll === 'function') {
+        this.callbacks.onScroll(this.element);
       }
     }
   };
@@ -49,8 +49,8 @@ export default class Parlx {
     if (this.element) {
       this.parallaxEffect();
 
-      if (typeof this.methods.onResize === 'function') {
-        this.methods.onResize(this.element);
+      if (typeof this.callbacks.onResize === 'function') {
+        this.callbacks.onResize(this.element);
       }
     }
   };
@@ -151,14 +151,14 @@ export default class Parlx {
   }
 
   static init(data = {}) {
-    let { elements, methods, settings } = data;
+    let { elements, settings, callbacks } = data;
 
     if (elements instanceof Node) elements = [elements];
     if (elements instanceof NodeList) elements = [].slice.call(elements);
 
     for (const element of elements) {
       if (!('parlx' in element)) {
-        element.parlx = new Parlx(element, methods, settings);
+        element.parlx = new Parlx(element, settings, callbacks);
       }
     }
   }
@@ -179,7 +179,7 @@ if (window.jQuery) {
     Parlx.init({
       elements: this,
       settings: data.settings || {},
-      methods: data.methods || {}
+      callbacks: data.callbacks || {}
     });
   };
 }

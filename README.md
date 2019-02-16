@@ -61,8 +61,8 @@ const parlx = Parlx.init({
   settings: {
     // options...
   },
-  methods: {
-    // methods...
+  callbacks: {
+    // callbacks...
   }
 });
 ```
@@ -91,8 +91,8 @@ $('.parallax').parlx({
   settings: {
     // options...
   },
-  methods: {
-    // methods...
+  callbacks: {
+    // callbacks...
   }
 });
 ```
@@ -120,13 +120,13 @@ Name | Type | Default | Description | Available options
 **speed** | number | `0.3` | Parallax speed | values >= `-1` and <= `1`
 **type** | string | `background` | Type of parallax | `foreground` (div move), `background` (content move)
 
-### Methods
+### Callbacks
 Name | Description | Available options
 -|-|-
-**onInit** | Callback on plugin init | `el => { // code }`
-**onDestroy** | Callback on plugin destroy | `el => { // code }`
-**onResize** | Callback on window resize | `el => { // code }`
-**onScroll** | Callback on window scroll | `el => { // code }`
+**onInit** | Callback on plugin init | `el => { /* code */ }`
+**onDestroy** | Callback on plugin destroy | `el => { /* code */ }`
+**onResize** | Callback on window resize | `el => { /* code */ }`
+**onScroll** | Callback on window scroll | `el => { /* code */ }`
 
 ## Event
 `parlxMove` event will output current position of the parallax element
