@@ -1,6 +1,6 @@
 {
   "name": "parlx.js",
-  "version": "2.0.0-beta.3",
+  "version": "2.0.0",
   "description": "Parallax scroll effect library",
   "author": "Jakub Biesiada",
   "license": "MIT",
