@@ -1,46 +1,59 @@
 export default class Parlx {
-  constructor(elements, settings = {}) {
-    if (elements.length > 0) {
-      this.init(elements, settings);
-      return;
-    } else if (elements.length === 0) {
-      return;
-    } else {
-      this.element = elements;
-    }
+  constructor(element, settings = {}, callbacks = {}) {
+    this.element = element;
+    this.callbacks = callbacks;
 
-    this.settings = this.settings(settings);
+    this.settings = this.extendSettings(settings);
+
+    if (typeof this.callbacks.onInit === 'function') {
+      this.callbacks.onInit(this.element);
+    }
 
     this.parallaxEffect();
     this.addEventListeners();
   }
 
-  init(elements, settings) {
-    for (const element of elements) {
-      this.parlx = new Parlx(element, settings);
-    }
-  }
-
   addEventListeners() {
-    window.addEventListener('scroll', () => this.onWindowScroll());
-    window.addEventListener('resize', () => this.onWindowResize());
+    window.addEventListener('scroll', this.onWindowScroll);
+    window.addEventListener('resize', this.onWindowResize);
   }
 
-  onWindowScroll() {
-    this.parallaxEffect();
+  removeEventListeners() {
+    window.removeEventListener('scroll', this.onWindowScroll);
+    window.removeEventListener('resize', this.onWindowResize);
+  }
 
-    if (typeof this.settings.onScroll === 'function') {
-      this.settings.onScroll(this.element);
+  destroy() {
+    if (typeof this.callbacks.onDestroy === 'function') {
+      this.callbacks.onDestroy(this.element);
     }
+
+    this.removeEventListeners();
+    this.element.parlx = null;
+    delete this.element.parlx;
+
+    this.element = null;
   }
 
-  onWindowResize() {
-    this.parallaxEffect();
+  onWindowScroll = () => {
+    if (this.element) {
+      this.parallaxEffect();
 
-    if (typeof this.settings.onResize === 'function') {
-      this.settings.onResize(this.element);
+      if (typeof this.callbacks.onScroll === 'function') {
+        this.callbacks.onScroll(this.element);
+      }
     }
-  }
+  };
+
+  onWindowResize = () => {
+    if (this.element) {
+      this.parallaxEffect();
+
+      if (typeof this.callbacks.onResize === 'function') {
+        this.callbacks.onResize(this.element);
+      }
+    }
+  };
 
   transforms() {
     let moveX, moveY;
@@ -79,6 +92,13 @@ export default class Parlx {
         transform: this.transform
       });
     } else if (this.settings.type === 'background') {
+      if (!this.element.querySelector('.parlx-children')) {
+        const child = document.createElement('div');
+        child.classList.add('parlx-children');
+
+        this.element.appendChild(child);
+      }
+
       Object.assign(this.element.querySelector('.parlx-children').style, {
         transform: this.transform,
         'object-fit': 'cover',
@@ -100,52 +120,66 @@ export default class Parlx {
     );
   }
 
-  settings(settings) {
-    const defaults = {
+  extendSettings(settings) {
+    const defaultSettings = {
       direction: 'vertical', // parallax element move direction
-      type: 'background', // type of parallax: foreground (div move), background (inner image move)
-      speed: 0.3, // parallax speed (min: -1, max: 1)
-      height: '400px', // parallax element height
       exclude: null, // enable/disable parallax effect on selected user agents
-
-      onScroll: null, // callback on window scroll
-      onResize: null // callback on window resize
+      height: '400px', // parallax element height
+      speed: 0.3, // parallax speed (min: -1, max: 1)
+      type: 'background' // type of parallax: foreground (div move), background (inner image move)
     };
 
-    const custom = {};
+    const newSettings = {};
 
-    for (const setting in defaults) {
-      if (setting in settings) {
-        custom[setting] = settings[setting];
-      } else if (this.element.getAttribute(`data-${setting}`)) {
-        const attribute = this.element.getAttribute(`data-${setting}`);
+    for (const property in defaultSettings) {
+      if (property in settings) {
+        newSettings[property] = settings[property];
+      } else if (this.element.getAttribute(`data-${property}`)) {
+        const attribute = this.element.getAttribute(`data-${property}`);
+
         try {
-          custom[setting] = JSON.parse(attribute);
-        } catch (err) {
-          custom[setting] = attribute;
+          newSettings[property] = JSON.parse(attribute);
+        } catch {
+          newSettings[property] = attribute;
         }
       } else {
-        custom[setting] = defaults[setting];
+        newSettings[property] = defaultSettings[property];
       }
     }
 
-    return custom;
+    return newSettings;
+  }
+
+  static init(data = {}) {
+    let { elements, settings, callbacks } = data;
+
+    if (elements instanceof Node) elements = [elements];
+    if (elements instanceof NodeList) elements = [].slice.call(elements);
+
+    for (const element of elements) {
+      if (!('parlx' in element)) {
+        element.parlx = new Parlx(element, settings, callbacks);
+      }
+    }
   }
 }
 
 if (typeof document !== 'undefined') {
-  new Parlx(document.querySelectorAll('[data-parlx]'));
+  window.Parlx = Parlx;
+
+  const elements = document.querySelectorAll('[data-parlx]');
+
+  elements.length && Parlx.init({ elements });
 }
 
-let scope;
+if (window.jQuery) {
+  const $ = window.jQuery;
 
-if (typeof window !== 'undefined') scope = window;
-else if (typeof global !== 'undefined') scope = global;
-
-if (scope && scope.jQuery) {
-  const $ = scope.jQuery;
-
-  $.fn.parlx = function(options) {
-    new Parlx(this, options);
+  $.fn.parlx = function(data = {}) {
+    Parlx.init({
+      elements: this,
+      settings: data.settings || {},
+      callbacks: data.callbacks || {}
+    });
   };
 }
