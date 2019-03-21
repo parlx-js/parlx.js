@@ -13,7 +13,7 @@ If you use React, install component with the implementation of the parlx.js libr
 **[More here](https://github.com/JB1905/react-parlx/)**
 
 ## How to Install
-At the beginning install the library in your project via npm:
+First, install the library in your project by npm:
 ```bash
 $ npm install parlx.js
 ```
