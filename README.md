@@ -50,12 +50,6 @@ Next use library with:
 ```js
 const elems = document.querySelectorAll('.parallax');
 
-// v1
-const parlx = new Parlx(elems, {
-  // options...
-});
-
-// v2
 const parlx = Parlx.init({
   elements: elems,
   settings: {
