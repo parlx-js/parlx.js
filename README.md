@@ -43,7 +43,7 @@ const parlx = new Parlx(elems, {
 
 *Connect jQuery in HTML*
 ```html
-<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.4.0.min.js"></script>
 ```
 
 *or include via command line and CommonJS*
