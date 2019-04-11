@@ -62,7 +62,7 @@ export default class Parlx {
   parallaxEffect() {
     this.element.style.height = this.settings.height;
 
-    const scrolled = this.element.getBoundingClientRect().y;
+    const scrolled = this.element.getBoundingClientRect().top;
 
     if (Math.abs(this.settings.speed) > 1) this.settings.speed = 0.3;
 

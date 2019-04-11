@@ -1,5 +1,10 @@
 # parlx.js Changelog
 
+## 1.4.3 (2019-04-11)
+#### Bug Fix
+- fixed a problem with incorrect scrolling behavior in the Edge browser
+- fixed CDN undefined bug
+
 ## 1.4.2 (2019-01-19)
 #### Bug Fix
 - auto init is active only if element with `data-parlx` exists

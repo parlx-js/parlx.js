@@ -16,7 +16,7 @@ if (env === 'build') {
 
 const config = {
   mode,
-  entry: `${__dirname}/src/${libraryName}.js`,
+  entry: `${__dirname}/src/index.js`,
   devtool,
   output: {
     path: `${__dirname}/lib`,
