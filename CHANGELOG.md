@@ -1,5 +1,12 @@
 # parlx.js Changelog
 
+## 1.4.4 (2019-04-11)
+#### Repository Changes
+- removed unused devDependencies
+
+#### Documentation
+- updated README.md
+
 ## 1.4.3 (2019-04-11)
 #### Bug Fix
 - fixed a problem with incorrect scrolling behavior in the Edge browser
