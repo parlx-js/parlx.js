@@ -2,6 +2,10 @@
 
 ### [CHANGELOG.md for v1 here](https://github.com/JB1905/parlx.js/blob/v1/CHANGELOG.md)
 
+## 2.0.4 (2019-04-11)
+#### Bug Fix
+- fixed a problem with incorrect scrolling behavior in the Edge browser
+
 ## 2.0.1 / 2.0.2 / 2.0.3 (2019-03-21)
 #### Bug Fix
 - fixed CDN undefined bug
