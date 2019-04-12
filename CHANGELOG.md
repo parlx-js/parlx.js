@@ -1,6 +1,6 @@
 # parlx.js Changelog
 
-## 1.4.4 (2019-04-11)
+## 1.4.4 / 1.4.5 (2019-04-11)
 #### Repository Changes
 - removed unused devDependencies
 
