@@ -1,17 +1,17 @@
 {
-  "main.css": "./static/css/main.637c2d0a.chunk.css",
-  "main.js": "./static/js/main.4875f1ce.chunk.js",
+  "main.css": "./static/css/main.5c08607c.chunk.css",
+  "main.js": "./static/js/main.f85e8bba.chunk.js",
   "runtime~main.js": "./static/js/runtime~main.d653cc00.js",
-  "static/js/2.bca9d527.chunk.js": "./static/js/2.bca9d527.chunk.js",
+  "static/js/2.18857e03.chunk.js": "./static/js/2.18857e03.chunk.js",
   "index.html": "./index.html",
-  "precache-manifest.256593914b01cfc797290291640978f4.js": "./precache-manifest.256593914b01cfc797290291640978f4.js",
+  "precache-manifest.cb5264c0e4274d26394c73b02f4b40b8.js": "./precache-manifest.cb5264c0e4274d26394c73b02f4b40b8.js",
   "service-worker.js": "./service-worker.js",
-  "static/media/architecture.jpg": "./static/media/architecture.b36df432.jpg",
-  "static/media/einkorn.jpg": "./static/media/einkorn.04a5b225.jpg",
+  "static/media/architecture.jpg": "./static/media/architecture.0e1e5651.jpg",
+  "static/media/einkorn.jpg": "./static/media/einkorn.7c457667.jpg",
   "static/media/india.jpg": "./static/media/india.e3f95e5c.jpg",
-  "static/media/italy.jpg": "./static/media/italy.7bb3866e.jpg",
-  "static/media/mountains.jpg": "./static/media/mountains.29519995.jpg",
+  "static/media/italy.jpg": "./static/media/italy.f4497a48.jpg",
+  "static/media/mountains.jpg": "./static/media/mountains.9fe55de8.jpg",
   "static/media/night.mp4": "./static/media/night.faa05dc1.mp4",
-  "static/media/san-francisco.jpg": "./static/media/san-francisco.61b42bff.jpg",
-  "static/media/satellite.jpg": "./static/media/satellite.1b7f80ab.jpg"
+  "static/media/san-francisco.jpg": "./static/media/san-francisco.a7f660c3.jpg",
+  "static/media/satellite.jpg": "./static/media/satellite.0eb07be7.jpg"
 }
