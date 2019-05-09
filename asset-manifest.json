@@ -1,11 +1,11 @@
 {
   "files": {
     "main.css": "./static/css/main.554190af.chunk.css",
-    "main.js": "./static/js/main.fe2c3826.chunk.js",
+    "main.js": "./static/js/main.1f93685a.chunk.js",
     "runtime~main.js": "./static/js/runtime~main.d653cc00.js",
-    "static/js/2.18857e03.chunk.js": "./static/js/2.18857e03.chunk.js",
+    "static/js/2.93ea02cb.chunk.js": "./static/js/2.93ea02cb.chunk.js",
     "index.html": "./index.html",
-    "precache-manifest.102fdfb24487a42a508c9c9488c146ea.js": "./precache-manifest.102fdfb24487a42a508c9c9488c146ea.js",
+    "precache-manifest.06811d9860a4f1204bc6dc08d56f101b.js": "./precache-manifest.06811d9860a4f1204bc6dc08d56f101b.js",
     "service-worker.js": "./service-worker.js",
     "static/media/architecture.jpg": "./static/media/architecture.43041bb3.jpg",
     "static/media/einkorn.jpg": "./static/media/einkorn.52dfc0a6.jpg",
