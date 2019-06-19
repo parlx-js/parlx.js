@@ -1,3 +1,5 @@
+import platform from 'platform';
+
 export default class Parlx {
   constructor(element, settings = {}, callbacks = {}) {
     this.element = element;
@@ -81,7 +83,10 @@ export default class Parlx {
 
     this.movement = (this.settings.speed * scrolled) / 2;
 
-    if (navigator.userAgent.match(this.settings.exclude)) {
+    if (
+      platform.name.match(this.settings.exclude) ||
+      platform.product?.match(this.settings.exclude)
+    ) {
       this.settings.speed = 0;
     }
 
@@ -158,7 +163,7 @@ export default class Parlx {
 
     for (const element of elements) {
       if (!('parlx' in element)) {
-        element.parlx = new Parlx(element, settings, callbacks);
+        return (element.parlx = new Parlx(element, settings, callbacks));
       }
     }
   }
@@ -169,14 +174,14 @@ if (typeof document !== 'undefined') {
 
   const elements = document.querySelectorAll('[data-parlx]');
 
-  elements.length && Parlx.init({ elements });
+  if (elements.length) Parlx.init({ elements });
 }
 
 if (window.jQuery) {
   const $ = window.jQuery;
 
   $.fn.parlx = function(data = {}) {
-    Parlx.init({
+    return Parlx.init({
       elements: this,
       settings: data.settings || {},
       callbacks: data.callbacks || {}
