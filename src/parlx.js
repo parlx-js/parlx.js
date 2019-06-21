@@ -77,11 +77,27 @@ export default class Parlx {
   parallaxEffect() {
     this.element.style.height = this.settings.height;
 
-    const scrolled = this.element.getBoundingClientRect().top;
+    if (this.settings.axis.toLowerCase() === 'y') {
+      if (
+        this.settings.base.pageYOffset >= 0 &&
+        this.settings.base.pageYOffset + this.settings.base.innerHeight <=
+          document.documentElement.scrollHeight
+      ) {
+        this.scrolled = this.element.getBoundingClientRect().top;
+      }
+    } else if (this.settings.axis.toLowerCase() === 'x') {
+      if (
+        this.settings.base.pageXOffset >= 0 &&
+        this.settings.base.pageXOffset + this.settings.base.innerWidth <=
+          document.documentElement.scrollWidth
+      ) {
+        this.scrolled = this.element.getBoundingClientRect().left;
+      }
+    }
 
     if (Math.abs(this.settings.speed) > 1) this.settings.speed = 0.3;
 
-    this.movement = (this.settings.speed * scrolled) / 2;
+    this.movement = (this.settings.speed * this.scrolled) / 2;
 
     if (
       platform.name.match(this.settings.exclude) ||
@@ -106,8 +122,8 @@ export default class Parlx {
 
       Object.assign(this.element.querySelector('.parlx-children').style, {
         transform: this.transform,
-        'object-fit': 'cover',
-        'min-width': `${this.element.offsetWidth *
+        objectFit: 'cover',
+        minWidth: `${this.element.offsetWidth *
           (1 + Math.abs(this.settings.speed) * 2)}px`,
         height: `${this.element.offsetHeight *
           (1 + Math.abs(this.settings.speed) * 2)}px`
@@ -127,6 +143,8 @@ export default class Parlx {
 
   extendSettings(settings) {
     const defaultSettings = {
+      axis: 'Y', // get scroll values from X or Y axis
+      base: window, // get scroll position from this element
       direction: 'vertical', // parallax element move direction
       exclude: null, // enable/disable parallax effect on selected user agents
       height: '400px', // parallax element height
