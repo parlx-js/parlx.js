@@ -16,12 +16,12 @@ export default class Parlx {
   }
 
   addEventListeners() {
-    window.addEventListener('scroll', this.onWindowScroll);
+    this.settings.base.addEventListener('scroll', this.onWindowScroll);
     window.addEventListener('resize', this.onWindowResize);
   }
 
   removeEventListeners() {
-    window.removeEventListener('scroll', this.onWindowScroll);
+    this.settings.base.removeEventListener('scroll', this.onWindowScroll);
     window.removeEventListener('resize', this.onWindowResize);
   }
 
@@ -79,17 +79,25 @@ export default class Parlx {
 
     if (this.settings.axis.toLowerCase() === 'y') {
       if (
-        this.settings.base.pageYOffset >= 0 &&
-        this.settings.base.pageYOffset + this.settings.base.innerHeight <=
-          document.documentElement.scrollHeight
+        this.settings.base === window
+          ? this.settings.base.pageYOffset >= 0 &&
+            this.settings.base.pageYOffset + this.settings.base.innerHeight <=
+              document.documentElement.scrollHeight
+          : this.settings.base.scrollTop >= 0 &&
+            this.settings.base.scrollTop + this.settings.base.offsetHeight >=
+              document.documentElement.scrollHeight
       ) {
         this.scrolled = this.element.getBoundingClientRect().top;
       }
     } else if (this.settings.axis.toLowerCase() === 'x') {
       if (
-        this.settings.base.pageXOffset >= 0 &&
-        this.settings.base.pageXOffset + this.settings.base.innerWidth <=
-          document.documentElement.scrollWidth
+        this.settings.base === window
+          ? this.settings.base.pageXOffset >= 0 &&
+            this.settings.base.pageXOffset + this.settings.base.innerWidth <=
+              document.documentElement.scrollWidth
+          : this.settings.base.scrollLeft >= 0 &&
+            this.settings.base.scrollLeft + this.settings.base.offsetWidth >=
+              document.documentElement.scrollWidth
       ) {
         this.scrolled = this.element.getBoundingClientRect().left;
       }

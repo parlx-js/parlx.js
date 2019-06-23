@@ -14,12 +14,12 @@ If you use React, install component with the implementation of the parlx.js libr
 
 ## How to Install
 First, install the library in your project by npm:
-```bash
+```sh
 $ npm install parlx.js
 ```
 
 Or Yarn:
-```bash
+```sh
 $ yarn add parlx.js
 ```
 
@@ -108,8 +108,10 @@ elems.parlx.destroy();
 ### Settings
 Name | Type | Default | Description | Available options
 -|-|-|-|-
+**axis** | string | `Y` | Observed scroll axis | `X` or `Y`
+**base** | DOM Element | `window` | Observed scroll element | e.g: `document.querySelector("#my-element");`
 **direction** | string | `vertical` | Parallax element move direction | `vertical`, `horizontal`, `diagonal`
-**exclude** | RegExp | `null` | Disable parallax effect on selected user agents | e.g: <code>/(Mozilla&#124;iPad)/</code>
+**exclude** | RegExp | `null` | Disable parallax effect on selected user agents | e.g: <code>/(Firefox&#124;iPad)/</code>
 **height** | string | `400px` | Height of parallax element container | e.g: `500px`, `70vh`, `auto`
 **speed** | number | `0.3` | Parallax speed | values >= `-1` and <= `1`
 **type** | string | `background` | Type of parallax | `foreground` (div move), `background` (content move)
