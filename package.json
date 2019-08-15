@@ -6,7 +6,7 @@
   "license": "MIT",
   "main": "lib/parlx.min.js",
   "scripts": {
-    "release": "npm run prettier && npm run lint && npm run build:dev && npm run build && npm run test",
+    "release": "rimraf lib/* && npm run prettier && npm run lint && npm run build:dev && npm run build && npm run test",
     "build": "webpack --env build",
     "build:dev": "webpack --env dev",
     "test": "jest --coverage",
