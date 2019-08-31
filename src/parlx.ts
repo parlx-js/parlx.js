@@ -1,31 +1,65 @@
-import platform from 'platform';
+import { defaultSettings } from './defaults';
+
+import { Settings, Callbacks, Options } from './types';
+
+import { excludePlatform } from './helpers/exclude-platform';
+
+declare global {
+  interface Window {
+    jQuery: any;
+    Parlx: any;
+  }
+
+  interface HTMLElement {
+    parlx: any;
+  }
+}
 
 export default class Parlx {
-  constructor(element, settings = {}, callbacks = {}) {
-    this.element = element;
-    this.callbacks = callbacks;
+  private element: HTMLElement;
+  private settings: Settings;
+  private callbacks: Callbacks;
 
+  private speed: number;
+  private movement: number;
+  private transform: string;
+  private scrolled: number;
+
+  constructor(
+    element: HTMLElement,
+    settings = {} as Settings,
+    callbacks = {} as Callbacks
+  ) {
+    this.element = element;
     this.settings = this.extendSettings(settings);
+    this.callbacks = callbacks;
 
     if (typeof this.callbacks.onInit === 'function') {
       this.callbacks.onInit(this.element);
     }
 
+    this.speed = this.settings.speed;
+    this.movement = 0;
+    this.transform = '';
+    this.scrolled = 0;
+
     this.parallaxEffect();
     this.addEventListeners();
   }
 
-  addEventListeners() {
+  private addEventListeners() {
     this.settings.base.addEventListener('scroll', this.onWindowScroll);
+
     window.addEventListener('resize', this.onWindowResize);
   }
 
-  removeEventListeners() {
+  private removeEventListeners() {
     this.settings.base.removeEventListener('scroll', this.onWindowScroll);
+
     window.removeEventListener('resize', this.onWindowResize);
   }
 
-  destroy() {
+  public destroy() {
     if (typeof this.callbacks.onDestroy === 'function') {
       this.callbacks.onDestroy(this.element);
     }
@@ -34,10 +68,10 @@ export default class Parlx {
     this.element.parlx = null;
     delete this.element.parlx;
 
-    this.element = null;
+    this.element = null as any;
   }
 
-  onWindowScroll = () => {
+  private onWindowScroll = () => {
     if (this.element) {
       this.parallaxEffect();
 
@@ -47,7 +81,7 @@ export default class Parlx {
     }
   };
 
-  onWindowResize = () => {
+  private onWindowResize = () => {
     if (this.element) {
       this.parallaxEffect();
 
@@ -57,14 +91,15 @@ export default class Parlx {
     }
   };
 
-  transforms() {
-    let moveX, moveY;
+  private transforms() {
+    let moveX = 0;
+    let moveY = 0;
 
     if (this.settings.direction === 'horizontal') {
       moveX = this.movement;
-      moveY = '0';
+      moveY = 0;
     } else if (this.settings.direction === 'vertical') {
-      moveX = '0';
+      moveX = 0;
       moveY = this.movement;
     } else if (this.settings.direction === 'diagonal') {
       moveX = this.movement;
@@ -74,12 +109,12 @@ export default class Parlx {
     this.transform = `translate(${moveX}px, ${moveY}px)`;
   }
 
-  parallaxEffect() {
-    this.element.style.height = this.settings.height;
+  private updateScrolled() {
+    const axis = this.settings.axis.toLowerCase();
 
-    if (this.settings.axis.toLowerCase() === 'y') {
+    if (axis === 'y') {
       if (
-        this.settings.base === window
+        this.settings.base instanceof Window
           ? this.settings.base.pageYOffset >= 0 &&
             this.settings.base.pageYOffset + this.settings.base.innerHeight <=
               document.documentElement.scrollHeight
@@ -89,9 +124,9 @@ export default class Parlx {
       ) {
         this.scrolled = this.element.getBoundingClientRect().top;
       }
-    } else if (this.settings.axis.toLowerCase() === 'x') {
+    } else if (axis === 'x') {
       if (
-        this.settings.base === window
+        this.settings.base instanceof Window
           ? this.settings.base.pageXOffset >= 0 &&
             this.settings.base.pageXOffset + this.settings.base.innerWidth <=
               document.documentElement.scrollWidth
@@ -102,41 +137,55 @@ export default class Parlx {
         this.scrolled = this.element.getBoundingClientRect().left;
       }
     }
+  }
 
-    if (Math.abs(this.settings.speed) > 1) this.settings.speed = 0.3;
-
-    this.movement = (this.settings.speed * this.scrolled) / 2;
-
-    if (
-      platform.name.match(this.settings.exclude) ||
-      platform.product?.match(this.settings.exclude)
-    ) {
-      this.settings.speed = 0;
-    }
-
-    this.transforms();
-
+  private updatePosition() {
     if (this.settings.type === 'foreground') {
       Object.assign(this.element.style, {
         transform: this.transform
       });
     } else if (this.settings.type === 'background') {
-      if (!this.element.querySelector('.parlx-children')) {
-        const child = document.createElement('div');
+      let child: HTMLElement | null = this.element.querySelector(
+        '.parlx-children'
+      );
+
+      if (!child) {
+        child = document.createElement('div');
+
         child.classList.add('parlx-children');
 
         this.element.appendChild(child);
       }
 
-      Object.assign(this.element.querySelector('.parlx-children').style, {
+      const absoluteScaleX = Math.abs(window.innerHeight * this.speed);
+      const absoluteScaleY = Math.abs(window.innerWidth * this.speed);
+
+      Object.assign(child.style, {
+        height: `${this.element.offsetHeight + absoluteScaleX * 2}px`,
+        width: `${this.element.offsetWidth + absoluteScaleY * 2}px`,
         transform: this.transform,
-        objectFit: 'cover',
-        minWidth: `${this.element.offsetWidth *
-          (1 + Math.abs(this.settings.speed) * 2)}px`,
-        height: `${this.element.offsetHeight *
-          (1 + Math.abs(this.settings.speed) * 2)}px`
+        objectFit: 'cover'
       });
     }
+  }
+
+  private parallaxEffect() {
+    this.element.style.height = this.settings.height.toString();
+
+    this.updateScrolled();
+
+    if (Math.abs(this.speed) > 1) {
+      this.speed = 0.3;
+    }
+
+    this.movement = (this.speed * this.scrolled) / 2;
+
+    if (excludePlatform(this.settings.exclude!)) {
+      this.speed = 0;
+    }
+
+    this.transforms();
+    this.updatePosition();
 
     const values = {
       move: this.movement
@@ -149,24 +198,18 @@ export default class Parlx {
     );
   }
 
-  extendSettings(settings) {
-    const defaultSettings = {
-      axis: 'Y', // get scroll values from X or Y axis
-      base: window, // get scroll position from this element
-      direction: 'vertical', // parallax element move direction
-      exclude: null, // enable/disable parallax effect on selected user agents
-      height: '400px', // parallax element height
-      speed: 0.3, // parallax speed (min: -1, max: 1)
-      type: 'background' // type of parallax: foreground (div move), background (inner image move)
-    };
+  private extendSettings(settings: Settings): Settings {
+    const newSettings = {} as any;
 
-    const newSettings = {};
+    let property: keyof Settings;
 
-    for (const property in defaultSettings) {
+    for (property in defaultSettings) {
       if (property in settings) {
         newSettings[property] = settings[property];
-      } else if (this.element.getAttribute(`data-${property}`)) {
-        const attribute = this.element.getAttribute(`data-${property}`);
+      } else if (this.element.getAttribute(`data-parlx-${property}`)) {
+        const attribute = this.element.getAttribute(
+          `data-parlx-${property}`
+        ) as string;
 
         try {
           newSettings[property] = JSON.parse(attribute);
@@ -181,15 +224,20 @@ export default class Parlx {
     return newSettings;
   }
 
-  static init(data = {}) {
+  public static init(data = {} as Options) {
     let { elements, settings, callbacks } = data;
 
-    if (elements instanceof Node) elements = [elements];
-    if (elements instanceof NodeList) elements = [].slice.call(elements);
+    if (elements instanceof Node) {
+      elements = [elements];
+    }
+
+    if (elements instanceof NodeList) {
+      elements = [...elements] as HTMLElement[];
+    }
 
     for (const element of elements) {
       if (!('parlx' in element)) {
-        return (element.parlx = new Parlx(element, settings, callbacks));
+        return (element!.parlx = new Parlx(element, settings, callbacks));
       }
     }
   }
@@ -200,17 +248,19 @@ if (typeof document !== 'undefined') {
 
   const elements = document.querySelectorAll('[data-parlx]');
 
-  if (elements.length) Parlx.init({ elements });
+  if (elements.length) {
+    Parlx.init({ elements } as any);
+  }
 }
 
 if (window.jQuery) {
   const $ = window.jQuery;
 
-  $.fn.parlx = function(data = {}) {
+  $.fn.parlx = function(data: Options = {} as any) {
     return Parlx.init({
       elements: this,
-      settings: data.settings || {},
-      callbacks: data.callbacks || {}
+      settings: data.settings || ({} as Settings),
+      callbacks: data.callbacks || ({} as Callbacks)
     });
   };
 }

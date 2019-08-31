@@ -15,23 +15,23 @@ module.exports = env => {
 
   return {
     mode,
-    entry: `${__dirname}/src/index.js`,
+    entry: `${__dirname}/src/${libraryName}.ts`,
     devtool,
     output: {
       path: `${__dirname}/lib`,
       filename: outputFile,
       library: 'Parlx',
-      libraryTarget: 'umd',
-      umdNamedDefine: true,
-      globalObject:
-        'typeof window !== "object" ? global.window = global : window'
+      libraryTarget: 'commonjs2'
     },
     module: {
       rules: [
         {
-          test: /\.js$/,
-          loader: 'babel-loader',
-          exclude: /node_modules/
+          test: /\.ts$/,
+          loader: 'ts-loader',
+          exclude: /node_modules/,
+          resolve: {
+            extensions: ['.ts']
+          }
         }
       ]
     }

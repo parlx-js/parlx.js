@@ -5,6 +5,7 @@
   "author": "Jakub Biesiada",
   "license": "MIT",
   "main": "lib/parlx.min.js",
+  "types": "lib/index.d.ts",
   "scripts": {
     "release": "rimraf lib/* && npm run prettier && npm run lint && npm run build:dev && npm run build && npm run test",
     "build": "webpack --env build",
@@ -13,8 +14,8 @@
     "watch": "npm run build -- --watch",
     "watch:dev": "npm run build:dev -- --watch",
     "watch:test": "npm run test -- --watch",
-    "lint": "eslint src --fix",
-    "prettier": "prettier --write 'src/**/*.js'",
+    "lint": "eslint 'src/**/*.ts' --fix",
+    "prettier": "prettier --write 'src/**/*.ts'",
     "deploy": "gh-pages -d demo/build"
   },
   "repository": {
