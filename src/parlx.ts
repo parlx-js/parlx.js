@@ -2,7 +2,7 @@ import { defaultSettings } from './defaults';
 
 import { Settings, Callbacks, Options } from './types';
 
-import { excludePlatform } from './helpers/exclude-platform';
+import { excludePlatform, bounceDetector } from './helpers';
 
 declare global {
   interface Window {
@@ -110,32 +110,12 @@ export default class Parlx {
   }
 
   private updateScrolled() {
-    const axis = this.settings.axis.toLowerCase();
+    const axis = this.settings.axis.toLowerCase() as 'x' | 'y';
 
-    if (axis === 'y') {
-      if (
-        this.settings.base instanceof Window
-          ? this.settings.base.pageYOffset >= 0 &&
-            this.settings.base.pageYOffset + this.settings.base.innerHeight <=
-              document.documentElement.scrollHeight
-          : this.settings.base.scrollTop >= 0 &&
-            this.settings.base.scrollTop + this.settings.base.offsetHeight >=
-              document.documentElement.scrollHeight
-      ) {
-        this.scrolled = this.element.getBoundingClientRect().top;
-      }
-    } else if (axis === 'x') {
-      if (
-        this.settings.base instanceof Window
-          ? this.settings.base.pageXOffset >= 0 &&
-            this.settings.base.pageXOffset + this.settings.base.innerWidth <=
-              document.documentElement.scrollWidth
-          : this.settings.base.scrollLeft >= 0 &&
-            this.settings.base.scrollLeft + this.settings.base.offsetWidth >=
-              document.documentElement.scrollWidth
-      ) {
-        this.scrolled = this.element.getBoundingClientRect().left;
-      }
+    if (bounceDetector(this.settings.base, axis)) {
+      this.scrolled = this.element.getBoundingClientRect()[
+        axis === 'y' ? 'top' : 'left'
+      ];
     }
   }
 
