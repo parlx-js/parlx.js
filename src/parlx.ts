@@ -215,6 +215,10 @@ export default class Parlx {
       elements = [...elements] as HTMLElement[];
     }
 
+    if (!(elements instanceof Array)) {
+      return;
+    }
+
     for (const element of elements) {
       if (!('parlx' in element)) {
         return (element!.parlx = new Parlx(element, settings, callbacks));
