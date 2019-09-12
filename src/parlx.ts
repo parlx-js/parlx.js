@@ -38,7 +38,7 @@ export default class Parlx {
       this.callbacks.onInit(this.element);
     }
 
-    this.speed = this.settings.speed;
+    this.speed = this.settings.speed!;
     this.movement = 0;
     this.transform = '';
     this.scrolled = 0;
@@ -48,13 +48,13 @@ export default class Parlx {
   }
 
   private addEventListeners() {
-    this.settings.base.addEventListener('scroll', this.onWindowScroll);
+    this.settings.base!.addEventListener('scroll', this.onWindowScroll);
 
     window.addEventListener('resize', this.onWindowResize);
   }
 
   private removeEventListeners() {
-    this.settings.base.removeEventListener('scroll', this.onWindowScroll);
+    this.settings.base!.removeEventListener('scroll', this.onWindowScroll);
 
     window.removeEventListener('resize', this.onWindowResize);
   }
@@ -110,9 +110,9 @@ export default class Parlx {
   }
 
   private updateScrolled() {
-    const axis = this.settings.axis.toLowerCase() as 'x' | 'y';
+    const axis = this.settings.axis!.toLowerCase() as 'x' | 'y';
 
-    if (bounceDetector(this.settings.base, axis)) {
+    if (bounceDetector(this.settings.base!, axis)) {
       this.scrolled = this.element.getBoundingClientRect()[
         axis === 'y' ? 'top' : 'left'
       ];
@@ -150,7 +150,7 @@ export default class Parlx {
   }
 
   private parallaxEffect() {
-    this.element.style.height = this.settings.height.toString();
+    this.element.style.height = this.settings.height!.toString();
 
     this.updateScrolled();
 
