@@ -25,3 +25,5 @@
 #### Repository Changes
 - added husky
 
+#### Tests
+- added test
