@@ -10,3 +10,4 @@ tsconfig.json
 .eslintrc.js
 webpack.config.js
 yarn-error.log
+.DS_Store
