@@ -244,7 +244,7 @@ if (typeof document !== 'undefined') {
 if (window.jQuery) {
   const $ = window.jQuery;
 
-  $.fn.parlx = function(data: Options = {} as any) {
+  $.fn.parlx = function(data: Options = {} as Options) {
     return Parlx.init({
       elements: this,
       settings: data.settings || ({} as Settings),
