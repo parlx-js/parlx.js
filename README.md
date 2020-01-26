@@ -108,7 +108,7 @@ elems.parlx.destroy();
 ### Settings
 Name | Type | Default | Description | Available options
 -|-|-|-|-
-**axis** | string | `Y` | Observed scroll axis | `X` or `Y`
+**axis** | string | `Y` | Observed scroll axis | `X`, `Y` or `both`
 **base** | DOM Element | `window` | Observed scroll element | e.g: `document.querySelector("#my-element");`
 **direction** | string | `vertical` | Parallax element move direction | `vertical`, `horizontal`, `diagonal`
 **exclude** | RegExp | `null` | Disable parallax effect on selected user agents | e.g: <code>/(Firefox&#124;iPad)/</code>

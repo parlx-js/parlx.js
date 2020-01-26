@@ -3,6 +3,16 @@
 ### [CHANGELOG.md for v2 here](https://github.com/JB1905/parlx.js/blob/v2/CHANGELOG.md)
 ### [CHANGELOG.md for v1 here](https://github.com/JB1905/parlx.js/blob/v1/CHANGELOG.md)
 
+## 3.0.0 ()
+#### Internal
+- cleaned up
+
+#### New Feature
+- added `both` value to `axis` option
+
+#### Bug Fix
+- fixed incorrect background scaling
+
 ## 3.0.0 beta 1 (2019-09-02)
 #### Internal
 - rewritten with TypeScript

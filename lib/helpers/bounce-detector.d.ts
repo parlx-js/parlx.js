@@ -1,1 +1,1 @@
-export declare const bounceDetector: (element: Window | HTMLElement, scroll: "x" | "y") => boolean;
+export declare const bounceDetector: (element: HTMLElement | Window, scroll: "x" | "y" | "both") => boolean;

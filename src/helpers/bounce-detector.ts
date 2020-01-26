@@ -1,6 +1,6 @@
 export const bounceDetector = (
   element: HTMLElement | Window,
-  scroll: 'x' | 'y'
+  scroll: 'x' | 'y' | 'both'
 ) => {
   let bounce = false;
 
