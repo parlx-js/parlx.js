@@ -1,4 +1,4 @@
-import Parlx from '../src/parlx';
+import Parlx from '../src';
 
 describe('callbacks', () => {
   document.body.innerHTML = `
