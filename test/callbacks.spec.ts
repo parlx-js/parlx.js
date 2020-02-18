@@ -1,28 +1,30 @@
-import Parlx from '../src/parlx';
+import Parlx from '../src';
 
 describe('callbacks', () => {
   document.body.innerHTML = `
     <div class="parlx" />
   `;
 
-  const element = document.querySelector('.parlx');
+  const element = document.querySelector('.parlx') as HTMLElement;
 
-  test('onInit', () => {
+  test('onInit callback', () => {
     let test = false;
 
     Parlx.init({
       elements: element,
       callbacks: {
-        onInit: () => (test = true)
+        onInit: () => {
+          test = true;
+        }
       }
     });
 
-    element.parlx.destroy();
-
     expect(test).toBe(true);
+
+    element.parlx.destroy();
   });
 
-  test('onScroll', () => {
+  test('onScroll callback', () => {
     const scrollEvent = new Event('scroll');
 
     let test = false;
@@ -30,18 +32,20 @@ describe('callbacks', () => {
     Parlx.init({
       elements: element,
       callbacks: {
-        onScroll: () => (test = true)
+        onScroll: () => {
+          test = true;
+        }
       }
     });
 
     window.dispatchEvent(scrollEvent);
 
-    element.parlx.destroy();
-
     expect(test).toEqual(true);
+
+    element.parlx.destroy();
   });
 
-  test('onResize', () => {
+  test('onResize callback', () => {
     const resizeEvent = new Event('resize');
 
     let test = false;
@@ -49,15 +53,17 @@ describe('callbacks', () => {
     Parlx.init({
       elements: element,
       callbacks: {
-        onResize: () => (test = true)
+        onResize: () => {
+          test = true;
+        }
       }
     });
 
     window.dispatchEvent(resizeEvent);
 
-    element.parlx.destroy();
-
     expect(test).toEqual(true);
+
+    element.parlx.destroy();
   });
 
   test('onDestroy', () => {
@@ -66,7 +72,9 @@ describe('callbacks', () => {
     Parlx.init({
       elements: element,
       callbacks: {
-        onDestroy: () => (test = true)
+        onDestroy: () => {
+          test = true;
+        }
       }
     });
 
