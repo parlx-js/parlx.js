@@ -1,4 +1,5 @@
 import $ from 'jquery';
+
 import Parlx from '../src';
 
 declare global {
@@ -6,9 +7,9 @@ declare global {
     $: any;
   }
 
-  // interface JQuery {
-  //   parlx: Function
-  // }
+  interface JQuery {
+    parlx: Function;
+  }
 }
 
 window.$ = window.jQuery = $;
@@ -25,7 +26,7 @@ describe('core functions', () => {
 
   const element = document.querySelector('.parlx') as HTMLElement;
 
-  test('direction vertical', () => {
+  it('should set direction to `vertical`', () => {
     Parlx.init({
       elements: element,
       settings: {
@@ -36,7 +37,7 @@ describe('core functions', () => {
     element.parlx.destroy();
   });
 
-  test('direction horizontal', () => {
+  it('should set direction to `horizontal`', () => {
     Parlx.init({
       elements: element,
       settings: {
@@ -47,7 +48,7 @@ describe('core functions', () => {
     element.parlx.destroy();
   });
 
-  test('direction diagonal', () => {
+  it('should set direction to `diagonal`', () => {
     Parlx.init({
       elements: element,
       settings: {
@@ -58,7 +59,7 @@ describe('core functions', () => {
     element.parlx.destroy();
   });
 
-  test('speed out of range', () => {
+  it('should detect `speed` out of range', () => {
     Parlx.init({
       elements: element,
       settings: {
@@ -71,7 +72,7 @@ describe('core functions', () => {
     element.parlx.destroy();
   });
 
-  test('exclude Mozilla', () => {
+  it('should exclude Mozilla', () => {
     Object.defineProperty(window.navigator, 'userAgent', {
       get: function() {
         return 'Mozilla';
@@ -85,31 +86,31 @@ describe('core functions', () => {
       }
     });
 
-    // expect(element.parlx.speed).toEqual(0);
+    expect(element.parlx.speed).toEqual(0);
 
     element.parlx.destroy();
   });
 
-  // test('exclude iPad', () => {
-  //   Object.defineProperty(window.navigator, 'userAgent', {
-  //     get: function() {
-  //       return 'iPad';
-  //     }
-  //   });
+  it('should exclude iPad', () => {
+    Object.defineProperty(window.navigator, 'userAgent', {
+      get: function() {
+        return 'iPad';
+      }
+    });
 
-  //   Parlx.init({
-  //     elements: element,
-  //     settings: {
-  //       exclude: /iPad/
-  //     }
-  //   });
+    Parlx.init({
+      elements: element,
+      settings: {
+        exclude: /iPad/
+      }
+    });
 
-  //   // expect(element.parlx.speed).toEqual(0);
+    expect(element.parlx.speed).toEqual(0);
 
-  //   element.parlx.destroy();
-  // });
+    element.parlx.destroy();
+  });
 
-  test('background type', () => {
+  it('should set type to `background`', () => {
     Parlx.init({
       elements: element,
       settings: {
@@ -120,7 +121,7 @@ describe('core functions', () => {
     element.parlx.destroy();
   });
 
-  test('foreground type', () => {
+  it('should set type to `foreground`', () => {
     Parlx.init({
       elements: element,
       settings: {
@@ -131,7 +132,7 @@ describe('core functions', () => {
     element.parlx.destroy();
   });
 
-  test('custom speed', () => {
+  it('should set custom `speed`', () => {
     const speeds = [2, 1, 0.6, 0, -0.6, -1, -2];
 
     speeds.map(speed => {
@@ -144,7 +145,7 @@ describe('core functions', () => {
     });
   });
 
-  test('custom axis', () => {
+  it('should set custom `axis`', () => {
     Parlx.init({
       elements: element,
       settings: {
@@ -153,7 +154,7 @@ describe('core functions', () => {
     });
   });
 
-  test('custom height', () => {
+  it('should set custom `height`', () => {
     const heights = ['300px', '80vh', '220em'];
 
     heights.map(height => {
@@ -168,15 +169,15 @@ describe('core functions', () => {
     });
   });
 
-  // test('window', () => {
-  //   Parlx.init({
-  //     elements:element,
-  //     settings: {
-  //       base: window,
-  //       axis: 'Y'
-  //     }
-  //   });
-  // });
+  it('should set base to `window`', () => {
+    Parlx.init({
+      elements: element,
+      settings: {
+        base: window,
+        axis: 'Y'
+      }
+    });
+  });
 });
 
 describe('single node', () => {
@@ -186,7 +187,7 @@ describe('single node', () => {
 
   const element = document.querySelector('.parlx') as any;
 
-  test('init', () => {
+  it('should init library for single node', () => {
     Parlx.init({
       elements: element
     });
@@ -202,7 +203,7 @@ describe('X axis', () => {
 
   const element = document.querySelector('.parlx') as any;
 
-  test('init', () => {
+  test('should init library with `axis` set to `X', () => {
     Parlx.init({
       elements: element,
       settings: {
@@ -214,39 +215,39 @@ describe('X axis', () => {
   });
 });
 
-// describe('auto init', () => {
-//   document.body.innerHTML = `
-//     <div data-parlx />
-//   `;
+describe('auto init', () => {
+  document.body.innerHTML = `
+    <div data-parlx />
+  `;
 
-//   // const element = document.querySelector('[data-parlx]') as HTMLElement;
+  const element = document.querySelector('[data-parlx]') as HTMLElement;
 
-// let testes = false;
+  let testes = false;
 
-//   test('init', () => {
-//     Parlx.init({
-//       callbacks: {
-//         onInit: () => testes = true
-//       }
-//     });
+  it('should init', () => {
+    // Parlx.init({
+    //   callbacks: {
+    //     onInit: () => (testes = true)
+    //   }
+    // });
 
-//     expect(testes).toEqual(true);
-//   });
-// });
+    expect(testes).toEqual(true);
+  });
+});
 
-// describe('jQuery', () => {
-//   document.body.innerHTML = `
-//   <div class="parlx" />
-//   <div class="parlx" />
-//   `;
+describe('jQuery', () => {
+  document.body.innerHTML = `
+  <div class="parlx" />
+  <div class="parlx" />
+  `;
 
-//   test('init', () => {
-//     const tilt = $('.parlx').parlx({
-//       settings: {
-//         speed: 0.2
-//       }
-//     });
+  it('init', () => {
+    const tilt = $('.parlx').parlx({
+      settings: {
+        speed: 0.2
+      }
+    });
 
-//     expect(tilt.settings.speed).toBe(0.2);
-//   });
-// });
+    expect(tilt.settings.speed).toBe(0.2);
+  });
+});

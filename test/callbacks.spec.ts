@@ -7,7 +7,7 @@ describe('callbacks', () => {
 
   const element = document.querySelector('.parlx') as HTMLElement;
 
-  test('onInit callback', () => {
+  it('should call onInit', () => {
     let test = false;
 
     Parlx.init({
@@ -24,7 +24,7 @@ describe('callbacks', () => {
     element.parlx.destroy();
   });
 
-  test('onScroll callback', () => {
+  it('should call onScroll', () => {
     const scrollEvent = new Event('scroll');
 
     let test = false;
@@ -45,7 +45,7 @@ describe('callbacks', () => {
     element.parlx.destroy();
   });
 
-  test('onResize callback', () => {
+  it('should call onResize', () => {
     const resizeEvent = new Event('resize');
 
     let test = false;
@@ -66,7 +66,7 @@ describe('callbacks', () => {
     element.parlx.destroy();
   });
 
-  test('onDestroy', () => {
+  it('should call onDestroy', () => {
     let test = false;
 
     Parlx.init({
