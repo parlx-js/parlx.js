@@ -1,7 +1,7 @@
 # parlx.js Changelog
 
-### [CHANGELOG.md for v2 here](https://github.com/JB1905/parlx.js/blob/v2/CHANGELOG.md)
-### [CHANGELOG.md for v1 here](https://github.com/JB1905/parlx.js/blob/v1/CHANGELOG.md)
+### [CHANGELOG.md for v2 here](https://github.com/parlx-js/parlx.js/blob/v2/CHANGELOG.md)
+### [CHANGELOG.md for v1 here](https://github.com/parlx-js/parlx.js/blob/v1/CHANGELOG.md)
 
 ## 3.0.0 ()
 #### Internal

@@ -1,4 +1,4 @@
-# [parlx.js](https://github.com/jb1905/parlx.js)
+# [parlx.js](https://github.com/parlx-js/parlx.js)
 
 [![NPM version](http://img.shields.io/npm/v/parlx.js.svg?style=flat-square)](https://www.npmjs.com/package/parlx.js)
 [![NPM downloads](http://img.shields.io/npm/dm/parlx.js.svg?style=flat-square)](https://www.npmjs.com/package/parlx.js)
@@ -6,11 +6,11 @@
 ## About
 
 ### Demo
-**[See plugin in action](https://jb1905.github.io/parlx.js/)**
+**[See plugin in action](https://parlx-js.github.io/parlx.js/)**
 
 ### React plugin
 If you use React, install component with the implementation of the parlx.js library!
-**[More here](https://github.com/JB1905/react-parlx/)**
+**[More here](https://github.com/parlx-js/react-parlx/)**
 
 ## How to Install
 First, install the library in your project by npm:
