@@ -14,8 +14,7 @@
     "watch": "npm run build -- --watch",
     "watch:test": "npm run test -- --watch",
     "lint": "eslint 'src/**/*.ts' --fix",
-    "prettier": "prettier --write 'src/**/*.ts'",
-    "deploy": "gh-pages -d demo/build"
+    "prettier": "prettier --write 'src/**/*.ts'"
   },
   "repository": {
     "type": "git",
@@ -45,7 +44,6 @@
     "eslint": "^6.8.0",
     "eslint-config-prettier": "^6.10.0",
     "eslint-plugin-prettier": "^3.1.2",
-    "gh-pages": "^2.2.0",
     "husky": "^4.2.3",
     "jest": "^25.1.0",
     "jquery": "^3.4.1",
