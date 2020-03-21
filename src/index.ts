@@ -122,7 +122,7 @@ export default class Parlx {
   private updatePosition() {
     if (this.settings.type === 'foreground') {
       Object.assign(this.element.style, {
-        transform: this.transform
+        transform: this.transform,
       });
     } else if (this.settings.type === 'background') {
       let child: HTMLElement | null = this.element.querySelector(
@@ -143,12 +143,16 @@ export default class Parlx {
       const checkWindowRatio = () => window.outerWidth > window.outerHeight;
 
       Object.assign(child.style, {
-        minHeight: `${this.element.offsetHeight +
-          (checkWindowRatio() ? absoluteScaleX : absoluteScaleY) * 2}px`,
-        minWidth: `${this.element.offsetWidth +
-          (checkWindowRatio() ? absoluteScaleY : absoluteScaleX) * 2}px`,
+        minHeight: `${
+          this.element.offsetHeight +
+          (checkWindowRatio() ? absoluteScaleX : absoluteScaleY) * 2
+        }px`,
+        minWidth: `${
+          this.element.offsetWidth +
+          (checkWindowRatio() ? absoluteScaleY : absoluteScaleX) * 2
+        }px`,
         transform: this.transform,
-        objectFit: 'cover'
+        objectFit: 'cover',
       });
     }
   }
@@ -172,12 +176,12 @@ export default class Parlx {
     this.updatePosition();
 
     const values = {
-      move: this.movement
+      move: this.movement,
     };
 
     this.element.dispatchEvent(
       new CustomEvent('parlxMove', {
-        detail: values
+        detail: values,
       })
     );
   }
@@ -244,11 +248,11 @@ if (typeof document !== 'undefined') {
 if (window.jQuery) {
   const $ = window.jQuery;
 
-  $.fn.parlx = function(data: Options = {} as Options) {
+  $.fn.parlx = function (data: Options = {} as Options) {
     return Parlx.init({
       elements: this,
       settings: data.settings || ({} as Settings),
-      callbacks: data.callbacks || ({} as Callbacks)
+      callbacks: data.callbacks || ({} as Callbacks),
     });
   };
 }

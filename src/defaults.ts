@@ -7,5 +7,5 @@ export const defaultSettings: Settings = {
   exclude: null,
   height: '400px',
   speed: 0.3,
-  type: 'background'
+  type: 'background',
 };
