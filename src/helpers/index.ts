@@ -1,2 +1,2 @@
-export { excludePlatform } from './exclude-platform';
-export { bounceDetector } from './bounce-detector';
+export { excludePlatform } from './excludePlatform';
+export { bounceDetector } from './bounceDetector';
