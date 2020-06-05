@@ -16,7 +16,7 @@ window.$ = window.jQuery = $;
 
 jest.mock('platform', () => ({
   name: 'Safari',
-  platform: 'iPad'
+  platform: 'iPad',
 }));
 
 describe('core functions', () => {
@@ -30,8 +30,8 @@ describe('core functions', () => {
     Parlx.init({
       elements: element,
       settings: {
-        direction: 'vertical'
-      }
+        direction: 'vertical',
+      },
     });
 
     element.parlx.destroy();
@@ -41,8 +41,8 @@ describe('core functions', () => {
     Parlx.init({
       elements: element,
       settings: {
-        direction: 'horizontal'
-      }
+        direction: 'horizontal',
+      },
     });
 
     element.parlx.destroy();
@@ -52,8 +52,8 @@ describe('core functions', () => {
     Parlx.init({
       elements: element,
       settings: {
-        direction: 'diagonal'
-      }
+        direction: 'diagonal',
+      },
     });
 
     element.parlx.destroy();
@@ -63,8 +63,8 @@ describe('core functions', () => {
     Parlx.init({
       elements: element,
       settings: {
-        speed: 3
-      }
+        speed: 3,
+      },
     });
 
     expect(element.parlx.speed).toEqual(0.3);
@@ -74,16 +74,16 @@ describe('core functions', () => {
 
   it('should exclude Mozilla', () => {
     Object.defineProperty(window.navigator, 'userAgent', {
-      get: function() {
+      get: function () {
         return 'Mozilla';
-      }
+      },
     });
 
     Parlx.init({
       elements: element,
       settings: {
-        exclude: /Mozilla/
-      }
+        exclude: /Mozilla/,
+      },
     });
 
     expect(element.parlx.speed).toEqual(0);
@@ -93,16 +93,16 @@ describe('core functions', () => {
 
   it('should exclude iPad', () => {
     Object.defineProperty(window.navigator, 'userAgent', {
-      get: function() {
+      get: function () {
         return 'iPad';
-      }
+      },
     });
 
     Parlx.init({
       elements: element,
       settings: {
-        exclude: /iPad/
-      }
+        exclude: /iPad/,
+      },
     });
 
     expect(element.parlx.speed).toEqual(0);
@@ -114,8 +114,8 @@ describe('core functions', () => {
     Parlx.init({
       elements: element,
       settings: {
-        type: 'background'
-      }
+        type: 'background',
+      },
     });
 
     element.parlx.destroy();
@@ -125,8 +125,8 @@ describe('core functions', () => {
     Parlx.init({
       elements: element,
       settings: {
-        type: 'foreground'
-      }
+        type: 'foreground',
+      },
     });
 
     element.parlx.destroy();
@@ -135,12 +135,12 @@ describe('core functions', () => {
   it('should set custom `speed`', () => {
     const speeds = [2, 1, 0.6, 0, -0.6, -1, -2];
 
-    speeds.map(speed => {
+    speeds.map((speed) => {
       Parlx.init({
         elements: element,
         settings: {
-          speed
-        }
+          speed,
+        },
       });
     });
   });
@@ -149,20 +149,20 @@ describe('core functions', () => {
     Parlx.init({
       elements: element,
       settings: {
-        axis: 'X'
-      }
+        axis: 'X',
+      },
     });
   });
 
   it('should set custom `height`', () => {
     const heights = ['300px', '80vh', '220em'];
 
-    heights.map(height => {
+    heights.map((height) => {
       Parlx.init({
         elements: element,
         settings: {
-          height
-        }
+          height,
+        },
       });
 
       element.parlx.destroy();
@@ -174,8 +174,8 @@ describe('core functions', () => {
       elements: element,
       settings: {
         base: window,
-        axis: 'Y'
-      }
+        axis: 'Y',
+      },
     });
   });
 });
@@ -189,7 +189,7 @@ describe('single node', () => {
 
   it('should init library for single node', () => {
     Parlx.init({
-      elements: element
+      elements: element,
     });
 
     element.parlx.destroy();
@@ -207,8 +207,8 @@ describe('X axis', () => {
     Parlx.init({
       elements: element,
       settings: {
-        axis: 'X'
-      }
+        axis: 'X',
+      },
     });
 
     element.parlx.destroy();
@@ -222,7 +222,7 @@ describe('auto init', () => {
 
   const element = document.querySelector('[data-parlx]') as HTMLElement;
 
-  let testes = false;
+  let test = false;
 
   it('should init', () => {
     // Parlx.init({
@@ -231,7 +231,7 @@ describe('auto init', () => {
     //   }
     // });
 
-    expect(testes).toEqual(true);
+    expect(test).toEqual(true);
   });
 });
 
@@ -244,8 +244,8 @@ describe('jQuery', () => {
   it('init', () => {
     const tilt = $('.parlx').parlx({
       settings: {
-        speed: 0.2
-      }
+        speed: 0.2,
+      },
     });
 
     expect(tilt.settings.speed).toBe(0.2);
