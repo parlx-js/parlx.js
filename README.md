@@ -6,19 +6,24 @@
 ## About
 
 ### Demo
+
 **[See plugin in action](https://parlx-js.github.io/parlx.js/)**
 
 ### React plugin
+
 If you use React, install component with the implementation of the parlx.js library!
 **[More here](https://github.com/parlx-js/react-parlx/)**
 
 ## How to Install
+
 First, install the library in your project by npm:
+
 ```sh
 $ npm install parlx.js
 ```
 
 Or Yarn:
+
 ```sh
 $ yarn add parlx.js
 ```
@@ -29,17 +34,21 @@ jsDelivr: `https://cdn.jsdelivr.net/npm/parlx.js/`<br>
 unpkg: `https://unpkg.com/parlx.js/`
 
 ## Getting Started
+
 **Connect libary with project using script tag in HTML:**
+
 ```html
 <script src="/path/to/parlx.js"></script>
 ```
 
 **ES6 import:**
+
 ```js
 import Parlx from 'parlx.js';
 ```
 
 **Or CommonJS:**
+
 ```js
 const Parlx = require('parlx.js');
 ```
@@ -47,6 +56,7 @@ const Parlx = require('parlx.js');
 Next use library with:
 
 **&bull; Vanilla JavaScript e.g:**
+
 ```js
 const elems = document.querySelectorAll('.parallax');
 
@@ -57,18 +67,20 @@ const parlx = Parlx.init({
   },
   callbacks: {
     // callbacks...
-  }
+  },
 });
 ```
 
 **&bull; or jQuery e.g:**
 
-*Connect jQuery in HTML*
+_Connect jQuery in HTML_
+
 ```html
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 ```
 
-*Or include via command line and CommonJS*
+_Or include via command line and CommonJS_
+
 ```sh
 $ npm install jquery
 $ yarn add jquery
@@ -79,7 +91,8 @@ $ bower install jquery
 const jQuery = require('jquery');
 ```
 
-*And call plugin on element*
+_And call plugin on element_
+
 ```js
 $('.parallax').parlx({
   settings: {
@@ -87,45 +100,53 @@ $('.parallax').parlx({
   },
   callbacks: {
     // callbacks...
-  }
+  },
 });
 ```
 
 **&bull; Plugin supports autoinit**
 
 To use it, add `data-parlx` to html element e.g:
+
 ```html
 <div data-parlx></div>
 ```
 
 ## Methods
+
 **&bull; Destroy method**
+
 ```js
 elems.parlx.destroy();
 ```
 
 ## Options
+
 ### Settings
-Name | Type | Default | Description | Available options
--|-|-|-|-
-**axis** | string | `Y` | Observed scroll axis | `X`, `Y` or `both`
-**base** | DOM Element | `window` | Observed scroll element | e.g: `document.querySelector("#my-element");`
-**direction** | string | `vertical` | Parallax element move direction | `vertical`, `horizontal`, `diagonal`
-**exclude** | RegExp | `null` | Disable parallax effect on selected user agents | e.g: <code>/(Firefox&#124;iPad)/</code>
-**height** | string | `400px` | Height of parallax element container | e.g: `500px`, `70vh`, `auto`
-**speed** | number | `0.3` | Parallax speed | values >= `-1` and <= `1`
-**type** | string | `background` | Type of parallax | `foreground` (div move), `background` (content move)
+
+| Name          | Type        | Default      | Description                                     | Available options                                    |
+| ------------- | ----------- | ------------ | ----------------------------------------------- | ---------------------------------------------------- |
+| **axis**      | string      | `Y`          | Observed scroll axis                            | `X`, `Y` or `both`                                   |
+| **base**      | DOM Element | `window`     | Observed scroll element                         | e.g: `document.querySelector("#my-element");`        |
+| **direction** | string      | `vertical`   | Parallax element move direction                 | `vertical`, `horizontal`, `diagonal`                 |
+| **exclude**   | RegExp      | `null`       | Disable parallax effect on selected user agents | e.g: <code>/(Firefox&#124;iPad)/</code>              |
+| **height**    | string      | `400px`      | Height of parallax element container            | e.g: `500px`, `70vh`, `auto`                         |
+| **speed**     | number      | `0.3`        | Parallax speed                                  | values >= `-1` and <= `1`                            |
+| **type**      | string      | `background` | Type of parallax                                | `foreground` (div move), `background` (content move) |
 
 ### Callbacks
-Name | Description | Available options
--|-|-
-**onInit** | Callback on plugin init | `el => { /* code */ }`
-**onDestroy** | Callback on plugin destroy | `el => { /* code */ }`
-**onResize** | Callback on window resize | `el => { /* code */ }`
-**onScroll** | Callback on window scroll | `el => { /* code */ }`
+
+| Name          | Description                | Available options      |
+| ------------- | -------------------------- | ---------------------- |
+| **onInit**    | Callback on plugin init    | `el => { /* code */ }` |
+| **onDestroy** | Callback on plugin destroy | `el => { /* code */ }` |
+| **onResize**  | Callback on window resize  | `el => { /* code */ }` |
+| **onScroll**  | Callback on window scroll  | `el => { /* code */ }` |
 
 ## Event
+
 `parlxMove` event will output current position of the parallax element
 
 ## License
+
 This project is licensed under the MIT License © 2018-present Jakub Biesiada

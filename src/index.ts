@@ -70,7 +70,7 @@ export default class Parlx {
 
     delete this.element.parlx;
 
-    this.element = null as any;
+    this.element = null;
   }
 
   private onWindowScroll = () => {
@@ -127,9 +127,7 @@ export default class Parlx {
         transform: this.transform,
       });
     } else if (this.settings.type === 'background') {
-      let child: HTMLElement | null = this.element.querySelector(
-        '.parlx-children'
-      );
+      let child = this.element.querySelector<HTMLElement>('.parlx-children');
 
       if (!child) {
         child = document.createElement('div');
@@ -139,8 +137,13 @@ export default class Parlx {
         this.element.appendChild(child);
       }
 
-      const absoluteScaleX = Math.abs(this.element.offsetHeight * this.speed);
-      const absoluteScaleY = Math.abs(this.element.offsetWidth * this.speed);
+      const absoluteScaleX = Math.round(
+        Math.abs(this.element.offsetHeight * this.speed)
+      );
+
+      const absoluteScaleY = Math.round(
+        Math.abs(this.element.offsetWidth * this.speed)
+      );
 
       const checkWindowRatio = () => window.outerWidth > window.outerHeight;
 
@@ -189,7 +192,7 @@ export default class Parlx {
   }
 
   private extendSettings(settings: Settings): Settings {
-    const newSettings = {} as any;
+    const newSettings = {} as Record<keyof Settings, any>;
 
     let property: keyof Settings;
 
@@ -197,9 +200,7 @@ export default class Parlx {
       if (property in settings) {
         newSettings[property] = settings[property];
       } else if (this.element.getAttribute(`data-parlx-${property}`)) {
-        const attribute = this.element.getAttribute(
-          `data-parlx-${property}`
-        ) as string;
+        const attribute = this.element.getAttribute(`data-parlx-${property}`);
 
         try {
           newSettings[property] = JSON.parse(attribute);
@@ -231,7 +232,11 @@ export default class Parlx {
 
     for (const element of elements) {
       if (!('parlx' in element)) {
-        return (element.parlx = new Parlx(element, settings, callbacks));
+        return ((element as HTMLElement).parlx = new Parlx(
+          element,
+          settings,
+          callbacks
+        ));
       }
     }
   }

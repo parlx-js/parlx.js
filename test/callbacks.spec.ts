@@ -15,8 +15,8 @@ describe('callbacks', () => {
       callbacks: {
         onInit: () => {
           test = true;
-        }
-      }
+        },
+      },
     });
 
     expect(test).toBe(true);
@@ -34,8 +34,8 @@ describe('callbacks', () => {
       callbacks: {
         onScroll: () => {
           test = true;
-        }
-      }
+        },
+      },
     });
 
     window.dispatchEvent(scrollEvent);
@@ -55,8 +55,8 @@ describe('callbacks', () => {
       callbacks: {
         onResize: () => {
           test = true;
-        }
-      }
+        },
+      },
     });
 
     window.dispatchEvent(resizeEvent);
@@ -74,8 +74,8 @@ describe('callbacks', () => {
       callbacks: {
         onDestroy: () => {
           test = true;
-        }
-      }
+        },
+      },
     });
 
     element.parlx.destroy();
