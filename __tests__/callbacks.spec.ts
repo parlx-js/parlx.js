@@ -8,18 +8,16 @@ describe('callbacks', () => {
   const element = document.querySelector('.parlx') as HTMLElement;
 
   it('should call onInit', () => {
-    let test = false;
+    const onInit = jest.fn();
 
     Parlx.init({
       elements: element,
       callbacks: {
-        onInit: () => {
-          test = true;
-        },
+        onInit,
       },
     });
 
-    expect(test).toBe(true);
+    expect(onInit).toHaveBeenCalled();
 
     element.parlx.destroy();
   });
@@ -27,20 +25,18 @@ describe('callbacks', () => {
   it('should call onScroll', () => {
     const scrollEvent = new Event('scroll');
 
-    let test = false;
+    const onScroll = jest.fn();
 
     Parlx.init({
       elements: element,
       callbacks: {
-        onScroll: () => {
-          test = true;
-        },
+        onScroll,
       },
     });
 
     window.dispatchEvent(scrollEvent);
 
-    expect(test).toEqual(true);
+    expect(onScroll).toHaveBeenCalled();
 
     element.parlx.destroy();
   });
@@ -48,38 +44,34 @@ describe('callbacks', () => {
   it('should call onResize', () => {
     const resizeEvent = new Event('resize');
 
-    let test = false;
+    const onResize = jest.fn();
 
     Parlx.init({
       elements: element,
       callbacks: {
-        onResize: () => {
-          test = true;
-        },
+        onResize,
       },
     });
 
     window.dispatchEvent(resizeEvent);
 
-    expect(test).toEqual(true);
+    expect(onResize).toHaveBeenCalled();
 
     element.parlx.destroy();
   });
 
   it('should call onDestroy', () => {
-    let test = false;
+    const onDestroy = jest.fn();
 
     Parlx.init({
       elements: element,
       callbacks: {
-        onDestroy: () => {
-          test = true;
-        },
+        onDestroy,
       },
     });
 
     element.parlx.destroy();
 
-    expect(test).toBe(true);
+    expect(onDestroy).toHaveBeenCalled();
   });
 });

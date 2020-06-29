@@ -1,9 +1,13 @@
+import type { Axis } from './Axis';
+import type { Direction } from './Direction';
+import type { Type } from './Type';
+
 export type Settings = {
-  readonly axis?: 'X' | 'Y' | 'both';
+  readonly axis?: Axis;
   readonly base?: HTMLElement | Window;
-  readonly direction?: 'vertical' | 'horizontal' | 'diagonal';
+  readonly direction?: Direction;
   readonly exclude?: RegExp | null;
   readonly height?: string | number;
   readonly speed?: number;
-  readonly type?: 'background' | 'foreground';
+  readonly type?: Type;
 };
